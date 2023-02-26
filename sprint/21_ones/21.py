@@ -23,6 +23,7 @@ def ones(N):
                     _s.add(e_1)
         s = _s
 
+    print(s)
     return len(s)
 
 N  = int(open('input.txt', 'r').readline())
