@@ -7,31 +7,24 @@ def ops():
     
     sectors = [[int(s[0]), int(s[1])] for s in sectors]
 
-    # print('mem_size :', mem_size)
-    # print('sectors_nums :', sectors_nums)
-    print('sectors :', sectors)
 
     memory = [-1] * mem_size
 
-    alive_sectors = len(sectors)  
-    use set !!!!!
+    alive_sectors = set(range(1,len(sectors)+1))
     
     for i, s in enumerate(sectors):
-        erise = False
-        print('i: ', i+1,'s: ', s)
-        print('b :', memory)
+        to_arise = set()
+
         for r in range(s[0]-1, s[1]):
-            if memory[r] > -1: erise = True
+            if memory[r] > -1:
+                to_arise.add(memory[r])
             memory[r] = i + 1
-        print('a :', memory)
-        if erise:
-            alive_sectors -=1
+       
+        if len(to_arise) > 0:
+            alive_sectors = alive_sectors - to_arise
 
-    print(memory)
-
-    print('alive_sectors :', alive_sectors)
-
-    # open('output.txt', 'w') 
+   
+    open('output.txt', 'w').write(str(len(alive_sectors))) 
 
 ops()
 
