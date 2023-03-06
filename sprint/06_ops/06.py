@@ -1,3 +1,7 @@
+def is_intersects(sector_1, sector_2):
+    a, b, c, d = sector_1[0], sector_1[1], sector_2[0], sector_2[1]
+    return a <= d and c <= b
+
 def ops():
     lines = open('input.txt', 'r').readlines()
 
@@ -5,25 +9,21 @@ def ops():
     
     sectors = [s.replace('\n', '').split(' ') for s in sectors]
     
-    sectors = [[int(s[0]), int(s[1])] for s in sectors]
+    sectors = [(int(s[0]), int(s[1])) for s in sectors]
 
+    alive_sectors = set()
 
-    memory = [-1] * mem_size
+    for sector in sectors:
+        to_del = set()
+        for alive_sector in alive_sectors:
+            if is_intersects(sector, alive_sector):
+                to_del.add(alive_sector)
+        
+        alive_sectors = alive_sectors - to_del
+        alive_sectors.add(sector)
 
-    alive_sectors = set(range(1,len(sectors)+1))
     
-    for i, s in enumerate(sectors):
-        to_arise = set()
-
-        for r in range(s[0]-1, s[1]):
-            if memory[r] > -1:
-                to_arise.add(memory[r])
-            memory[r] = i + 1
-       
-        if len(to_arise) > 0:
-            alive_sectors = alive_sectors - to_arise
-
-   
+    # print(len(alive_sectors))
     open('output.txt', 'w').write(str(len(alive_sectors))) 
 
 ops()
