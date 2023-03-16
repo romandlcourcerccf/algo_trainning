@@ -4,16 +4,10 @@ class Solution:
         mem = []
         res = [0]* len(temperatures)
 
-        for i, t in enumerate(temperatures):
-            
-            _mem = []
-            while len(mem)>0:
-                _i, _t = mem.pop()
-                if _t < t:
-                    res[_i] = i - _i
-                else:
-                    _mem.append((_i, _t))
-            mem = _mem  
-            mem.append((i, t))
+        for i,t in enumerate(temperatures):
+            while mem and t > mem[-1][0]:
+                _t, _i = mem.pop()
+                res[_i] = i-_i
+            mem.append((t,i))
 
         return res
