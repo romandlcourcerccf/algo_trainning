@@ -9,21 +9,22 @@ class Solution:
                 print(grid[row])      
             print('\n')
 
-        def valid(c, r):
+        def valid(t):
+            c, r = t[0], t[1]
             return c >= 0 and c <= cols-1 and r >= 0 and r <= rows-1 and grid[c][r] == '1'
 
-        def dfs(col, row):
-            # print('col :', col, 'row :', row)
+        def dfs(t):
+            col, row = t[0], t[1]
             grid[col][row] = '2'
 
             left = (col-1, row)
-            if valid(left[0], left[1]): dfs(left[0], left[1])
+            if valid(left): dfs(left)
             right = col+1, row
-            if valid(right[0], right[1]): dfs(right[0], right[1])
+            if valid(right): dfs(right)
             up = col, row+1
-            if valid(up[0], up[1]): dfs(up[0], up[1])
+            if valid(up): dfs(up)
             down = col, row-1
-            if valid(down[0], down[1]): dfs(down[0], down[1])
+            if valid(down): dfs(down)
 
         # _print()
         islands = 0       
@@ -31,7 +32,7 @@ class Solution:
             for row in range(rows): 
                 if grid[col][row] == '1':
                     islands +=1
-                    dfs(col, row)
+                    dfs((col, row))
                     # _print()
         
         return islands
