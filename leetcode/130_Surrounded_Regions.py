@@ -33,6 +33,7 @@ class Solution:
             for r in range(rows):
                 print(board[r])
 
+
         # _print()   
         # print('\n')   
         _visited = set()
