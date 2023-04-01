@@ -3,6 +3,11 @@ class Solution:
         
         rows, cols = len(grid), len(grid[0])
 
+        def get_touched(v):
+            row, col = v[0], v[1] 
+            res = []
+
+            
         def get_neighbors(v):
            
             row, col = v[0], v[1] 
