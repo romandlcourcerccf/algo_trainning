@@ -57,9 +57,12 @@ class Solution:
                         watched.add((row-1, col+1))
 
                 border = _border
+
+
         border.append((0,0))
         infect()
-
+        
+        
         if len(watched) > 0:
             return -1
 
