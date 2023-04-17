@@ -1,0 +1,31 @@
+# graph = [[1], [2, 6], [3], [], [1, 3], [], []]
+graph = [[1], [2, 6], [3], [], [1, 3], [], [1]]
+
+black = set()
+gray = set()
+
+ord = []
+
+def dfs(node): 
+    gray.add(node)  
+    for v in graph[node]:
+        if v in gray:
+             print('cycle')
+             return
+        if v not in black:
+             dfs(v)
+        
+    gray.remove(node)  
+    black.add(node)
+
+    ord.append(node)
+
+for n in range(len(graph)):
+    if n not in black:
+        dfs(n)
+
+ord = [v+1 for v in ord]
+print(ord[::-1])
+
+
+        
