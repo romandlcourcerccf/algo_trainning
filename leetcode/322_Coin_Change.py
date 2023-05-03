@@ -10,3 +10,5 @@ class Solution:
                     dp[a] = min(dp[a], dp[a-c]+1)
         
         return dp[amount] if dp[amount] < float('inf') else -1
+    
+    
