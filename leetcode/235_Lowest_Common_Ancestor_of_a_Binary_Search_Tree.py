@@ -38,7 +38,7 @@ class Solution:
 
         common = p_path & q_path
         common = list(common)
-        common.sort(key=lambda x: x[1])
+        common.sort(key=lambda x: x[1], reverse=True)
         common = common[0]
        
         return nodes[common[0]]
