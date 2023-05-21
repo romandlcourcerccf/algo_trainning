@@ -1,17 +1,31 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         
-        dp = [0] * len(prices):
+        if len(prices) <= 1:
+            return 0
 
-        for i in range(len(dp)):
+        income = 0
+        posess = 0
+        operation = ''
+     
+
+        for i in range(len(prices)):
             if i == 0:
-                dp[i] = ['b', dp[i]-prices[i], 1]
+                operation = 'b'
+                posess +=1
+                income -= prices[i]
+
             else:
-                if  prices[i-1] >= prices[i]:
-                    if dp[i-1][0] != '`s':
-                        dp[i] = ['b', dp[i]-prices[i], 1]
-                    else:
-                         dp[i] = ['c', dp[i-1][1], dp[i-1][2]]
+                if operation == 's':
+                    operation = 'c'
                 else:
+                    if prices[i-1] < prices[i]:
+                        posess -=1
+                        income += prices[i]
+                        operation = 's'
+                    else:
+                        posess +=1
+                        income -= prices[i]
+                        operation = 'b'
 
-
+        return income
