@@ -1,81 +1,73 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         
-        rows, cols = len(grid), len(grid[0])
+        cols = len(grid)
+        rows = len(grid[0])
 
-        border = set()
-        seen = set()
-        tics = 0
-        rotten = 0
+        def infect(point):
+            infected, suspects = set(), set()
+            x,y = point[0], point[1]
 
-        def infect():
+            left, right = max(x-1, 0),  min(x+1, cols)
+            up, down = max(y-1, 0),  min(y+1, rows)
 
-            nonlocal border
-            nonlocal seen
-            nonlocal tics
+            if grid[left][y] == 1:
+                grid[left][y] = 2
+                infected.add((left, y))
             
-            while len(border) > 0:
-        
+            if grid[right][y] == 1:
+                grid[right][y] = 2
+                infected.add((right, y))
+
+            if grid[x][up] == 1:
+                grid[x][up] = 2
+                infected.add((x, up))
+
+            if grid[x][down] == 1:
+                grid[x][down] = 2
+                infected.add((x, down))
+
+            if grid[left][up] == 1:
+                suspects.add((left, up))
+
+            if grid[right][up] == 1:
+                suspects.add((right, up))
+
+            if grid[left][down] == 1:
+                suspects.add((left, down))
+
+            if grid[right][down] == 1:
+                suspects.add((right, down))
+
+            return infected, suspects
+
+        def bfs(start):
+
+            border = set()
+            suspects = set()
+            border.add(start)
+
+            visited = set()
+
+            ticks = 0
+            while border:
+                ticks += 1
                 _border = set()
-                for p in border:
-
-                    row, col = p[0], p[1]
-
-                    print(f'row :{row}, col: {col}')
-
-                    if row+1 < rows and grid[row+1][col] == 1:
-                        if (row+1, col) in seen:
-                             seen.remove((row+1, col))
-
-                        _border.add((row+1, col))
-                        grid[row+1][col] = 2
-                        
+                _suspects = set()
+                for node in border:
+                    __infected, __suspects = infect(node)
+                    _border = _border | __infected
+                    _suspects = _suspects | __suspects
                 
-                    if row-1 >=0 and grid[row-1][col] == 1:
-                        if (row-1, col) in seen:
-                            seen.remove((row-1, col))
-
-                        _border.add((row-1, col))
-                        grid[row-1][col] = 2
-                        
-                
-                    if col-1 >=0 and grid[row][col-1] == 1:
-                        if (row, col-1) in seen:
-                            seen.remove((row, col-1))
-
-                        _border.add((row, col-1))
-                        grid[row][col-1] = 2
-                        
-
-                    if col+1 < cols and grid[row][col+1] == 1:
-                        if (row, col+1) in seen:
-                            seen.remove((row, col+1))
-
-                        _border.add((row, col+1))
-                        grid[row][col+1] = 2
-                        
-
-                    if row+1 < rows and col+1 < cols and grid[row+1][col+1] == 1:
-                        seen.add((row+1, col+1))
-                
-                    if row-1 >= 0 and col-1 >= 0 and grid[row-1][col-1] == 1:
-                        seen.add((row-1, col-1))
-                
-                    if row+1 < rows and col-1 >= 0 and grid[row+1][col-1] == 1:
-                        seen.add((row+1, col-1))
-
-                    if row-1 >= 0 and col+1 < cols and grid[row-1][col+1] == 1:
-                        seen.add((row-1, col+1))
-
-                if len(_border) > 0:
-                    tics +=1 
-
                 border = _border
-
-        border.add((0,0))
-        infect()
-
-    
-        return tics if len(seen) == 0 else -1  
+                visited = visited | _border
+                suspects = suspects | _suspects
+                
 
             
+            return ticks
+
+        ticks = bfs((0,0))
+
+        return ticks
+                
