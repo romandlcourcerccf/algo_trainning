@@ -8,3 +8,4 @@ class Solution:
                 return [i, h[target - nums[i]]]
             else:
                 h[nums[i]] = i
+                
