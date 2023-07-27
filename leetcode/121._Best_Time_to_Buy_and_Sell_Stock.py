@@ -14,3 +14,25 @@ class Solution:
             right +=1
         
         return profit
+    
+     >>>>>>>>>>>>>>>>>
+    
+    class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        
+        if len(prices) <= 1:
+            return 0
+
+        l, r = 0,1
+        profit = float('-inf')
+
+        while r <= len(prices)-1:
+            _profit = prices[r] - prices[l]
+
+            if _profit < 0:
+                l +=1
+            else:
+                profit = max(_profit, profit)
+                r +=1
+        
+        return profit
