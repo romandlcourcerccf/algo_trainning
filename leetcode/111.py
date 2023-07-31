@@ -1,4 +1,6 @@
-arr = [1, 2, 3]
+arr = []
 
-for i in range(len(arr)):
-    print('>>', arr[:i]+ arr[i+1:])
+arr.append(10)
+arr.append(20)
+
+print(arr[-1])
