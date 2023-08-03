@@ -1,15 +1,16 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         
-        left, right = 0, len(nums)-1
+        l, r = 0, len(nums)-1
 
-        while left<=right:
-            middle  = (right + left) // 2
-            if nums[middle] == target:
-                return middle 
-            elif nums[middle] < target:
-                left = middle+1
-            else:
-                right = middle-1
+        while l <= r:
+            med = (l + r) // 2
+            if nums[med] == target:
+                return med
+            elif nums[med] < target:
+                l = med+1
+            else: 
+                r = med-1
 
         return -1
+

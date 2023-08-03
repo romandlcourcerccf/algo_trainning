@@ -13,5 +13,4 @@ class Solution:
                 res[_i] = i - _i
             s.append((i,t)) 
 
-            
         return res

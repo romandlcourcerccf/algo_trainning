@@ -1,34 +1,32 @@
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-
-        rows, cols = len(matrix), len(matrix[0])
-
-        def bin_search(arr, target):
-            left, right = 0, len(arr)-1
-
-            while left <= right:
-                pos = (left + right) // 2
-                if arr[pos] == target:
-                    return True 
-                elif arr[pos] < target:
-                    left = pos+1
+        
+        def birary_search(arr, l, r):
+            while l<=r:
+                mid = (l+r) // 2
+                if arr[mid] == target:
+                    return True
+                elif arr[mid] < target:
+                    l = mid+1
                 else:
-                    right = pos-1
+                    r = mid-1
             
             return False
 
-        if rows == 1: return bin_search(matrix[0], target)
+        rows = len(matrix)
+        cols = len(matrix[0])
+        
+        def search_in_matrix(matrix, up, down):
 
-        up, down = 0, rows-1
-        # print('up :', up, 'down :', down)
-
-        while up <= down:
-            pos = (up + down) // 2
-            if matrix[pos][0] <= target <= matrix[pos][cols-1]:
-                return bin_search(matrix[pos], target)
-            elif matrix[pos][0] >= target:
-                down = pos-1
-            elif matrix[pos][cols-1] <= target:
-                up = pos+1
-
-        return False
+            while up <= down:
+                mid = (up+down) // 2
+                if  matrix[mid][0] <=target <= matrix[mid][cols-1]:
+                    return birary_search(matrix[mid], 0, cols-1)
+                elif matrix[mid][0] > target:
+                    down = mid-1
+                else :
+                    up = mid+1
+            
+            return False
+                
+        return search_in_matrix(matrix, 0, rows-1)
