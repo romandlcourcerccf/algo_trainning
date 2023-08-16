@@ -1,16 +1,8 @@
-arr = []
+s = set([1,1,2,3])
+print(s)
 
-arr.append(10)
-arr.append(20)
+s1 = set([1, 2, 3, 4])
+s2 = set([1, 2])
 
-print(arr[-1])
-
-s = set()
-
-if not s:
-    print('not s')
-
-s.add('11')
-
-if s:
-    print('s')
+print(s2.issubset(s1))
+print(s1.issubset(s2))

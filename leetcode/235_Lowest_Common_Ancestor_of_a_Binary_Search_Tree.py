@@ -7,38 +7,40 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        
 
-        p_path = None
-        q_path = None
-
+        m_stones = set([p.val, q.val])
+        tracks = []
         nodes = {}
 
-        def traverce(node, path, level):
+        def dfs(root, path, level):
+
+            if not root:
+                return 
             
-            nonlocal nodes
-            nodes[node.val] = node
+            nodes[root.val] = root
 
-            path.add((node.val, level))
+            path.append((root.val, level))
 
-            if node.val == p.val:
-                nonlocal p_path
-                p_path = path
+            if root.val in m_stones:
+                m_stones.remove(root.val)
+                tracks.append(path.copy())
+
+            if not m_stones:
+                return
+
+            if root.left:
+                dfs(root.left, path.copy(), level+1)
+
+            if root.right:
+                dfs(root.right, path.copy(), level+1)
+
             
-            if node.val == q.val:
-                nonlocal q_path
-                q_path = path
+        dfs(root, [], 0)
+        print(tracks)
 
-            if node.left:
-                traverce(node.left, path.copy(), level+1)
-            if node.right:
-                traverce(node.right, path.copy(), level+1)
-        
-        path = set()
-        traverce(root, path, 0)
+        merged = set(tracks[0]) & set(tracks[1])
+        merged = list(merged)
+        merged.sort(key=lambda x: x[1], reverse=True)
 
-        common = p_path & q_path
-        common = list(common)
-        common.sort(key=lambda x: x[1], reverse=True)
-        common = common[0]
-       
-        return nodes[common[0]]
+        return nodes[merged[0][0]]
