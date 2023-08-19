@@ -1,8 +1,7 @@
-s = set([1,1,2,3])
-print(s)
+from collections import defaultdict
 
-s1 = set([1, 2, 3, 4])
-s2 = set([1, 2])
+d = defaultdict(list)
 
-print(s2.issubset(s1))
-print(s1.issubset(s2))
+d[1].append(2)
+
+print(d)
