@@ -1,18 +1,22 @@
+from heapq import (
+    heappop, 
+    heappush,
+    nsmallest
+)
+
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-
-        h = []
-
-        def distanse(p1, p2):
-            return sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)
         
+        def dist(x, y):
+            return sqrt((x[0]-y[0])**2 + (x[1]-y[1])**2)
 
-        for p in points:
-            heapq.heappush(h, (distanse((0,0), (p[0],p[1])), p))
-
+        closest = []
+        points = [heappush(closest, (dist([0,0], p), p))   for p in points]
+ 
         res = []
-
         for _ in range(k):
-            res.append(heapq.heappop(h)[1])
+           res.append(heappop(closest)[1]) 
 
+    
         return res
+        

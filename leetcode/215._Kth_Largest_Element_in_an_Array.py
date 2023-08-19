@@ -13,3 +13,9 @@ class Solution:
             e = heappop(h)
 
         return -e
+    
+
+    from heapq import (
+    heappush,
+    heappop
+)
