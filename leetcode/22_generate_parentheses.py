@@ -16,3 +16,29 @@ class Solution:
 
         gen(0,0,'')
         return res
+    
+    //Me solution
+
+    class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        
+        res = []
+
+        def backtrack(sol):
+            if len(sol) == n * 2:
+                if  sol.count('(') == sol.count(')'):
+                    res.append(sol)
+                else:
+                    return 
+
+            if len(sol) < n * 2:
+                if sol.count('(') < sol.count(')') :
+                    return
+                else:
+                    backtrack(sol + ')')
+                    backtrack(sol + '(')
+
+
+        backtrack('(')
+
+        return res

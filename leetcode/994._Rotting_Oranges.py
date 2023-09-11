@@ -1,46 +1,31 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
+        
+        q = deque()
+        time, fresh = 0,0
 
         rows, cols = len(grid), len(grid[0])
-      
-        def _print(g):
-            for r in grid:
-                print(r)
 
-        def get_neighbours(orange):
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == 1:
+                    fresh += 1
+                if grid[r][c] == 2:
+                    q.append((r,c))
+
+
+        directions = [[0,1],[0,-1],[1,0],[-1,0]]
+        while q and fresh > 0:
+
+            for i in range(len(q)):
+                r, c = q.popleft()
+                for dr, dc in directions:
+                    row, col = dr+r, dc+c
+                    if (row < 0 or row == len(grid)) or (col < 0 or col == len(grid[0])) or (grid[row][col] != 1):
+                        continue
+                    grid[row][col] = 2
+                    q.append((row, col))
+                    fresh -=1
+            time +=1
             
-            neighbours = []
-
-            row, col = orange[0], orange[1]
-
-            for r in range(row-1,row+2):
-                for c in range(col-1,col+2):
-                    
-                    if c >=0 and c < cols and r >=0 and r < rows and grid[r][c] == 1:
-                        neighbours.append((r,c))
-                        grid[r][c] = 2
-            
-            return neighbours
-
-        _print(grid)
-
-        if grid[0][0] != 2:
-            return 0
-
-        border = []
-        border.append((0,0))
-        grid[0][0] = 2
-
-        steps = 1
-        while len(border) > 0:
-            print(border)
-            _border = []
-            for orange in border:
-                neighbours = get_neighbours(orange)
-                _border.extend(neighbours)
-
-            border = _border
-            steps += 1
-
-        _print(grid)
-        return steps
+        return time if fresh == 0 else -1    

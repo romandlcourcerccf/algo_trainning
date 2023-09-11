@@ -17,6 +17,5 @@ class Solution:
         for _ in range(k):
            res.append(heappop(closest)[1]) 
 
-    
         return res
         

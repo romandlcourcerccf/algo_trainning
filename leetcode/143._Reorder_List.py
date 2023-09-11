@@ -1,3 +1,4 @@
+# Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
@@ -7,41 +8,32 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
+
+        res = ListNode()
         
-        arr = []
-        
+        lst = []
+
         cur = head
         while cur:
-            arr.append(cur)
+            lst.append(cur)
             cur = cur.next
         
-        l,r = 0, len(arr)-1
-        prev = None
-        head = None
-
-        print('len :', len(arr))
-
-        if len(arr) == 1:
-            return head
-
-        while l <= r:
-            print('l :', l, 'r :', r)
-            if l == 0:
-                head = arr[l]
-                arr[l].next = arr[r]
-                prev = arr[r]
-            else:
-                prev.next = arr[l]
-                arr[l].next = arr[r]
-                prev = arr[r]
-        
+        l,r = 0, len(lst)-1
+        cur = res
+        while l < r:
+            cur.next = lst[l]
+            cur = cur.next
+            cur.next = lst[r]
+            cur = cur.next
             l +=1
             r -=1
+        
+        print('l :', l, 'r :', r)
 
-        arr[l].next = None
+        if l == r:
+            cur.next = lst[l]
+            cur = cur.next
+            
+        cur.next = None
 
-        if l == r+2:
-            arr[l].next = arr[r+1]
-            arr[r+1].next = None
-
-        return head
+        return res.next

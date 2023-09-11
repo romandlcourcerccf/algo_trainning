@@ -13,7 +13,6 @@ class Solution:
             if not root:
                 return 
 
-
             dfs(root.left, path)
             path.append(root.val)
             dfs(root.right, path)

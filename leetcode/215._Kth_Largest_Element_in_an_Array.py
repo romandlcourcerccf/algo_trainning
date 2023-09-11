@@ -14,8 +14,21 @@ class Solution:
 
         return -e
     
-
-    from heapq import (
-    heappush,
-    heappop
+///////////////////////////////////////
+from heapq import (
+    heappop,
+    heappush
 )
+
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        
+        q = []
+
+        for n in nums:
+            heappush(q, -n)
+        
+        for i in range(k-1):
+            heappop(q)
+        
+        return -q[0]

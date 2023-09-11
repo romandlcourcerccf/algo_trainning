@@ -1,14 +1,26 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         
-        if len(nums) == 1:
-            return [nums.copy()]
 
-        res = []
-        for i in range(len(nums)):
-            n = nums.pop(0)
-            perms = self.permute(nums)
-            res = res + [p + [n] for p in perms]
-            nums.append(n)
+        def pms(nums):
+
+            res = []
+
+            if len(nums) == 1:
+                return [nums.copy()]
+            
+            for i in range(len(nums)):
+                n = nums.pop(0)
+                perms = pms(nums)
+
+                for perm in perms:
+                    perm.append(n)
+
+                res.extend(perms)
+                nums.append(n)
+
+            return res 
+
+        return pms(nums)
+
         return res
-    
