@@ -1,4 +1,7 @@
 # Write your MySQL query statement below
-select p.product_name, s.year, s.price
-from Sales s join Product p
-on s.product_id = p.product_id
+select e.name, b.bonus 
+from Employee e left join  Bonus  b
+on e.empId = b.empId
+where b.bonus < 1000 or b.bonus is NULL
+
+
