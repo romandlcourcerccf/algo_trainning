@@ -47,3 +47,11 @@ class Solution:
         dfs(root, 1)
         
         return self.max_depth if self.max_depth != float('-inf') else 0
+    
+  class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        
+        if not root:
+            return 0
+
+        return 1 + max(self.maxDepth(root.left) , self.maxDepth(root.right))

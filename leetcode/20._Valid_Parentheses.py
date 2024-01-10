@@ -16,7 +16,7 @@ class Solution:
                 if _c+c not in comp:
                     return False
 
-        if len(h) > 0:
-            return False
+        return len(h) == 0
+    
 
-        return True
+   

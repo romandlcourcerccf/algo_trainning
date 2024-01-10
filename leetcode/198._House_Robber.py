@@ -1,14 +1,12 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        
+        rob1, rob2 = 0, 0
 
-        stash = [-1] * len(nums)
+        for n in nums:
+            tmp = max(n+rob1, rob2)
+            rob1 = rob2
+            rob2 = tmp
 
-        def rob(nums, index): 
+        return rob2
 
-            if index > len(nums)-3:
-                return max(nums[index:])
-            else:
-                if stash[index+2] == -1:
-                    stash[index+2] = rob(nums, index+2)
-                if stash[index+1] == -1: 
-                    stash[index+1] = rob(nums, index+1)
