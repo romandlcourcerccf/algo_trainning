@@ -19,3 +19,11 @@ class Solution:
 
 
         return True
+    
+
+
+    import re
+class Solution:
+    def isPalindrome(self, s: str) -> bool:  
+        x = [i.lower() for i in re.findall('[A-z0-9]',s) if i.isalnum()]
+        return x[::-1] == x

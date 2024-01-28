@@ -42,3 +42,26 @@ class Solution:
         backtrack('(')
 
         return res
+    
+
+    class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        
+        res = []
+
+        def back(seq):
+
+            if len(seq) == 2*n:
+                if seq.count('(') == seq.count(')'):
+                    res.append(seq)
+                return
+                
+            elif seq.count('(') < seq.count(')'):
+                return
+            else:
+                back(seq + '(')
+                back(seq + ')')
+
+        back('')
+
+        return res
