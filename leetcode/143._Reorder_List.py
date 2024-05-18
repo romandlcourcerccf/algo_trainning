@@ -50,27 +50,26 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
+        lst = []
 
-        tmp_l = []
+        cur = head
+        while cur:
+            lst.append(cur)
+            cur = cur.next
         
-        while head:
-            tmp_l.append(head)
-            head = head.next
+        dummy = ListNode()
+        cur = dummy
+        l, r = 0, len(lst)-1
+        while l <= r:
+            cur.next = lst[l]
+            lst[l].next = lst[r]
+            cur = cur.next.next
+            cur.next = None
+            
+            l +=1
+            r -=1
 
-       
-        l,r = 0, len(tmp_l)-1
+        return dummy.next
 
-        head = ListNode()
-        tmp = head
 
-        while l<=r:
-            tmp.next = tmp_l[l]
-            tmp_l[l].next = tmp_l[r]
-            tmp_l[r].next = None
-            tmp = tmp_l[r]
-
-            l+=1
-            r-=1
-        
-        head = head.next
     
