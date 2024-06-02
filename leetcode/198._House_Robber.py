@@ -26,4 +26,18 @@ class Solution:
         return dp[-1]
 
 
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        # prev2 prev curr
+        # max(prev2+curr, prev)
+        @cache
+        def dp(i):
+            # base
+            if i < 0:
+                return 0
+            return max(dp(i-2)+nums[i], dp(i-1))
+        
+        return dp(len(nums)-1)
+
+
 

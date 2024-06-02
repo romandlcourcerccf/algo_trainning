@@ -34,3 +34,36 @@ class Solution:
             l += 1
 
         return matches == 26
+    
+
+
+    from collections import Counter, defaultdict
+
+
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        
+        if len(s1) > len(s2):
+            return False
+
+        h1 = defaultdict(int)
+        h2 = defaultdict(int)
+
+        for i in range(len(s1)):
+            h1[s1[i]]+=1
+            h2[s2[i]]+=1
+        
+        if h1 == h2:
+            return True
+        
+        for i in range(0, len(s2)-len(s1)+1):
+            h2 = defaultdict(int)
+            for _i in range(len(s1)):
+                h2[s2[i+_i]] += 1
+            
+            if h1 == h2:
+                return True
+
+        return False
+    
+    
