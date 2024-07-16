@@ -1,0 +1,5 @@
+abba  4
+ab
+
+accb  2
+cab

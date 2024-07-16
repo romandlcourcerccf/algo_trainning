@@ -25,39 +25,36 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
-    # servers_info = sys.stdin.readlines()
+    # rows = sys.stdin.readlines()
+    # s1 = rows[0]
+    # s2 = rows[1]
 
-    # servers_info = []
-    # servers_info.append('2')
-    # servers_info.append('50 1')
-    # servers_info.append('50 2')
+    # s1 = 'abba'  
+    # s2 = 'ab'
 
-    # print('servers_info :',servers_info)
+    s1 = "accbdd"
+    s2 = 'ca'
 
-    servers_info = []
-    servers_info.append('3')
-    servers_info.append('10 100')
-    servers_info.append('30 10')
-    servers_info.append('60 2')
+    s2 = set([c for c in s2])
+    C = set(s2)
 
-    probs = []
-    for s_i in range(1, len(servers_info)):
-        server_info = servers_info[s_i].split()
-        server_info = [float(i) for i in server_info]
-        probs.append((server_info[0]/100.0, (server_info[0]/100.0) * (server_info[1]/100.0)))
+    l = 0
+    max_len = float('inf')
+    for r in range(len(s1)):
+        part = s1[l:r+1]
+       
+        _C = C.copy()
+        for p in part:
+            if p in _C:
+               _C.remove(p)
 
-    res = []
-    for i in range(len(probs)):
-        si = probs[i][0] * probs[i][1]
-        ss = 0
-        for j in range(len(probs)):
-            print('>> j', j)
-            ss += probs[j][0] * probs[j][1]
-                
-        res.append(si/ss)
-
-    for r in res:
-        print(r)
+        if len(_C) == 0:
+            print(part)
+            max_len = min(max_len, len(part))
+        else:
+            l +=1
+    
+    print(max_len)
 
 if __name__ == '__main__':
     main()

@@ -27,40 +27,18 @@ def main():
     """
 
     def min_dist(arr):
-        min_dist = float('inf')
-        
-        for i in range(len(arr)):
-            for j in range(len(arr)):
-                if i!=j:
-                    min_dist = min(min_dist, arr[i]^arr[j])
+        arr = sorted(arr)
+        m = arr[0]^arr[1]
+        for i in range(1, len(arr)):
+            m = min(m, arr[i-1]^arr[i])
+        return m
 
-        return min_dist
-
-
-    # rows = []
-
-    # rows.append('2')
-    # rows.append('2')
-    # rows.append('2 4')
-    # rows.append('4')
-    # rows.append('2 4 6 8')
-
-    # rows.append('1')
-    # rows.append('5')
-    # rows.append('1 2 4 8 16')
-
-    # print('rows:', rows)
-
-
-    # tests_count = int(rows[0])
-   
     rows = sys.stdin.readlines()
     
     min_distanses = []
     for t in range(2, len(rows), 2):
         arr = rows[t].split()
         arr = [int(i) for i in arr]
-        print('arr ', arr)
         min_distanses.append(min_dist(arr))
         
     for m_dist in min_distanses:
