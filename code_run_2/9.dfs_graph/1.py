@@ -25,53 +25,57 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
+
     # rows = sys.stdin.readlines()
-    # s1 = rows[0]
-    # s2 = rows[1]
 
-    # s1 = 'abba'  
-    # s2 = 'ab'
+    rows = []
 
-    s1 = "accbdd"
-    s2 = 'ca'
+    rows.append('4 5')
+    rows.append('2 2')
+    rows.append('3 4')
+    rows.append('2 3')
+    rows.append('1 3')
+    rows.append('2 4')
+    g = {} 
+    
+    
+    for r in rows:
+       
+        if len(r) == 1:
+            continue
+        r = r.split()
+        r = [int(i) for i in r]
 
-    need = [0]*26
-    have = [0]*26
+       
+        
+        if r[0] not in g:
+            g[r[0]] = []
+             
+        g[r[0]].append(r[1])
 
-    for c in s2:
-        print(ord(c))
-        have[ord(c)-97] +=1
+        if r[1] not in g:
+            g[r[1]] = []
 
-    res, len_res = [-1, -1] , float('inf')
-    l = 0
-    for r in range(len(s1)):
-        c = s1[r]
-        need[ord(c)-97] +=1
+        g[r[1]].append(r[0])
 
-        all_exeed = True
-        for i in range(len(need)):
-            if need[i] > 0 and have[i] < need[i]:
-                all_exeed = False
-                break
-        if all_exeed:
-            if (r-l+1) < len_res:
-                res = [l,r]
-                len_res = (r-l+1)
-            
-            while all_exeed:
-                l+=1
+    res = set()
 
-                if need[ord(s1[l])-97] > 0:
-                    have[ord(l)-97] -=1
-                
-                    for i in range(len(need)):
-                        if need[i] > 0 and have[i] < need[i]:
-                            all_exeed = False
-                            break
-
-                
-    print(res)
-
+    def dfs(root):
+        print('root :',root)
+      
+        res.add(root)
+        if root in g:
+            for c in g[root]:
+                if c not in res:
+                    dfs(c)
+        
+    dfs(1)
+    
+    res = sorted(list(res))
+    res = [str(i) for i in res]
+    print(len(res))
+    print(' '.join(res))
+        
 
 
 if __name__ == '__main__':
