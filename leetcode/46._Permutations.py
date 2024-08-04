@@ -1,26 +1,40 @@
+#Recursive solution
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         
+        if len(nums) == 0:
+            return [[]]
 
-        def pms(nums):
+        perms = self.permute(nums[1:])
 
-            res = []
-
-            if len(nums) == 1:
-                return [nums.copy()]
-            
-            for i in range(len(nums)):
-                n = nums.pop(0)
-                perms = pms(nums)
-
-                for perm in perms:
-                    perm.append(n)
-
-                res.extend(perms)
-                nums.append(n)
-
-            return res 
-
-        return pms(nums)
+        res = []
+        for p in perms:
+            for i in range(len(p)+1):
+                _p = p.copy()
+                _p.insert(i, nums[0])
+                res.append(_p)
 
         return res
+    
+#Non rec solutioin
+    
+    class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        
+        perms = [[]]
+
+        for n in nums:
+            new_perms = []
+            for p in perms:
+                
+                for i in range(len(p)+1):
+                    _p = p.copy()
+                    _p.insert(i, n)
+                    new_perms.append(_p)
+            
+            perms = new_perms
+
+        return perms
+    
+    
+
