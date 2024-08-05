@@ -25,12 +25,12 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
-    # rows = sys.stdin.readlines()
-    rows = []
-    rows.append('3')
-    rows.append('1 2')
-    rows.append('1 3')
-    rows.append('3 1')
+    rows = sys.stdin.readlines()
+    # rows = []
+    # rows.append('3')
+    # rows.append('1 2')
+    # rows.append('1 3')
+    # rows.append('3 1')
 
 
     # rows = []
@@ -42,38 +42,50 @@ def main():
 
 
     days_s = set()
-
-    tasks = []
+    tasks = defaultdict(list)
 
    
     for i in range(1, len(rows)):
         row = rows[i].split()
         row = list(map(int, row))
         l_day, s_level = row[0], row[1]
-      
-        tasks.append((l_day, s_level))
+    
+        tasks[l_day].append((l_day, s_level))
         days_s.add(l_day)
         
-    tasks = set(tasks)
-    days = max(days_s)
-   
-    done_tasks = []
-    for d in range(1,days+1):
-        pos_tasks = [t for t in tasks if t[0] >= d]
-        if pos_tasks:
-            pos_tasks.sort(key=lambda x: [x[0],x[1]])
-            print(f'day {d} pos_tasks {pos_tasks}')
-            print(f'day : {d} task_to_solve {pos_tasks[0]}')
-            done_tasks.append(pos_tasks[0])
+    
+    sorted_tasks = []
 
-            tasks.remove(pos_tasks[0])
+    for day, tsks in tasks.items():
+        sorted_tasks.append((day, tsks))
 
-        
-    rem_tasks = tasks - set(done_tasks)
+    sorted_tasks.sort()
+    for d in sorted_tasks:
+        d[1].sort(reverse=True, key=lambda x: x[1])
+    
 
-    rem_stress = sum([t[1] for t in list(rem_tasks)])
+    # print(sorted_tasks)
+    # print(days_s)
 
-    print(rem_stress)
+    for d in range(1, max(days_s)+1):
+        valid_days = [_d for _d in sorted_tasks if  _d[0] >= d] 
+
+        for valid_day in valid_days:
+            if len(valid_day[1]) > 0:
+                valid_day[1].pop(0)
+                break
+
+
+    # print(sorted_tasks)
+
+    total_stress = 0
+    for t in sorted_tasks:
+        _total_stress = t[1]
+        if len(_total_stress) > 0:
+            for _s in _total_stress:
+                total_stress += _s[1]
+    
+    print(total_stress)
 
 if __name__ == '__main__':
     main()

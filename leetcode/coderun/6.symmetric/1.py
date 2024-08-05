@@ -1,5 +1,5 @@
 import sys
-from collections import defaultdict
+
 
 def main():
     """
@@ -25,55 +25,32 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
-    # rows = sys.stdin.readlines()
-    rows = []
-    rows.append('3')
-    rows.append('1 2')
-    rows.append('1 3')
-    rows.append('3 1')
+    nums = sys.stdin.readlines()[0].split()
+    # nums = [1,2,1,2,2]
+    nums = [int(n) for n in nums]
 
+    def is_symmetric(l, r):
+        while l < r:
+            if nums[l] != nums[r]:
+                return False
 
-    # rows = []
-    # rows.append('4')
-    # rows.append('3 5')
-    # rows.append('2 7')
-    # rows.append('3 9')
-    # rows.append('2 8')
+            l+=1
+            r-=1
 
-
-    days_s = set()
-
-    tasks = []
-
-   
-    for i in range(1, len(rows)):
-        row = rows[i].split()
-        row = list(map(int, row))
-        l_day, s_level = row[0], row[1]
-      
-        tasks.append((l_day, s_level))
-        days_s.add(l_day)
+        return True
         
-    tasks = set(tasks)
-    days = max(days_s)
-   
-    done_tasks = []
-    for d in range(1,days+1):
-        pos_tasks = [t for t in tasks if t[0] >= d]
-        if pos_tasks:
-            pos_tasks.sort(key=lambda x: [x[0],x[1]])
-            print(f'day {d} pos_tasks {pos_tasks}')
-            print(f'day : {d} task_to_solve {pos_tasks[0]}')
-            done_tasks.append(pos_tasks[0])
+    pos = 0
+    while pos <= len(nums)-1:
+        if nums[pos] == nums[-1]:
+            if is_symmetric(pos, len(nums)-1):
+                break
+        pos +=1
 
-            tasks.remove(pos_tasks[0])
+    nums = nums[0:pos][::-1]
+    nums = [str(n) for n in nums]
 
-        
-    rem_tasks = tasks - set(done_tasks)
-
-    rem_stress = sum([t[1] for t in list(rem_tasks)])
-
-    print(rem_stress)
+    print(len(nums))
+    print(' '.join(nums))
 
 if __name__ == '__main__':
     main()
