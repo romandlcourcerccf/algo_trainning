@@ -26,53 +26,12 @@ def main():
     print(sum(map(int, input().split())))
     """
 
-    # rows = sys.stdin.readlines() 
+    # rows = sys.stdin.readlines()
 
-    rows = []
+    with open('/Users/romanroman/projects/algo_trainning/code_run_2/449.Combo/1.txt', 'r') as f:
+        rows = f.readlines()
 
-    rows.append('3 2')
-    rows.append('1 3 5')
-    rows.append('4 1')
-
-    stops = rows[1].split()
-    stops = list(map(int, stops))
     
-    buses = rows[2].split()
-    buses = list(map(int, buses))
-
-    stops.sort()
-    buses.sort()
-
-    res = []
-
-    for i, stop in enumerate(stops):
-
-        if not buses:
-            break
-        
-        cur_bus = buses[0]
-            
-        if stop == cur_bus:
-           
-            res.append(stop)
-            buses.pop(0)
-        elif stop > cur_bus:
-            if stops[i-1] > 0:
-                res.append(i)
-            else:
-                res.append(i+1)
-
-            buses.pop(0)
-    
-    if len(buses) > 0:
-        for bus in buses:
-            res.append(len(stops))
-
-    for r in res:
-        print(r)
-    
-    
-
 
 if __name__ == '__main__':
     main()

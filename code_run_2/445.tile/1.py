@@ -1,5 +1,5 @@
 import sys
-from collections import defaultdict
+
 
 def main():
     """
@@ -25,52 +25,24 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
+    
     # rows = sys.stdin.readlines()
-    rows = []
-    rows.append('3')
-    rows.append('1 2')
-    rows.append('1 3')
-    rows.append('3 1')
 
-    # h =defaultdict(list)
-    days_s = set()
+    with open('/Users/romanroman/projects/algo_trainning/code_run_2/445.tile/1.txt', 'r') as f:
+        rows = f.readlines()
 
-    tasks = []
+        for i in range(len(rows)):
+            rows[i] = rows[i].rstrip()
 
-    for i in range(1, len(rows)):
-        row = rows[i].split()
-        row = list(map(int, row))
-        l_day, s_level = row[0], row[1]
-      
-        tasks.append((l_day, s_level))
-        days_s.add(l_day)
-        
+    print(rows)
 
-    print(tasks)
-    tasks = set(tasks)
+    size = rows[0]
+    size = list(map(int, size.split()))
+    print(size)
 
-    print('days_s :', days_s)
+    size = size[0] + size[1]
 
-    days = max(days_s)
-    print('days :', days)
-
-    done_tasks = []
-    for d in range(days):
-        pos_tasks = [t for t in tasks if t[0] >= d+1]
-        if pos_tasks:
-            pos_tasks.sort(reverse=True, key=lambda x: x[1])
-
-            print(f'd : {d+1} pos_tasks: {pos_tasks}')
-
-            done_tasks.append(pos_tasks[0])
-            tasks.remove(pos_tasks[0])
-
-        
-    
-    print(done_tasks)
-
-    
-
+    print(size)
 
 
 if __name__ == '__main__':

@@ -44,9 +44,7 @@ def main():
                 pairs[w[pos:pos+2]] +=1
                 pos +=1
     
-
-    # print(h)
-    
+ 
     sorted_pairs = dict(sorted(pairs.items(), key=lambda x: (-x[1], -ord(x[0][0]))))
 
     print(next(iter(sorted_pairs)))

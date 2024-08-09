@@ -25,40 +25,34 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
-    # rows = sys.stdin.readlines()
+    row = sys.stdin.readlines()[0]
     # row = rows[0]
 
 
-    row = 'ABCABC A'
-    # row = 'AB A'
-    # row = ' ABCABC A AB AB C A'
-    row = ' A BC AB     C A A   B A BC A'
-    row = '     A BC AB     C A A   B A BC A AAAAAAAAAAA    '
-    # row = ' BC'
-    # row = ' BC AB'
+    words = row.split()
+    pairs = defaultdict(int)
 
-    pos = 0
-    h = defaultdict(int)
+    for w in words:
+        if len(w) < 2:
+            continue
 
-    while pos < len(row)-1:
-        if row[pos] != ' ' and row[pos+1] != ' ':
-            h[row[pos]+row[pos+1]] +=1
-        pos +=1
+        for pos in range(len(w)-1):
+            pairs[w[pos:pos+2]] +=1
+           
 
     max_val = float('-inf')
-    for v in h.values():
+    for v in pairs.values():
         max_val = max(max_val, v)
     
     res = []
 
-    for k,v in h.items():
+    for k,v in pairs.items():
         if v == max_val:
             res.append(k)
     
     res.sort()
 
     print(res[-1])
-   
   
 
 if __name__ == '__main__':

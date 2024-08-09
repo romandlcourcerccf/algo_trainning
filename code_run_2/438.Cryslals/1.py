@@ -59,7 +59,7 @@ def main():
         
         min_index, max_smbl = get_min(rows[0], rows[1], rows[2])
 
-
+        
         if i>0 and i<len(rows[min_index])-1  and \
               rows[min_index][i-1] == rows[min_index][i] and \
                   rows[min_index][i+1] == max_smbl:

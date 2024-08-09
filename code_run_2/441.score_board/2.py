@@ -25,53 +25,59 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
-    # rows = sys.stdin.readlines()
-    rows = []
-    rows.append('3')
-    rows.append('1 2')
-    rows.append('1 3')
-    rows.append('3 1')
+    
+    rows = sys.stdin.readlines()
 
-    # h =defaultdict(list)
-    days_s = set()
+    # with open('/Users/romanroman/projects/algo_trainning/code_run_2/441.score_board/1.txt', 'r') as f:
+    #     rows = f.readlines()
 
-    tasks = []
+    #     for i in range(len(rows)):
+    #         rows[i] = rows[i].rstrip()
 
-    for i in range(1, len(rows)):
-        row = rows[i].split()
-        row = list(map(int, row))
-        l_day, s_level = row[0], row[1]
+    # print(rows)
+
+    num_players = int(rows[0])
+    # print('num_players ', num_players)
+    players_scores = defaultdict(int)
+
+    for i in range(1,num_players+1):
+        players_scores[rows[i]] = 0
+
+    # print(players_scores)
+    
+    games_num = int(rows[num_players+1])
+    # print(games_num)
+
+    st = []
+    for it, round in enumerate(rows[num_players+2:]):
+       
+        round = round.split()
+        scores = list(map(int,round[0].split(':')))
+        name =  round[1]
       
-        tasks.append((l_day, s_level))
-        days_s.add(l_day)
+        if it == 0:
+            score = max(scores)
+        else:
+            _scores = st.pop()
+            if scores[0] > _scores[0]:
+                score = scores[0] - _scores[0]
+            elif scores[1] > _scores[1]:
+                score = scores[1] - _scores[1]
         
+           
+        # print(f'{round} {name} {score}')
+        players_scores[name] += score
+        st.append(scores)
 
-    print(tasks)
-    tasks = set(tasks)
+    max_score = max(players_scores.values())
 
-    print('days_s :', days_s)
+    res = []
+    for k,v in players_scores.items():
+        if v == max_score:
+            res.append(k)
 
-    days = max(days_s)
-    print('days :', days)
+    res.sort()
 
-    done_tasks = []
-    for d in range(days):
-        pos_tasks = [t for t in tasks if t[0] >= d+1]
-        if pos_tasks:
-            pos_tasks.sort(reverse=True, key=lambda x: x[1])
-
-            print(f'd : {d+1} pos_tasks: {pos_tasks}')
-
-            done_tasks.append(pos_tasks[0])
-            tasks.remove(pos_tasks[0])
-
-        
-    
-    print(done_tasks)
-
-    
-
-
-
+    print(f'{res[-1]} {max_score}')
 if __name__ == '__main__':
     main()

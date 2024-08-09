@@ -1,5 +1,5 @@
 import sys
-from collections import defaultdict
+from collections import Counter
 
 def main():
     """
@@ -25,53 +25,71 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
-    # rows = sys.stdin.readlines()
-    rows = []
-    rows.append('3')
-    rows.append('1 2')
-    rows.append('1 3')
-    rows.append('3 1')
+    rows = sys.stdin.readlines()
 
-    # h =defaultdict(list)
-    days_s = set()
+    # with open('/Users/romanroman/projects/algo_trainning/code_run_2/449.Combo/1.txt', 'r') as f:
+    #     rows = f.readlines()
 
-    tasks = []
+    
+    goods = list(map(int, rows[1].split()))
+    combo_price = int(rows[2])
+    combo = list(map(int, rows[3].split()))
+    purchase = list(map(int, rows[5].split()))
+    combo = set(combo)
+    # print('goods :', goods)
+    # print('combo :', combo)
+    # print('combo_price :', combo_price)
+    # print('purchase :', purchase)
 
-    for i in range(1, len(rows)):
-        row = rows[i].split()
-        row = list(map(int, row))
-        l_day, s_level = row[0], row[1]
+    purchase = Counter(purchase)
+    # print(purchase)
+
+    total_prise = 0
+   
+    while sum(purchase.values()) > 0:
       
-        tasks.append((l_day, s_level))
-        days_s.add(l_day)
+        # print('before: ')
+        # print(purchase)
+
+        _in_combo = []
+        _not_in_combo = []
+        for c in combo:
+            if c in purchase and purchase[c] > 0:
+                _in_combo.append(c)
+            
+            if c not in purchase and purchase[c] > 0:
+                _not_in_combo.append()
         
-
-    print(tasks)
-    tasks = set(tasks)
-
-    print('days_s :', days_s)
-
-    days = max(days_s)
-    print('days :', days)
-
-    done_tasks = []
-    for d in range(days):
-        pos_tasks = [t for t in tasks if t[0] >= d+1]
-        if pos_tasks:
-            pos_tasks.sort(reverse=True, key=lambda x: x[1])
-
-            print(f'd : {d+1} pos_tasks: {pos_tasks}')
-
-            done_tasks.append(pos_tasks[0])
-            tasks.remove(pos_tasks[0])
-
+        # print('_in_combo     :', _in_combo)
+        # print('_not_in_combo :', _not_in_combo)
         
-    
-    print(done_tasks)
+        if _in_combo:
+            _pure_price = 0
+            for c in _in_combo:
+                _pure_price += goods[c-1]
+        
+            # print('_pure_price :', _pure_price)
 
-    
+            total_prise += min(_pure_price, combo_price)
+
+            for c in _in_combo:
+                purchase[c] -=1
+        else:
+
+            _prise = 0
+            for ps, num in purchase.items():
+                _prise += goods[ps-1] * num
+                purchase[ps] -= num
+            
+            total_prise += _prise
 
 
+
+        # print('after: ')
+        # print(purchase)
+        # break
+
+    print(total_prise)
 
 if __name__ == '__main__':
     main()

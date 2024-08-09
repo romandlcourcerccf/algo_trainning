@@ -50,7 +50,7 @@ def main():
         max_stress = max(h[d])
         h[d].remove(max_stress)
     
-    print(h)
+    # print(h)
 
     res = 0
     for v in h.values():
