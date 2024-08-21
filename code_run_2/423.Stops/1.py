@@ -28,10 +28,61 @@ def main():
 
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_2/449.Combo/1.txt', 'r') as f:
+    with open('/Users/romanroman/projects/algo_trainning/code_run_2/423.Stops/1.txt', 'r') as f:
         rows = f.readlines()
 
-    
+    stops = list(map(int, rows[1].split()))
+    requests = list(map(int, rows[2].split()))
 
+    res = []
+
+    requests.sort()
+
+    cur_req = requests.pop(0)
+    for i_s, s in enumerate(stops):
+        if not requests:
+            break
+
+        if stops[i_s] == cur_req:
+            res.append(stops[i_s])
+
+        elif stops[i_s] > cur_req:
+            
+            if i_s-1 >=0:
+                res.append(stops[i_s-1])
+            else:
+                res.append(stops[i_s])
+
+        cur_req = requests.pop(0)
+
+    # while cur_stop_index <= len(stops)-1 and requests:
+
+    #     while stops[cur_stop_index] <= cur_req and cur_stop_index <= len(stops)-1:
+        
+    #         if stops[cur_stop_index] == cur_req:
+    #             res.append(stops[cur_stop_index])
+    #             break
+    #         cur_stop_index +=1
+        
+    #     print('stops[cur_stop_index] :', stops[cur_stop_index] , 'cur_req :',  cur_req)
+    #     if stops[cur_stop_index] > cur_req:
+    #         print('stops[cur_stop_index] :', stops[cur_stop_index])
+    #         print('cur_req               :', cur_req)
+    #         if cur_stop_index < len(stops)-1:
+    #             if cur_stop_index-1 > 0:
+    #                 res.append(stops[cur_stop_index-1])
+    #             else:
+    #                 res.append(stops[cur_stop_index])
+    #         else:
+    #             res.append(stops[cur_stop_index-1])
+
+    #     cur_req = requests.pop(0)
+    #     # cur_stop_index +=1
+
+    print(res)
+
+
+   
+        
 if __name__ == '__main__':
     main()
