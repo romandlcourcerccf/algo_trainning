@@ -25,53 +25,10 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
-    rows = sys.stdin.readlines()
-
-    # with open('/Users/roman/projects/algo_trainning/code_run_2/434.Summ/1.txt', 'r') as f:
-    #     rows = f.readlines()
-
-    #     for i in range(len(rows)):
-    #         rows[i] = rows[i].rstrip()
-
-    target = int(rows[0])
-        
-    res = set()
-
-    def dfs(i, tmp):
-
-        if i <= 0:
-            return
-            
-        tmp.append(i)
-            
-        if sum(tmp) == target:
-
-            res.add(tuple(sorted(tmp.copy(), reverse=True)))
-            return
-            
-        if sum(tmp) > target:
-            return
-              
-            
-        dfs(i, tmp.copy())
-        dfs(i+1, tmp.copy())
-           
     
-    for j in range(target, 0, -1):
-        for i in range(1, target):
-            dfs(i, [j])
-        
-    res_str = []
-    for r in res:
-        r = list(map(str, r))
-        res_str.append(' + '.join(r))
-        
-    res_str.sort()
-    res_str.append(str(target))
 
-    for r in res_str:
-        print(r)
 
-        
+
+
 if __name__ == '__main__':
     main()

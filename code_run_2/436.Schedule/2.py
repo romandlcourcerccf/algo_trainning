@@ -62,6 +62,7 @@ def main():
         pos_tasks = [t for t in tasks if t[0] >= d]
         if pos_tasks:
             pos_tasks.sort(key=lambda x: [x[0],x[1]])
+            
             print(f'day {d} pos_tasks {pos_tasks}')
             print(f'day : {d} task_to_solve {pos_tasks[0]}')
             done_tasks.append(pos_tasks[0])
