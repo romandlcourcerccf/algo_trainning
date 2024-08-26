@@ -38,6 +38,7 @@ def main():
     res = set()
 
     def dfs(i, tmp):
+
         if i <= 0:
             return
             
@@ -54,6 +55,7 @@ def main():
             
         dfs(i, tmp.copy())
         dfs(i+1, tmp.copy())
+           
     
     for j in range(target, 0, -1):
         for i in range(1, target):
@@ -63,6 +65,13 @@ def main():
     for r in res:
         r = list(map(str, r))
         res_str.append(' + '.join(r))
-                
+        
+    res_str.sort()
+    res_str.append(str(target))
+
+    for r in res_str:
+        print(r)
+
+        
 if __name__ == '__main__':
     main()
