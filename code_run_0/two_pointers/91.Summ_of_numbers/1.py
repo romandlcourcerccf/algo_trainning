@@ -1,24 +1,5 @@
 import sys
 
-def bin_search(arr, target):
-    l,r = 0, len(arr)
-    while l<=r:
-        m = (l+r) // 2
-        
-        if m == 0 and arr[m] != target:
-            return {'type': 'left_most', 'val': arr[0], 'index': 0}
-        elif m > len(arr)-1:
-            return {'type':'right_most', 'val': arr[-1], 'index': len(arr)-1}
-
-        if arr[m] == target:
-            return {'type':'target', 'val': arr[m], 'index': m}
-        elif arr[m] < target:
-            l = m+1
-        else:
-            r = m-1
-    
-    return {'type':'middle', 'val': arr[r], 'index': r}
-       
 
 def main():
     """
@@ -47,31 +28,34 @@ def main():
 
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_2/423.Stops/1.txt', 'r') as f:
+    with open('/Users/romanroman/projects/algo_trainning/code_run_0/two_pointers/91.Summ_of_numbers/4.txt', 'r') as f:
         rows = f.readlines()
 
-    stops = list(map(int, rows[1].split()))
-    requests = list(map(int, rows[2].split()))
+    hit_counter = 0
+    numbers = list(map(int, rows[0].split()))
+    N,K = numbers[0], numbers[1]
 
-    res = []
-    for req in requests:
-        _r = bin_search(stops, req)
-        match _r['type']:
-            case 'target':
-                res.append(_r['index']+1)
+    numbers = list(map(int, rows[1].split()))
+    
+    l, r = 0, 0
+    while l <= len(numbers)-1 and r <= len(numbers)-1:
+    
+        if l<len(numbers)-1 and r < len(numbers)-1:
+            if sum(numbers[l:r+1]) < K:
+                r+=1
+            elif sum(numbers[l:r+1]) > K:
+                l+=1
+            else:
+                hit_counter +=1
+                r+=1
+        elif r == len(numbers)-1:
+            if sum(numbers[l:r+1]) == K:
+                hit_counter +=1
+            l +=1
+           
 
-            case 'left_most':
-                res.append(_r['index']+1)
-            case 'right_most':
-                res.append(_r['index']+1)
-            case 'middle':
-                res.append(_r['index']+1)
+    print(hit_counter)
         
-        
-    for r in res:
-        print(r)
 
-
-   
 if __name__ == '__main__':
     main()

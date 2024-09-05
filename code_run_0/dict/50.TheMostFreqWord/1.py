@@ -1,24 +1,5 @@
 import sys
-
-def bin_search(arr, target):
-    l,r = 0, len(arr)
-    while l<=r:
-        m = (l+r) // 2
-        
-        if m == 0 and arr[m] != target:
-            return {'type': 'left_most', 'val': arr[0], 'index': 0}
-        elif m > len(arr)-1:
-            return {'type':'right_most', 'val': arr[-1], 'index': len(arr)-1}
-
-        if arr[m] == target:
-            return {'type':'target', 'val': arr[m], 'index': m}
-        elif arr[m] < target:
-            l = m+1
-        else:
-            r = m-1
-    
-    return {'type':'middle', 'val': arr[r], 'index': r}
-       
+from collections import defaultdict
 
 def main():
     """
@@ -45,33 +26,33 @@ def main():
     print(sum(map(int, input().split())))
     """
 
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_2/423.Stops/1.txt', 'r') as f:
-        rows = f.readlines()
+    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/dict/2.txt', 'r') as f:
+    #     rows = f.readlines()
 
-    stops = list(map(int, rows[1].split()))
-    requests = list(map(int, rows[2].split()))
+    h = defaultdict(int)
 
-    res = []
-    for req in requests:
-        _r = bin_search(stops, req)
-        match _r['type']:
-            case 'target':
-                res.append(_r['index']+1)
+    for row in rows:
+        words = row.split()
+        for w in words:
+            h[w] +=1
 
-            case 'left_most':
-                res.append(_r['index']+1)
-            case 'right_most':
-                res.append(_r['index']+1)
-            case 'middle':
-                res.append(_r['index']+1)
+    i_h =  defaultdict(list)
+    for k,v in  h.items():
+        i_h[v].append(k)
+
+
+    max_count = float('-inf')
+    max_words = None
+
+    for k,v in  i_h.items():
+        if k >= max_count:
+            max_count = k
+            max_words = v
         
-        
-    for r in res:
-        print(r)
-
-
-   
+    max_words.sort()
+    print(max_words[0])
+    
 if __name__ == '__main__':
     main()

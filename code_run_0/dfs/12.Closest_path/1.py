@@ -1,24 +1,5 @@
 import sys
-
-def bin_search(arr, target):
-    l,r = 0, len(arr)
-    while l<=r:
-        m = (l+r) // 2
-        
-        if m == 0 and arr[m] != target:
-            return {'type': 'left_most', 'val': arr[0], 'index': 0}
-        elif m > len(arr)-1:
-            return {'type':'right_most', 'val': arr[-1], 'index': len(arr)-1}
-
-        if arr[m] == target:
-            return {'type':'target', 'val': arr[m], 'index': m}
-        elif arr[m] < target:
-            l = m+1
-        else:
-            r = m-1
-    
-    return {'type':'middle', 'val': arr[r], 'index': r}
-       
+from queue import Queue
 
 def main():
     """
@@ -45,33 +26,46 @@ def main():
     print(sum(map(int, input().split())))
     """
 
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_2/423.Stops/1.txt', 'r') as f:
-        rows = f.readlines()
+    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/dfs/12.Closest_path/1.txt', 'r') as f:
+    #     rows = f.readlines()
 
-    stops = list(map(int, rows[1].split()))
-    requests = list(map(int, rows[2].split()))
+    # print(rows)
 
-    res = []
-    for req in requests:
-        _r = bin_search(stops, req)
-        match _r['type']:
-            case 'target':
-                res.append(_r['index']+1)
+    adj_matrix = []
+    for r in range(1, len(rows)-1):
+        adj_matrix.append(list(map(int, rows[r].split())))
+    
+    (start, finish) = list(map(int, rows[-1].split()))
 
-            case 'left_most':
-                res.append(_r['index']+1)
-            case 'right_most':
-                res.append(_r['index']+1)
-            case 'middle':
-                res.append(_r['index']+1)
+    # print('start :', start, 'finish :', finish)
+
+    # for r in adj_matrix:
+    #     print(r)
+
+    border = Queue()
+    border.put(start-1)
+
+    counter = 0
+    visited = set()
+
+    while not border.empty():
+        counter +=1
+       
+        cur_node = border.get()
+        visited.add(cur_node)
         
+        neighbours = adj_matrix[cur_node]
+        for i, n in enumerate(neighbours):
         
-    for r in res:
-        print(r)
-
-
-   
+            if n > 0 and i not in visited:
+                if i == finish-1: 
+                    print(counter)
+                    return
+                    
+                border.put(i)
+        
+    print('0')
 if __name__ == '__main__':
     main()

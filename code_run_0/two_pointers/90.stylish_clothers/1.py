@@ -1,24 +1,5 @@
 import sys
 
-def bin_search(arr, target):
-    l,r = 0, len(arr)
-    while l<=r:
-        m = (l+r) // 2
-        
-        if m == 0 and arr[m] != target:
-            return {'type': 'left_most', 'val': arr[0], 'index': 0}
-        elif m > len(arr)-1:
-            return {'type':'right_most', 'val': arr[-1], 'index': len(arr)-1}
-
-        if arr[m] == target:
-            return {'type':'target', 'val': arr[m], 'index': m}
-        elif arr[m] < target:
-            l = m+1
-        else:
-            r = m-1
-    
-    return {'type':'middle', 'val': arr[r], 'index': r}
-       
 
 def main():
     """
@@ -47,31 +28,37 @@ def main():
 
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_2/423.Stops/1.txt', 'r') as f:
+    with open('/Users/romanroman/projects/algo_trainning/code_run_0/two_pointers/90.stylish_clothers/1.txt', 'r') as f:
         rows = f.readlines()
 
-    stops = list(map(int, rows[1].split()))
-    requests = list(map(int, rows[2].split()))
+    ts = list(map(int, rows[1].split()))
+    pt =  list(map(int, rows[3].split()))
 
-    res = []
-    for req in requests:
-        _r = bin_search(stops, req)
-        match _r['type']:
-            case 'target':
-                res.append(_r['index']+1)
+    # print('ts :', ts)
+    # print('pt :', pt)
 
-            case 'left_most':
-                res.append(_r['index']+1)
-            case 'right_most':
-                res.append(_r['index']+1)
-            case 'middle':
-                res.append(_r['index']+1)
-        
-        
-    for r in res:
-        print(r)
+    ts_min, pt_min  = 0, 0
+    min_dist = float('inf')
 
+    ts_i, pt_i = 0, 0
+    while ts_i <= len(ts)-1 and pt_i <= len(pt)-1:
 
-   
+        # print('ts_i :', ts_i, 'pt_i :', pt_i)
+        _min_dist = abs( ts[ts_i]-pt[pt_i])
+        # print('_min_dist :',_min_dist)
+        if _min_dist <=  min_dist:
+            min_dist = _min_dist
+            ts_min, pt_min = ts[ts_i], pt[pt_i]
+
+        if ts[ts_i] == pt[pt_i]:
+            break
+
+        elif ts[ts_i] < pt[pt_i]:
+            ts_i +=1
+        else:
+            pt_i +=1
+
+    print(ts_min, ' ', pt_min)
+
 if __name__ == '__main__':
     main()
