@@ -1,5 +1,5 @@
 import sys
-from collections import defaultdict
+
 
 def main():
     """
@@ -26,30 +26,41 @@ def main():
     print(sum(map(int, input().split())))
     """
 
-    _rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    rows = []
-    for r in _rows:
-        rows.append(r.rstrip())
-
-    # print(rows)
-    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/dict/52.Synonyms/1.txt', 'r') as f:
+    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/two_pointers/219.best_time_trevel/1.txt', 'r') as f:
     #     rows = f.readlines()
 
-    h = defaultdict(str)
-    
-    
-    word_to_search = rows[-1]
+    max_change = float('-inf')
+    max_period = 0
+    max_left = 0
+    max_right = 0
 
-    for i in range(1, len(rows)-1):
-        pair = rows[i].split()
-        h[pair[1]] = pair[0]
-        h[pair[0]] = pair[1]
+    temperatures = list(map(int, rows[0].split()))
 
-    # print(h)
-    # print(word_to_search)
-    # print(word_to_search in h)
-    print(h[word_to_search])
+    l, r = 0, 1
+
+    while r <= len(temperatures)-1:
+        change = temperatures[r] - temperatures[l]
+        period = r - l
+
+        if change <= 0:
+            l+=1
+        else:
+            if change > max_change:
+                max_change = change
+                max_period = period
+                max_left = l
+                max_right = r
+            elif change == max_change:
+                if period > max_period:
+                    max_period = period
+                    max_left = l
+                    max_right = r
+            r+=1
+
+    print(f'{max_change} {max_left} {max_right}')
+
 
 if __name__ == '__main__':
     main()

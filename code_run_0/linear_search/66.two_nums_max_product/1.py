@@ -1,5 +1,5 @@
 import sys
-from collections import defaultdict
+from queue import Queue
 
 def main():
     """
@@ -26,30 +26,24 @@ def main():
     print(sum(map(int, input().split())))
     """
 
-    _rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    rows = []
-    for r in _rows:
-        rows.append(r.rstrip())
-
-    # print(rows)
-    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/dict/52.Synonyms/1.txt', 'r') as f:
+    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/linear_search/66.two_nums_max_product/1.txt', 'r') as f:
     #     rows = f.readlines()
 
-    h = defaultdict(str)
-    
-    
-    word_to_search = rows[-1]
+    numbers = list(map(int, rows[0].split()))
+    numbers.sort()    
 
-    for i in range(1, len(rows)-1):
-        pair = rows[i].split()
-        h[pair[1]] = pair[0]
-        h[pair[0]] = pair[1]
+    if numbers[0] >= 0 and numbers[-1] >= 0:
+        print(numbers[-2],' ', numbers[-1])
+    elif numbers[0] <= 0 and numbers[-1] <= 0:
+         print(numbers[0],' ', numbers[1])
+    elif numbers[0] <= 0 and numbers[-1] >= 0:
+        if numbers[0]* numbers[1] >= numbers[-2]* numbers[-1]:
+            print(numbers[0],' ', numbers[1])
+        else:
+            print(numbers[-2],' ', numbers[-1])
 
-    # print(h)
-    # print(word_to_search)
-    # print(word_to_search in h)
-    print(h[word_to_search])
 
 if __name__ == '__main__':
     main()

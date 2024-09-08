@@ -26,21 +26,34 @@ def main():
     print(sum(map(int, input().split())))
     """
 
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/dict/52.Synonyms/1.txt', 'r') as f:
-        rows = f.readlines()
+    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/dict/84.Pyramid/1.txt', 'r') as f:
+    #     rows = f.readlines()
 
-    h = defaultdict(str)
+    h = defaultdict(list)
     
-    word_to_search = rows[-1]
-
-    for i in range(1, len(rows)-1):
-        pair = rows[i].split()
-        h[pair[1]] = pair[0]
-
+    for r in range(1, len(rows)):
+        r = list(map(int, rows[r].split()))
+        h[r[0]].append(r)
     
-    print(h[word_to_search])
+    for k, v in h.items():
+        v.sort(key=lambda x: x[1])
+
+    widths = list(h.keys())
+    widths.sort()
+    
+    total_heighth = 0
+    
+    while widths:
+        max_width = widths.pop()
+        # print('max_width :', max_width)
+        # print(h[max_width])
+        total_heighth += h[max_width].pop()[1]
+   
+    print(total_heighth)
+    
+
 
 if __name__ == '__main__':
     main()

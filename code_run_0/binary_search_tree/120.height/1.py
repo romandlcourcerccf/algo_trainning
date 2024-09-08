@@ -1,5 +1,44 @@
 import sys
-from collections import defaultdict
+from queue import Queue
+from typing import List
+
+class TreeNode:
+
+    def __init__(self, val: int, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def fill_up(root, val):
+     
+    if val < root.val:
+        if root.left:
+            fill_up(root.left, val)
+        else:
+            root.left = TreeNode(val)
+            return
+    elif val > root.val:
+        if root.right:
+            fill_up(root.right, val)
+        else:
+            root.right = TreeNode(val)
+            return
+
+    
+max_depth = float('-inf')
+
+def dfs(root : TreeNode, depth : int):
+
+    global max_depth
+
+    if not root:
+        return
+
+    max_depth = max(max_depth, depth)
+
+    dfs(root.left, depth+1)
+    dfs(root.right, depth+1)
+
 
 def main():
     """
@@ -26,30 +65,23 @@ def main():
     print(sum(map(int, input().split())))
     """
 
-    _rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    rows = []
-    for r in _rows:
-        rows.append(r.rstrip())
-
-    # print(rows)
-    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/dict/52.Synonyms/1.txt', 'r') as f:
+    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/binary_search_tree/120.height/1.txt', 'r') as f:
     #     rows = f.readlines()
 
-    h = defaultdict(str)
+    numbers = list(map(int, rows[0].split()))
+    root = None
+    for i in range(len(numbers)-1):
+        if i == 0:
+            root = TreeNode(val=numbers[i])
+        else:
+            fill_up(root=root, val=numbers[i])
     
-    
-    word_to_search = rows[-1]
+    dfs(root, 1)
 
-    for i in range(1, len(rows)-1):
-        pair = rows[i].split()
-        h[pair[1]] = pair[0]
-        h[pair[0]] = pair[1]
-
-    # print(h)
-    # print(word_to_search)
-    # print(word_to_search in h)
-    print(h[word_to_search])
+    print(max_depth)
+   
 
 if __name__ == '__main__':
     main()

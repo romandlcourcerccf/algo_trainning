@@ -26,10 +26,10 @@ def main():
     print(sum(map(int, input().split())))
     """
 
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/dict/51.NumberOfAppearence/2.txt', 'r') as f:
-        rows = f.readlines()
+    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/dict/51.NumberOfAppearence/2.txt', 'r') as f:
+    #     rows = f.readlines()
 
     words = []
     app_num = []
