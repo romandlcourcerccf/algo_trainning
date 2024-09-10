@@ -1,31 +1,4 @@
 import sys
-from queue import Queue
-from typing import List, Tuple
-
-
-class TreeNode:
-
-    def __init__(self, val: int, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-def fill_up(root, val: Tuple[int, int], depth: int, depths: List[int]):
-     
-    if val[0] < root.val:
-        if root.left:
-            fill_up(root.left, val, depth+1, depths)
-        else:
-            root.left = TreeNode(val[0])
-            depths[val[1]] = depth
-            return
-    elif val[0] > root.val:
-        if root.right:
-            fill_up(root.right, val, depth+1, depths)
-        else:
-            root.right = TreeNode(val[0])
-            depths[val[1]] = depth
-            return
 
 
 def main():
@@ -53,28 +26,26 @@ def main():
     print(sum(map(int, input().split())))
     """
 
-    rows = sys.stdin.readlines()
+    # rows = sys.stdin.readlines()
 
-    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/binary_search_tree/120.height/1.txt', 'r') as f:
-    #     rows = f.readlines()
+    with open('/Users/romanroman/projects/algo_trainning/code_run_0/strings/251.symbols_set/1.txt', 'r') as f:
+        rows = f.readlines()
 
- 
-    numbers = list(map(int, rows[0].split()))
-    depths = [0] * (len(numbers))
+    a = list(map(int, rows[0].split()))
+    b =  list(map(int, rows[1].split()))
 
-    root = None
-    for i in range(len(numbers)):
-        if i == 0:
-            root = TreeNode(val=numbers[i])
-            depths[0] = 1
-        else:
-            fill_up(root=root, val=(numbers[i], i), depth=2, depths=depths)
+    # print(a)
+    # print(b)
+
+    cross = list((set(a) & set(b)))
+    cross.sort()
+
+    # print(cross)
     
-    depths = depths[:-1]
-    depths = list(map(str, depths))
-    print(' '.join(depths))
-    
-   
+    cross = list(map(str, cross))
+    print(' '.join(cross))
+
+
 
 if __name__ == '__main__':
     main()
