@@ -1,4 +1,46 @@
 import sys
+from queue import Queue
+from typing import List
+
+depths = []
+
+class TreeNode:
+
+    def __init__(self, val: int, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def fill_up(root, val, depth):
+     
+    if val < root.val:
+        if root.left:
+            fill_up(root.left, val, depth+1)
+        else:
+            root.left = TreeNode(val)
+            depths.append(depth)
+            return
+    elif val > root.val:
+        if root.right:
+            fill_up(root.right, val, depth+1)
+        else:
+            root.right = TreeNode(val)
+            depths.append(depth)
+            return
+
+    
+max_depth = float('-inf')
+
+def dfs(root : TreeNode, depth : int):
+    global max_depth
+
+    if not root:
+        return
+
+    max_depth = max(max_depth, depth)
+
+    dfs(root.left, depth+1)
+    dfs(root.right, depth+1)
 
 
 def main():
@@ -28,52 +70,10 @@ def main():
 
     # rows = sys.stdin.readlines()
 
-    # _rows = []
-    # for r in rows:
-    #     _rows.append(r.strip())
-
-    # rows = _rows
-
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/strings/251.symbols_set/4.txt', 'r') as f:
+    with open('/Users/romanroman/projects/algo_trainning/code_run_0/binary_search/ 546.tailing_by_intervals/1.txt', 'r') as f:
         rows = f.readlines()
-        _rows = []
-        for r in rows:
-            _rows.append(r.strip())
-        rows = _rows
 
-    s = rows[0]
-    c = set(rows[1])
-
-    if len(c) > len(s):
-        print(' ')
-        return
-
-    max_len = float('inf')
-
-    _c = set()
-    _max_len = 0
-
-    pos = 0
-    while pos <= len(s)-1:
-
-        if s[pos] in c:
-
-            _max_len +=1
-            _c.add(s[pos])
-
-            if _c == c:
-                max_len = min(max_len, _max_len)
-
-        else:
-            _max_len = 0
-            _c = set()
-       
-        pos +=1
     
-    print(max_len if max_len != float('inf') else ' ') 
-
-
-
 
 if __name__ == '__main__':
     main()

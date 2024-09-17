@@ -1,5 +1,5 @@
 import sys
-
+from collections import defaultdict
 
 def main():
     """
@@ -26,54 +26,25 @@ def main():
     print(sum(map(int, input().split())))
     """
 
+    # Если можно, подскажи в какую сторону мыслить в задаче 20.
+    # Гистограмма и прямоугольник. 
+    # По тегам указано stack и linearSearch,
+    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек 
+    # если пустой или высота больше вершины стека, 
+    # иначе если меньше,
+    # то вычислю площадь и удаляю индексы из стека попутно проверяя пуст ли стек
+    # и высота вершины больше текущей.
+    # Вроде линейно должно быть.
+    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые, 
+    # по которым алгоритм не работает((( Буду признателен за совет!
+                                      
     # rows = sys.stdin.readlines()
 
-    # _rows = []
-    # for r in rows:
-    #     _rows.append(r.strip())
-
-    # rows = _rows
-
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/strings/251.symbols_set/4.txt', 'r') as f:
+    with open('/Users/romanroman/projects/algo_trainning/code_run_0/implementation/211.Meetings/1.txt', 'r') as f:
         rows = f.readlines()
-        _rows = []
-        for r in rows:
-            _rows.append(r.strip())
-        rows = _rows
 
-    s = rows[0]
-    c = set(rows[1])
-
-    if len(c) > len(s):
-        print(' ')
-        return
-
-    max_len = float('inf')
-
-    _c = set()
-    _max_len = 0
-
-    pos = 0
-    while pos <= len(s)-1:
-
-        if s[pos] in c:
-
-            _max_len +=1
-            _c.add(s[pos])
-
-            if _c == c:
-                max_len = min(max_len, _max_len)
-
-        else:
-            _max_len = 0
-            _c = set()
-       
-        pos +=1
     
-    print(max_len if max_len != float('inf') else ' ') 
-
-
-
+   
 
 if __name__ == '__main__':
     main()
