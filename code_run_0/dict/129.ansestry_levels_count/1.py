@@ -26,16 +26,16 @@ def main():
     print(sum(map(int, input().split())))
     """
 
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/dict/129.ansestry_levels_count/1.txt', 'r') as f:
-        rows = f.readlines()
+    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/dict/129.ansestry_levels_count/1.txt', 'r') as f:
+    #     rows = f.readlines()
 
-        _rows = []
-        for r in rows:
-            _rows.append(r.strip())
+    #     _rows = []
+    #     for r in rows:
+    #         _rows.append(r.strip())
         
-        rows = _rows
+    #     rows = _rows
 
     h = defaultdict(str)
 

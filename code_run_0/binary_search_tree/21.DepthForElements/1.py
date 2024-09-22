@@ -32,7 +32,6 @@ def fill_up(root, val, depth):
 max_depth = float('-inf')
 
 def dfs(root : TreeNode, depth : int):
-
     global max_depth
 
     if not root:

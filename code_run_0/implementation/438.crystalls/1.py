@@ -63,6 +63,21 @@ def main():
             print(f'p1 {p1} {crystalls[0][p1]}')
             print(f'p2 {p2} {crystalls[1][p2]}')
             print(f'p3 {p3} {crystalls[2][p3]}')
+
+            h = defaultdict(int)
+
+            h[crystalls[0][p1]]+=1
+            h[crystalls[1][p2]]+=1
+            h[crystalls[2][p3]]+=1
+
+            max_smb = ''
+            max_pos = float('inf')
+
+            for i in range(h.keys()):
+                if h[h.keys()[i]] < max_pos:
+                    max_pos = h.keys()[i]
+                    max_smb = h.keys()[i]
+
             break
 if __name__ == '__main__':
     main()

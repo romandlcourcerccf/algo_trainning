@@ -52,10 +52,10 @@ def main():
     # На втором закрытом тесте ловлю w/a и не могу придумать тестовые, 
     # по которым алгоритм не работает((( Буду признателен за совет!
                                       
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/implementation/440.queens/3.txt', 'r') as f:
-        rows = f.readlines()
+    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/implementation/440.queens/3.txt', 'r') as f:
+    #     rows = f.readlines()
     
     rows = [r.rstrip() for r in rows]
 

@@ -72,12 +72,11 @@ def main():
 
 
     for cat, pos in categories_map.items():
-        # print(pos)
+
         min_diff = float('inf')
         for i in range(0, len(pos)-1):
             min_diff = min(min_diff, pos[1]-pos[0])
         
-        # print('cat : ', cat, 'pos : ', pos, 'min : ', min_diff)
         mininums.append(min_diff)
 
     print(min(mininums))

@@ -44,8 +44,7 @@ def main():
         rows = f.readlines()
 
     numbers = list(map(int, rows[0].split()))
-    # print(numbers)
-
+    
     i = numbers[0]
     is_same = True
     for i in  range(1, len(numbers)):
@@ -57,7 +56,6 @@ def main():
         print(numbers[0] * len(numbers))
         return
 
-    
     i = numbers[0]
     is_esc = True
     for i in  range(1, len(numbers)):
