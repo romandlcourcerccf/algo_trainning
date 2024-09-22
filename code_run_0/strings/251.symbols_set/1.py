@@ -28,51 +28,45 @@ def main():
 
     # rows = sys.stdin.readlines()
 
-    # _rows = []
-    # for r in rows:
-    #     _rows.append(r.strip())
-
-    # rows = _rows
-
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/strings/251.symbols_set/4.txt', 'r') as f:
+    with open('/Users/romanroman/projects/algo_trainning/code_run_0/strings/251.symbols_set/7.txt', 'r') as f:
         rows = f.readlines()
-        _rows = []
-        for r in rows:
-            _rows.append(r.strip())
-        rows = _rows
+       
+    rows = [r.strip() for r in rows]
 
     s = rows[0]
     c = set(rows[1])
 
+    if len(c) == 0 or len(s) == 0:
+        print('0')
+        return
+    
     if len(c) > len(s):
-        print(' ')
+        print('0')
         return
 
-    max_len = float('inf')
+    min_len = float('inf')
 
     _c = set()
-    _max_len = 0
+    _min_len = 0
 
     pos = 0
     while pos <= len(s)-1:
 
         if s[pos] in c:
 
-            _max_len +=1
+            _min_len +=1
             _c.add(s[pos])
 
             if _c == c:
-                max_len = min(max_len, _max_len)
+                min_len = min(min_len, _min_len)
 
         else:
-            _max_len = 0
+            _min_len = 0
             _c = set()
        
         pos +=1
     
-    print(max_len if max_len != float('inf') else ' ') 
-
-
+    print(min_len if min_len != float('inf') else '0') 
 
 
 if __name__ == '__main__':

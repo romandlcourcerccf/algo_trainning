@@ -1,5 +1,4 @@
 import sys
-from collections import defaultdict
 
 def main():
     """
@@ -40,80 +39,25 @@ def main():
                                       
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/graph_theory/222.teambyilding/2.txt', 'r') as f:
+    with open('/Users/romanroman/projects/algo_trainning/code_run_0/probability_theory/300.first_hero/2.txt', 'r') as f:
         rows = f.readlines()
 
-    
-    graph_info = rows[0]
-    graph_info = list(map(int, graph_info.split()))
+    intervals = rows[1]
+    intervals = list(map(int, intervals.split()))
 
-    vert_count, _ = graph_info[0], graph_info[1]
+    print(intervals)
 
-    graph = defaultdict(set)
-    vertices = set([i+1 for i in range(vert_count)])
+    for i in range(1,len(intervals)):
+        intervals[i] = intervals[i] + intervals[i-1]
 
-    for i in range(1, len(rows)):
-        row = rows[i]
-        row = list(map(int, row.split()))
-        start, end = row[0], row[1]
-        graph[start].add(end)
-        graph[end].add(start)
+    print(intervals)
 
-    # print(vertices)
-    # print(graph)
+    for i in range(len(intervals)):
+        intervals[i] = intervals[i]/2.0
 
-    res = []
+    print(intervals)
 
-    _vertices = vertices.copy()
-    _visited = set()
-
-    for start_vert  in vertices:
-
-        if start_vert not in graph.keys():
-            continue
-
-        _visited.add(start_vert)
-        
-        cur_verts = {start_vert}
-       
-        while True:
-
-            _visited = _visited | cur_verts
-
-            cur_verts = cur_verts & graph.keys()
-           
-            if not cur_verts:
-                break
-
-            neighbours = set()
-            for cur_vert in cur_verts:
-                if cur_vert in graph.keys():
-                    neighbours = neighbours | graph[cur_vert]
-                    _visited.add(cur_vert)
-           
-            neighbours = neighbours - _visited
-           
-            if not neighbours:
-                break
-            
-            cur_verts =  neighbours
-        
-        not_visited = _vertices - _visited
-        if len(not_visited) > 0:
-            res.append([_visited, not_visited])
-            break
-       
-        _visited = set()
-
-
-    if res:
-        res = res[0]
-        print(len(res))
-        print(' '.join(map(str,list(res[0]))))
-        print(' '.join(map(str,list(res[1]))))
-    else:
-        print('-1')
-
+    print(f'{len(intervals)}/{int(sum(intervals))}')
 
 if __name__ == '__main__':
     main()

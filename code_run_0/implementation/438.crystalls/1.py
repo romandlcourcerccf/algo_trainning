@@ -38,49 +38,31 @@ def main():
     # На втором закрытом тесте ловлю w/a и не могу придумать тестовые, 
     # по которым алгоритм не работает((( Буду признателен за совет!
                                       
-    rows = sys.stdin.readlines()
+    # rows = sys.stdin.readlines()
 
-    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/backend/377.diversity/1.txt', 'r') as f:
-    #     rows = f.readlines()
+    with open('/Users/romanroman/projects/algo_trainning/code_run_0/implementation/438.crystalls/1.txt', 'r') as f:
+        rows = f.readlines()
+        rows = [r.rstrip() for r in rows]
 
     
-    positions = list(map(int, rows[-1].split()))
-    positions_map = {}
-    categories_map = defaultdict(list)
+    crystalls = rows
 
-    for i in range(len(positions)):
-       positions_map[positions[i]] = i
+    print('crystalls', crystalls)
 
-    # print(positions_map)
+    p1, p2, p3 = 0,0,0
 
-    for i in range(1, len(rows)-1):
-        r = list(map(int, rows[i].split()))
-        categories_map[r[1]].append(positions_map[r[0]])
+   
 
-    # print(categories_map)
+    while p1 != len(crystalls[0])-1 and p2 != len(crystalls[1])-1 and p3 != len(crystalls[1])-1:
+        if crystalls[0][p1] == crystalls[1][p2] == crystalls[2][p3]:
+            p1+=1
+            p2+=1
+            p3+=1
 
-    mininums = []
-
-    lens = []
-
-    for cat, pos in categories_map.items():
-        lens.append(len(pos))
-
-    if max(lens) == 1:
-        print(len(rows)-2)
-        return
-
-
-    for cat, pos in categories_map.items():
-        # print(pos)
-        min_diff = float('inf')
-        for i in range(0, len(pos)-1):
-            min_diff = min(min_diff, pos[1]-pos[0])
-        
-        # print('cat : ', cat, 'pos : ', pos, 'min : ', min_diff)
-        mininums.append(min_diff)
-
-    print(min(mininums))
-
+        else:
+            print(f'p1 {p1} {crystalls[0][p1]}')
+            print(f'p2 {p2} {crystalls[1][p2]}')
+            print(f'p3 {p3} {crystalls[2][p3]}')
+            break
 if __name__ == '__main__':
     main()
