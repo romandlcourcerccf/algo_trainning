@@ -46,6 +46,11 @@ def main():
     num = int(rows[0])
 
     print(num)
+    min_squre, min_num = 1,1     
+
+    for i in range(num):
+        min_squre, min_num = get_min()
+
   
 
     
