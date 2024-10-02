@@ -46,12 +46,50 @@ def main():
     num = int(rows[0])
 
     print(num)
-    min_squre, min_num = 1,1     
+    min_squre, min_num = 1,1   
 
-    for i in range(num):
-        min_squre, min_num = get_min()
+    dp = [0] * (num+1)
+    dp[min_squre] = 1
 
-  
+    for n in range(1,num+1):
+
+        print('n :', n)
+
+        q_root = n ** (1/3)
+        if q_root % 1 == 0:
+            min_squre, min_num = n,1  
+            dp[n] = 1    
+        else:
+            split = n // min_squre
+            tail = n % min_squre
+
+            print('n :', n , ' split :', split, ' tail :', tail)
+            if tail == 0:
+                print(dp)
+        
+                nun_squares = dp[min_squre] * split
+                print('n :', n ,' nun_squares :', nun_squares)
+                dp[n] = nun_squares
+
+                if nun_squares < min_squre:
+                    min_squre, min_num = num, nun_squares
+
+           
+            else:
+                nun_squares = dp[min_squre] * split + dp[tail]
+                dp[n] = nun_squares
+                if nun_squares < min_squre:
+                    min_squre, min_num = num, nun_squares
+
+    
+            print('>>>')
+            print('n: ',n)
+            print(dp)
+            print('n :', n ,' min_squre :', min_squre, 'min_num :', min_num)
+       
+
+
+
 
     
 
