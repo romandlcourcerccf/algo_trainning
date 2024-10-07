@@ -26,35 +26,32 @@ def main():
     print(sum(map(int, input().split())))
     """
 
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/two_pointers/91.Summ_of_numbers/2.txt', 'r') as f:
-        rows = f.readlines()
+    # with open('/Users/romanroman/projects/algo_trainning/code_run_0/two_pointers/61.sets_intersection/1.txt', 'r') as f:
+    #     rows = f.readlines()
 
-    hit_counter = 0
-    numbers = list(map(int, rows[0].split()))
-    N,K = numbers[0], numbers[1]
+    a = list(map(int, rows[0].split()))
+    b =  list(map(int, rows[1].split()))
 
-    numbers = list(map(int, rows[1].split()))
+    a.sort()
+    b.sort()
+   
+    res = []
+
+    p1, p2 = 0, 0
+
+    while p1 != len(a) and p2 != len(b):
+        if a[p1] == b[p2]:
+            res.append(a[p1])
+            p1+=1
+            p2+=1
+        elif a[p1] < b[p2]:
+            p1+=1
+        else:
+            p2+=1
     
-    l, r = 0, 0
-    while l <= len(numbers)-1 and r <= len(numbers)-1:
-    
-        if l<len(numbers)-1 and r < len(numbers)-1:
-            if sum(numbers[l:r+1]) < K:
-                r+=1
-            elif sum(numbers[l:r+1]) > K:
-                l+=1
-            else:
-                hit_counter +=1
-                r+=1
-        elif r == len(numbers)-1:
-            if sum(numbers[l:r+1]) == K:
-                hit_counter +=1
-            l +=1
-           
-
-    print(hit_counter)
+    print(' '.join(list(map(str, res))))
         
 
 if __name__ == '__main__':
