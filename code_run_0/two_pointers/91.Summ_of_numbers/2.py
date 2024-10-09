@@ -28,7 +28,11 @@ def main():
 
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/two_pointers/91.Summ_of_numbers/1.txt', 'r') as f:
+    import os
+    dname = os.path.dirname(__file__)
+    filename = os.path.join(dname, '1.txt')
+   
+    with open(filename, 'r') as f:
         rows = f.readlines()
 
     hit_counter = 0
@@ -36,41 +40,40 @@ def main():
     N,K = numbers[0], numbers[1]
 
     numbers = list(map(int, rows[1].split()))
-    prefix_summs = [0] * len(numbers)
+    prefix_summs = [0] * (len(numbers)+1)
 
-    prefix_summs[0] = numbers[0]
     for i in range(0, len(numbers)):
-        prefix_summs[i] = numbers[i] + prefix_summs[i-1]
+        prefix_summs[i+1] = numbers[i] + prefix_summs[i]
 
     print(numbers)
     print(prefix_summs)
 
-    l, r = 0, 0
-    while l <= len(numbers)-1 and r <= len(numbers)-1:
-    
+
+    l, r = 0, 1
+    while l <= len(prefix_summs)-1 and r <= len(prefix_summs)-1:
+        _sum = prefix_summs[r]-prefix_summs[l]
         if l<len(numbers)-1 and r < len(numbers)-1:
-
-            _sum = prefix_summs[r+1]-prefix_summs[l]
-
-            print('l :',l,'r :',r,'_sum :', _sum)
-
+           
+            print(_sum)
+        
             if _sum < K:
                 r+=1
             elif _sum > K:
                 l+=1
             else:
-                print('1: prefix_summs[l] :', prefix_summs[l], 'prefix_summs[r] :',  prefix_summs[r])
                 hit_counter +=1
                 l+=1
                 r+=1
         elif r == len(numbers)-1:
+            print('l :', l)
             if _sum == K:
-                print('2: prefix_summs[l] :', prefix_summs[l], 'prefix_summs[r] :',  prefix_summs[r])
                 hit_counter +=1
-            l +=1
-           
+                
+            l+=1
+            
 
-    print(hit_counter)
+    
+    print('hit_counter :',hit_counter)
         
 
 if __name__ == '__main__':

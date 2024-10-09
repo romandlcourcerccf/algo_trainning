@@ -1,4 +1,46 @@
 import sys
+from queue import Queue
+from typing import List
+
+depths = []
+
+class TreeNode:
+
+    def __init__(self, val: int, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def fill_up(root, val, depth):
+     
+    if val < root.val:
+        if root.left:
+            fill_up(root.left, val, depth+1)
+        else:
+            root.left = TreeNode(val)
+            depths.append(depth)
+            return
+    elif val > root.val:
+        if root.right:
+            fill_up(root.right, val, depth+1)
+        else:
+            root.right = TreeNode(val)
+            depths.append(depth)
+            return
+
+    
+max_depth = float('-inf')
+
+def dfs(root : TreeNode, depth : int):
+    global max_depth
+
+    if not root:
+        return
+
+    max_depth = max(max_depth, depth)
+
+    dfs(root.left, depth+1)
+    dfs(root.right, depth+1)
 
 
 def main():
@@ -28,38 +70,10 @@ def main():
 
     # rows = sys.stdin.readlines()
 
-    import os
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '4.txt')
-    
-    with open(filename, 'r') as f:
+    with open('/Users/romanroman/projects/algo_trainning/code_run_0/binary_search/ 546.tailing_by_intervals/1.txt', 'r') as f:
         rows = f.readlines()
 
-    hit_counter = 0
-    numbers = list(map(int, rows[0].split()))
-    N,K = numbers[0], numbers[1]
-
-    numbers = list(map(int, rows[1].split()))
     
-    l, r = 0, 0
-    while l <= len(numbers)-1 and r <= len(numbers)-1:
-    
-        if l<len(numbers)-1 and r < len(numbers)-1:
-            if sum(numbers[l:r+1]) < K:
-                r+=1
-            elif sum(numbers[l:r+1]) > K:
-                l+=1
-            else:
-                hit_counter +=1
-                r+=1
-        elif r == len(numbers)-1:
-            if sum(numbers[l:r+1]) == K:
-                hit_counter +=1
-            l +=1
-           
-
-    print(hit_counter)
-        
 
 if __name__ == '__main__':
     main()

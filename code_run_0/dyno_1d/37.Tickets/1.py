@@ -1,5 +1,5 @@
 import sys
-
+from collections import defaultdict
 
 def main():
     """
@@ -26,40 +26,45 @@ def main():
     print(sum(map(int, input().split())))
     """
 
-    # rows = sys.stdin.readlines()
+    # Если можно, подскажи в какую сторону мыслить в задаче 20.
+    # Гистограмма и прямоугольник. 
+    # По тегам указано stack и linearSearch,
+    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек 
+    # если пустой или высота больше вершины стека, 
+    # иначе если меньше,
+    # то вычислю площадь и удаляю индексы из стека попутно проверяя пуст ли стек
+    # и высота вершины больше текущей.
+    # Вроде линейно должно быть.
+    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые, 
+    # по которым алгоритм не работает((( Буду признателен за совет!
+                                      
+    rows = sys.stdin.readlines()
 
-    import os
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '4.txt')
+    # with open('/Users/roman/projects/algo_trainning-1/code_run_0/dyno_1d/37.Tickets/1.txt', 'r') as f:
+    #     rows = f.readlines()
+
     
-    with open(filename, 'r') as f:
-        rows = f.readlines()
+    nums = int(rows[0])
 
-    hit_counter = 0
-    numbers = list(map(int, rows[0].split()))
-    N,K = numbers[0], numbers[1]
+    dp = [[0] * 4 for i in range(nums+3)]
 
-    numbers = list(map(int, rows[1].split()))
+    for i in range(1, len(rows)):
+
+        row = list(map(int, rows[i].split()))
+        row.append(0)
+
+        dp[i+2] = row
+
+    for i in range(3):
+        for c in range(3):
+            dp[i][c] = float('inf')
+
+    for i in range(3, nums+3):
+        dp[i][3] = min(dp[i-1][3]+dp[i][0], dp[i-2][3]+dp[i-1][1], dp[i-3][3]+dp[i-2][2])
+
+    print(dp[-1][-1])
+
     
-    l, r = 0, 0
-    while l <= len(numbers)-1 and r <= len(numbers)-1:
-    
-        if l<len(numbers)-1 and r < len(numbers)-1:
-            if sum(numbers[l:r+1]) < K:
-                r+=1
-            elif sum(numbers[l:r+1]) > K:
-                l+=1
-            else:
-                hit_counter +=1
-                r+=1
-        elif r == len(numbers)-1:
-            if sum(numbers[l:r+1]) == K:
-                hit_counter +=1
-            l +=1
-           
-
-    print(hit_counter)
-        
 
 if __name__ == '__main__':
     main()

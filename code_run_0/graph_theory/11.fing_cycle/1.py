@@ -1,5 +1,5 @@
 import sys
-
+from collections import defaultdict
 
 def main():
     """
@@ -26,40 +26,36 @@ def main():
     print(sum(map(int, input().split())))
     """
 
+    # Если можно, подскажи в какую сторону мыслить в задаче 20.
+    # Гистограмма и прямоугольник. 
+    # По тегам указано stack и linearSearch,
+    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек 
+    # если пустой или высота больше вершины стека, 
+    # иначе если меньше,
+    # то вычислю площадь и удаляю индексы из стека попутно проверяя пуст ли стек
+    # и высота вершины больше текущей.
+    # Вроде линейно должно быть.
+    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые, 
+    # по которым алгоритм не работает((( Буду признателен за совет!
+                                      
     # rows = sys.stdin.readlines()
 
-    import os
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '4.txt')
-    
-    with open(filename, 'r') as f:
+    with open('/Users/roman/projects/algo_trainning-1/code_run_0/graph_theory/11.fing_cycle/1.txt', 'r') as f:
         rows = f.readlines()
 
-    hit_counter = 0
-    numbers = list(map(int, rows[0].split()))
-    N,K = numbers[0], numbers[1]
-
-    numbers = list(map(int, rows[1].split()))
     
-    l, r = 0, 0
-    while l <= len(numbers)-1 and r <= len(numbers)-1:
+    adj_matrix = []
+    for i in range(1, len(rows)):
+        adj_matrix.append(list(map(int, rows[i].split())))
     
-        if l<len(numbers)-1 and r < len(numbers)-1:
-            if sum(numbers[l:r+1]) < K:
-                r+=1
-            elif sum(numbers[l:r+1]) > K:
-                l+=1
-            else:
-                hit_counter +=1
-                r+=1
-        elif r == len(numbers)-1:
-            if sum(numbers[l:r+1]) == K:
-                hit_counter +=1
-            l +=1
-           
-
-    print(hit_counter)
+    for i in range(len(adj_matrix)):
+        print(adj_matrix[i])
         
+    vertices = set(range(len(adj_matrix)))
+    print(vertices)
+
+    while vertices:
+        start = vertices
 
 if __name__ == '__main__':
     main()

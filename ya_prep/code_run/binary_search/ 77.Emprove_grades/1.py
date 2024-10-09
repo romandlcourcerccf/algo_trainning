@@ -1,6 +1,5 @@
 import sys
 
-
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -28,38 +27,21 @@ def main():
 
     # rows = sys.stdin.readlines()
 
-    import os
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '4.txt')
-    
-    with open(filename, 'r') as f:
+    with open('/Users/roman/projects/algo_trainning-1/ya_prep/code_run/binary_search/ 77.Emprove_grades/1.txt', 'r') as f:
         rows = f.readlines()
+        rows = [r.rstrip() for r in rows]
+  
+    rows = list(map(int, rows))
+    a, b, c = rows[0], rows[1], rows[2]
+    e = a+b+c 
 
-    hit_counter = 0
-    numbers = list(map(int, rows[0].split()))
-    N,K = numbers[0], numbers[1]
-
-    numbers = list(map(int, rows[1].split()))
+    av_score = (2*a+3*b+4*c+5*e)/(a+b+c+e)
     
-    l, r = 0, 0
-    while l <= len(numbers)-1 and r <= len(numbers)-1:
-    
-        if l<len(numbers)-1 and r < len(numbers)-1:
-            if sum(numbers[l:r+1]) < K:
-                r+=1
-            elif sum(numbers[l:r+1]) > K:
-                l+=1
-            else:
-                hit_counter +=1
-                r+=1
-        elif r == len(numbers)-1:
-            if sum(numbers[l:r+1]) == K:
-                hit_counter +=1
-            l +=1
-           
+    while sum < 4
+        av_score = av_score/2
+        av_score = (2*a+3*b+4*c+5*e)/(a+b+c+e)
 
-    print(hit_counter)
-        
+    print(sum)
 
 if __name__ == '__main__':
     main()
