@@ -39,18 +39,20 @@ def main():
     prefix_summs = [0] * len(numbers)
 
     prefix_summs[0] = numbers[0]
-    for i in range(1, len(numbers)):
+    for i in range(0, len(numbers)):
         prefix_summs[i] = numbers[i] + prefix_summs[i-1]
-    
+
     print(numbers)
     print(prefix_summs)
 
-    l, r = 0, 1
+    l, r = 0, 0
     while l <= len(numbers)-1 and r <= len(numbers)-1:
     
         if l<len(numbers)-1 and r < len(numbers)-1:
 
-            _sum = prefix_summs[r]-prefix_summs[l]
+            _sum = prefix_summs[r+1]-prefix_summs[l]
+
+            print('l :',l,'r :',r,'_sum :', _sum)
 
             if _sum < K:
                 r+=1
@@ -59,6 +61,7 @@ def main():
             else:
                 print('1: prefix_summs[l] :', prefix_summs[l], 'prefix_summs[r] :',  prefix_summs[r])
                 hit_counter +=1
+                l+=1
                 r+=1
         elif r == len(numbers)-1:
             if _sum == K:
