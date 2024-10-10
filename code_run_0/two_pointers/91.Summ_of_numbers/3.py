@@ -40,33 +40,31 @@ def main():
     N,K = numbers[0], numbers[1]
 
     numbers = list(map(int, rows[1].split()))
-    prefix_summs = [0] * (len(numbers)+1)
+    prefix_summs = [0] * (len(numbers))
 
-    for i in range(0, len(numbers)):
-        prefix_summs[i+1] = numbers[i] + prefix_summs[i]
+    prefix_summs[0] = numbers[0]
+    for i in range(1, len(numbers)):
+        prefix_summs[i] = numbers[i] + prefix_summs[i-1]
 
+    prefix_summs.insert(0,0)
     print(numbers)
     print(prefix_summs)
 
     l, r = 0, 1
     while l <= len(prefix_summs)-1 and r <= len(prefix_summs)-1:
+
         _sum = prefix_summs[r]-prefix_summs[l]
-        if l<len(numbers)-1 and r<len(numbers)-1:
-            print(_sum)
-            if _sum < K:
-                r+=1
-            elif _sum > K:
-                l+=1
-            else:
-                print('1 l: ', l, 'r: ', r)
-                hit_counter +=1
-                l+=1
-                r+=1
-        elif r == len(numbers)-1:
-            if _sum == K:
-                print('2 l: ', l, 'r: ', r)
-                hit_counter +=1 
+
+        
+        if _sum < K:
+            r+=1
+        elif _sum > K:
+               l+=1
+        else:
+            print('sum :', _sum, 'l: ', l, 'r: ', r)
+            hit_counter +=1
             l+=1
+            r+=1
             
     print('hit_counter :',hit_counter)
         

@@ -30,8 +30,8 @@ def main():
 
     import os
     dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '2.txt')
-   
+    filename = os.path.join(dname, '1.txt')
+    
     with open(filename, 'r') as f:
         rows = f.readlines()
 
@@ -40,35 +40,26 @@ def main():
     N,K = numbers[0], numbers[1]
 
     numbers = list(map(int, rows[1].split()))
-    prefix_summs = [0] * (len(numbers)+1)
-
-    for i in range(0, len(numbers)):
-        prefix_summs[i+1] = numbers[i] + prefix_summs[i]
-
-    print(numbers)
-    print(prefix_summs)
-
-    l, r = 0, 1
-    while l <= len(prefix_summs)-1 and r <= len(prefix_summs)-1:
-        _sum = prefix_summs[r]-prefix_summs[l]
-        if l<len(numbers)-1 and r<len(numbers)-1:
-            print(_sum)
-            if _sum < K:
+    
+    l, r = 0, 0
+    while l <= len(numbers)-1 and r <= len(numbers)-1:
+    
+        if l<len(numbers)-1 and r < len(numbers)-1:
+            if sum(numbers[l:r+1]) < K:
                 r+=1
-            elif _sum > K:
+            elif sum(numbers[l:r+1]) > K:
                 l+=1
             else:
-                print('1 l: ', l, 'r: ', r)
                 hit_counter +=1
-                l+=1
                 r+=1
         elif r == len(numbers)-1:
-            if _sum == K:
-                print('2 l: ', l, 'r: ', r)
-                hit_counter +=1 
-            l+=1
-            
-    print('hit_counter :',hit_counter)
+            if sum(numbers[l:r+1]) == K:
+                hit_counter +=1
+            l +=1
+           
+
+    print(hit_counter)
         
+
 if __name__ == '__main__':
     main()
