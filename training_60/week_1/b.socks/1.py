@@ -36,52 +36,21 @@ def main():
         rows = f.readlines()
         rows = [r.rstrip() for r in rows]
 
-    print(rows)
-    n = int(rows[0])
-    m = int(rows[1])
+    A, B, C, D = int(rows[0]), int(rows[1]), int(rows[2]), int(rows[3])
 
-    xs = list(map(int,rows[2].split()))
-    bs = list(map(int,rows[3].split()))
-    ax = [10] * n
+    M, N = 0, 0
 
-    print('n :', n)
-    print('m :', m)
-    print('xs :', xs)
-    print('bs :', bs)
-
-    alphabet = 'abcdefghijklmnopqrstuvw'
-    test_pass = 'vaja'
-    enc_pass = []
-    for c in test_pass:
-        for i, a in enumerate(alphabet):
-            if a == c:
-                enc_pass.append(i+1)
-                break
+    if A>0 and B>0 and C > 0 and D > 0:
+        if A < B and C < D or A > B and C > D:
+            M = min(A,B)+1
+            N = min(C,D)+1
+        elif A < B and C > D or A > B and C < D:
+            pass
+    elif A == 0 or B == 0 or  C == 0 or D == 0:
+        M, N = 1,1
+       
     
-    print('enc_pass :', enc_pass)
-
-    ax = enc_pass
-
-    _bs = []
-    for j in range(len(bs)):
-        bi = 0
-        for i in range(1, n+1):
-            bi += xs[j] ** (i-1) * ax[i-1]
-
-        bi = bi%23
-        _bs.append(bi)
-
-    
-    print('_bs :', _bs)
-    print('bs  :',  bs)
-
-    comp = []
-    for i in range(m):
-        comp.append(_bs[i] == bs[i])
-
-
-    all_equal = all(comp)
-    print(all_equal)
-
+    print(f'{M} {N}')
+   
 if __name__ == '__main__':
     main()

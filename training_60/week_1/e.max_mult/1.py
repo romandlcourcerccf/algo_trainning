@@ -30,58 +30,41 @@ def main():
 
     import os
     dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '1.txt')
+    filename = os.path.join(dname, '3.txt')
     
     with open(filename, 'r') as f:
         rows = f.readlines()
-        rows = [r.rstrip() for r in rows]
+       
+    mumbers = list(map(int,rows[0].split()))
 
-    print(rows)
-    n = int(rows[0])
-    m = int(rows[1])
+    max1, max2 = float('-inf'), float('-inf')
+    min1, min2 = float('inf'), float('inf')
 
-    xs = list(map(int,rows[2].split()))
-    bs = list(map(int,rows[3].split()))
-    ax = [10] * n
+    for n in mumbers:
 
-    print('n :', n)
-    print('m :', m)
-    print('xs :', xs)
-    print('bs :', bs)
+        if n > max1:
+            max1 = max2
+            max2 = n
+        elif n > max2:
+            max2 = n
+            
 
-    alphabet = 'abcdefghijklmnopqrstuvw'
-    test_pass = 'vaja'
-    enc_pass = []
-    for c in test_pass:
-        for i, a in enumerate(alphabet):
-            if a == c:
-                enc_pass.append(i+1)
-                break
+        if n < min1:
+            min1 = min2
+            min2 = n
+        elif n < min2:
+            min2 = n
+
+    if max1 * max2 > min1 * min2:
+        if max1 > max2:
+            print(f'{max1}  {max2}')
+        else:
+            print(f'{max2}  {max1}')
+    else:
+        if min1 > min2:
+            print(f'{min1}  {min2}')
+        else:
+            print(f'{min2}  {min1}')
     
-    print('enc_pass :', enc_pass)
-
-    ax = enc_pass
-
-    _bs = []
-    for j in range(len(bs)):
-        bi = 0
-        for i in range(1, n+1):
-            bi += xs[j] ** (i-1) * ax[i-1]
-
-        bi = bi%23
-        _bs.append(bi)
-
-    
-    print('_bs :', _bs)
-    print('bs  :',  bs)
-
-    comp = []
-    for i in range(m):
-        comp.append(_bs[i] == bs[i])
-
-
-    all_equal = all(comp)
-    print(all_equal)
-
 if __name__ == '__main__':
     main()
