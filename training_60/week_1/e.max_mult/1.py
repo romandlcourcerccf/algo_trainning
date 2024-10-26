@@ -30,7 +30,7 @@ def main():
 
     import os
     dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '3.txt')
+    filename = os.path.join(dname, '7.txt')
     
     with open(filename, 'r') as f:
         rows = f.readlines()
