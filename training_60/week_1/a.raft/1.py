@@ -17,7 +17,7 @@ def main():
    
     x1, y1, x2, y2, x, y = int(rows[0]), int(rows[1]), int(rows[2]), int(rows[3]), int(rows[4]), int(rows[5])
 
-    print(f'x1 : {x1}, y1 : {y1}, x2 : {x2}, y2 : {y2}, x : {x}, y : {y}')
+    # print(f'x1 : {x1}, y1 : {y1}, x2 : {x2}, y2 : {y2}, x : {x}, y : {y}')
 
     res = ''
 

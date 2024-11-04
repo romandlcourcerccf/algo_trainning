@@ -42,7 +42,7 @@ def main():
 
     if A>0 and B>0 and C > 0 and D > 0:
         if A < B and C < D or A > B and C > D:
-            M = min(A,B)+1
+            M = min(A,B)+1  
             N = min(C,D)+1
         elif A < B and C > D or A > B and C < D:
             if max(A,B)+1 + min(C, D)+1 < min(A,B)+1 + max(C, D)+1:
