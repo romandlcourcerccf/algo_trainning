@@ -122,6 +122,12 @@ def merge_sorted_seq():
 
         return res
     
+    def merge2(seq1, seq2):
+        res = [0] * (len(seq1) + len(seq2))
+        first1 = first2 = 0
+        
+
+    
     seq1, seq2 = [1,3,5], [2,4,7]
 
     print(merge(seq1, seq2))

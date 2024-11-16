@@ -3,16 +3,16 @@ from collections import deque
 
 def main():
    
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    import os
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '1.txt')
+    # import os
+    # dname = os.path.dirname(__file__)
+    # filename = os.path.join(dname, '1.txt')
    
-    with open(filename, 'r') as f:
-        rows = f.readlines()
+    # with open(filename, 'r') as f:
+    #     rows = f.readlines()
 
-    n, k  = list(map(int, rows[0].split()))
+    _, k  = list(map(int, rows[0].split()))
     munbers = list(map(int, rows[1].split()))
 
 
