@@ -11,7 +11,7 @@ def main():
 
     import os
     dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '35.txt')
+    filename = os.path.join(dname, '1.txt')
    
     with open(filename, 'r') as f:
         rows = f.readlines()
@@ -37,7 +37,7 @@ def main():
                     hierachy[k].remove(root)
             
         else:
-            price = 1 + dfs( min(hierachy[root]))
+            price = 1 + dfs(min(hierachy[root]))
            
         bonuses[root-1] += price
 
