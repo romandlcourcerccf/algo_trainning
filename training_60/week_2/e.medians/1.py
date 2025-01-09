@@ -23,7 +23,6 @@ def main():
     else:
         l,r = int(len(nums)/2), int(len(nums)/2)-1
 
-    
     while len(nums[:l]) + len(nums[r:]) > 0:
         print('nums :', nums[:l]+nums[r:])
         print('res :',res)
