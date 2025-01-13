@@ -19,55 +19,30 @@ def main():
     days.sort()
     print(f'days : {days}')
 
-    counter = 0
-    _c = 0
-    while len(days) > 0: 
-        print('days :', days)
-        _c +=1
-        if _c > 10:
-             break
+    groups_count = 0
+
+    while len(days) > 0 and abs(days[0] - days[-1]) > k:
         l,r = 0, len(days)-1
-        
-        if abs(days[l]-days[r]) < k:
-            counter +=1
-            break
-        
-        jobs_done = set()
-        __c = 0
-        while abs(days[l]-days[r]) >= k:
-           
-            __c +=1
-            if __c > 10:
-                 break
-            jobs_done.add(days[l])
-            jobs_done.add(days[r])
-
-            _l, _r = l, r
-
-            print(f'1:  _l, _r {_l},{_r}')
-
-            while abs(days[_l] - days[l]) < k and _l >= len(days)-1:
-                   _l +=1
+        group = set()
+        while l<r and abs(days[l] - days[r]) > k:
+            group.add(days[l])
+            group.add(days[r])
+            _l, _r = l,r
+            while abs(days[l]-days[_l]) and _l < _r  <= k:
+                _l +=1
+            while abs(days[r]-days[_r])  and _l < _r <= k:
+                _r +=1
             
-            while abs(days[_r] - days[r]) < k and _r <= 0:
-                   _r -=1
+            l,r = _l, _r
 
-            if l > r:
-                 break
-            
+        print(group)
         
-            print(f'2:  _l, _r {_l},{_r}')
-            l, r = _l, _r 
 
-        print('jobs_done :', jobs_done)
-        if not jobs_done:
-             break
-        
-        days  = set(days) - jobs_done
-        days = list(days)
-        counter +=1
+    if len(days) > 0:
+        groups_count +=1
 
-    print('>>', counter)
+    return groups_count
+
 
 if __name__ == '__main__':
     main()
