@@ -7,31 +7,42 @@ def main():
 
     import os
     dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '1.txt')
+    filename = os.path.join(dname, '2.txt')
    
     with open(filename, 'r') as f:
         rows = f.readlines()
 
-    _,dist = map(int,rows[0].split())
-    print(dist)
-    nums = list(map(int,rows[1].split()))
-    print(nums)
-    nums.sort()
+    n,k = tuple(map(int, rows[0].split()))
+    days = list(map(int, rows[1].split()))
 
-    result = []
+    print(f'n : {n} k {k}')
+    days.sort()
+    print(f'days : {days}')
 
-    cur_part = []
-    l, r = 0, len(nums)
-    while l <= r:
-        if abs(nums[l]-nums[r]) > dist:
+    groups_count = 0
+
+    while len(days) > 0 and abs(days[0] - days[-1]) > k:
+        l,r = 0, len(days)-1
+        group = set()
+        while l<r and abs(days[l] - days[r]) > k:
+            group.add(days[l])
+            group.add(days[r])
+            _l, _r = l,r
+            while abs(days[l]-days[_l]) and _l < _r  <= k:
+                _l +=1
+            while abs(days[r]-days[_r])  and _l < _r <= k:
+                _r +=1
             
-            
+            l,r = _l, _r
 
-    
-    # 4 2 1
+        print(group)
+        
 
+    if len(days) > 0:
+        groups_count +=1
 
-    print(len(result))
+    return groups_count
+
 
 if __name__ == '__main__':
     main()
