@@ -16,44 +16,59 @@ def main():
     with open(filename, 'r') as f:
         rows = f.readlines()
     
-    hierachy = defaultdict(list)
+    tree = defaultdict(set)
   
-   
+    mirrored_tree =  defaultdict(set)
+
+    adges_list = []
     for row in rows[1:]:
-        row = row.split()
-        print('row :', row)
-       
-        if int(row[1]) in hierachy:
-            hierachy[int(row[1])].append(int(row[0]))
-        else:
-            hierachy[int(row[0])].append(int(row[1]))
+        row[0], row[1] = row.split()
+        adges_list.append((row[0], row[1]))
     
+    while adges_list:
+        adge = adges_list.pop()
+        print(adge)
+        if adge[0] not in tree and adge[1] not in mirrored_tree:
+            adges_list.append(adge)
+            continue
+        el
+        
+    
+    for row in rows[1:]:
+        row[0], row[1] = row.split()
+        if row[0] == 1:
+            tree[row[0]].add(row[1])
+            mirrored_tree[[1]].add(row[0])
+        else:
+            if row[0] in 
+        
+
     # print(hierachy)
 
-    res = {}
+    # res = {}
 
-    def dfs(root):
+    # def dfs(root):
 
-        print(f'-->{root}')
+    #     print(f'-->{root}')
         
-        if root not in hierachy:
-            res[root] = 1
-            return 1
+    #     if root not in hierachy:
+    #         res[root] = 1
+    #         return 1
         
-        # print(f'-->{root}')
+    #     # print(f'-->{root}')
 
-        _vert_sum = sum([dfs(c) for c in hierachy[root]]) + 1
+    #     _vert_sum = sum([dfs(c) for c in hierachy[root]]) + 1
 
-        res[root] = _vert_sum
+    #     res[root] = _vert_sum
 
-        return _vert_sum
+    #     return _vert_sum
 
-    dfs(1)
+    # dfs(1)
 
-    vertices = sorted(list(res.keys()))
-    depth = [str(res[v]) for v in vertices]
+    # vertices = sorted(list(res.keys()))
+    # depth = [str(res[v]) for v in vertices]
 
-    print(' '.join(depth))
+    # print(' '.join(depth))
 
 if __name__ == '__main__':
     main()

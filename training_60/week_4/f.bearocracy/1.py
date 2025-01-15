@@ -37,7 +37,7 @@ def main():
                     hierachy[k].remove(root)
             
         else:
-            price = 1 + dfs( min(hierachy[root]))
+            price = 1 + dfs(min(hierachy[root]))
            
         bonuses[root-1] += price
 

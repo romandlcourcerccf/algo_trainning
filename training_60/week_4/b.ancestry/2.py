@@ -7,14 +7,14 @@ sys.setrecursionlimit(100000)
 
 def main():
    
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    import os
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '2.txt')
+    # import os
+    # dname = os.path.dirname(__file__)
+    # filename = os.path.join(dname, '2.txt')
    
-    with open(filename, 'r') as f:
-        rows = f.readlines()
+    # with open(filename, 'r') as f:
+    #     rows = f.readlines()
     
     hierachy = defaultdict(list)
     nodes_set = set()

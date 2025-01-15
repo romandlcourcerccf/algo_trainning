@@ -19,14 +19,14 @@ import sys
 
 def main():
    
-    # row = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    import os
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '3.txt')
+    # import os
+    # dname = os.path.dirname(__file__)
+    # filename = os.path.join(dname, '3.txt')
    
-    with open(filename, 'r') as f:
-        rows = f.readlines()
+    # with open(filename, 'r') as f:
+    #     rows = f.readlines()
     
     hierachy = {}
     nodes_set = set()
@@ -52,7 +52,6 @@ def main():
         res.append((node,depth))
 
     res.sort(key=lambda x: x[0])
-    # print(res)
     
     for r in res:
         print(f'{r[0]} {r[1]}')

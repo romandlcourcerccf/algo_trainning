@@ -7,14 +7,14 @@ sys.setrecursionlimit(100000)
 
 def main():
    
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    import os
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '2.txt')
+    # import os
+    # dname = os.path.dirname(__file__)
+    # filename = os.path.join(dname, '2.txt')
    
-    with open(filename, 'r') as f:
-        rows = f.readlines()
+    # with open(filename, 'r') as f:
+    #     rows = f.readlines()
     
     tree = defaultdict(set)
     result = defaultdict(int)
@@ -31,8 +31,6 @@ def main():
         result[root] = parent_number + 1
         return parent_number + 1
 
-    # vertices = list(range(1, int(rows[0])+1))
- 
     for row in rows[1:]:
         row = row.split()
         _start_node = int(row[0])
@@ -41,9 +39,6 @@ def main():
         tree[_start_node].add(_end_node)
         tree[_end_node].add(_start_node)
         
-
-    # print(tree)
-
     v  = set()
     v.add(1)
     dfs(1, v)

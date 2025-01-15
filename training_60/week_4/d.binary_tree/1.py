@@ -71,14 +71,14 @@ def print_tree(root, depth):
 
 def main():
    
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    import os
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '3.txt')
+    # import os
+    # dname = os.path.dirname(__file__)
+    # filename = os.path.join(dname, '3.txt')
    
-    with open(filename, 'r') as f:
-        rows = f.readlines()
+    # with open(filename, 'r') as f:
+    #     rows = f.readlines()
     
     for row in rows:
         row = row.split()
