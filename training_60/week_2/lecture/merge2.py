@@ -10,7 +10,7 @@ def merge(nums1: List[int], nums2: List[int]) -> List[int]:
 
     for k in range(len(nums1) + len(nums2)):
         print(f'f1 : {first1} f2 : {first2}')
-        if first1 != len(nums1) and first2 == len(nums2) or nums1[first1] < nums2[first2]:
+        if first1 != len(nums1) and first2 == len(nums2) or nums1[first1] <= nums2[first2]:
             merged[k] = nums1[first1]
             first1 +=1
         else:

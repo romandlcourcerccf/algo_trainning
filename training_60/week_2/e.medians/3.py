@@ -3,14 +3,14 @@ import os
 
 def main():
 
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
-    import os
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '2.txt')
+    # import os
+    # dname = os.path.dirname(__file__)
+    # filename = os.path.join(dname, '2.txt')
    
-    with open(filename, 'r') as f:
-        rows = f.readlines()
+    # with open(filename, 'r') as f:
+    #     rows = f.readlines()
 
     n = tuple(map(int, rows[0].split()))[0]
     nums = list(map(int, rows[1].split()))
