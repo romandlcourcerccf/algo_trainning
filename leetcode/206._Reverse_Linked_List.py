@@ -5,7 +5,6 @@
 #         self.next = next
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        
         cur = head
 
         if not cur:
@@ -21,14 +20,14 @@ class Solution:
             cur.next = prev
             prev = cur
             cur = tmp
-        
+
         # c=0
         # while prev:
         #     if c > 5:
         #         break
         #     c += 1
         #     print('>',prev.val)
-        #     prev = prev.next 
+        #     prev = prev.next
 
         # print('+')
         return prev
@@ -41,7 +40,6 @@ class Solution:
 #         self.next = next
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-
         if not head:
             return head
 
@@ -49,17 +47,12 @@ class Solution:
         nxt = cur.next
 
         while nxt:
-
-
             tmp = nxt.next
             nxt.next = cur
-        
+
             cur = nxt
             nxt = tmp
-        
-        head.next = None
-        
-        return cur
 
-        
-            
+        head.next = None
+
+        return cur

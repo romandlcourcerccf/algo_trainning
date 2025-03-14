@@ -1,51 +1,52 @@
 import sys
 from collections import defaultdict
 from typing import List
+
+
 def naive_check(row: int, col: int, square: List[str]) -> bool:
     hits = 0
-    symbols = ['X', 'O']
+    symbols = ["X", "O"]
 
     rows = len(square)
     cols = len(square[0])
 
-    if not (col+5 <= cols or row+5 <= rows):
-        return 
-    
+    if not (col + 5 <= cols or row + 5 <= rows):
+        return
+
     for s in symbols:
-        
-        if col+5 <= cols:
-            for c in range(col, col+5):
+        if col + 5 <= cols:
+            for c in range(col, col + 5):
                 is_full = True
-                for r in range(row, row+5):
+                for r in range(row, row + 5):
                     if square[r][c] != s:
                         is_full = False
                 if is_full:
-                    hits +=1
+                    hits += 1
 
-        if row+5 <= rows:
-            for r in range(row, row+5):
+        if row + 5 <= rows:
+            for r in range(row, row + 5):
                 is_full = True
-                for c in range(col, col+5):
+                for c in range(col, col + 5):
                     if square[r][c] != s:
                         is_full = False
                 if is_full:
-                    hits +=1
+                    hits += 1
 
-        if col+5 <= cols and row+5 <= rows:
+        if col + 5 <= cols and row + 5 <= rows:
             is_full = True
             for i in range(0, 5):
-                if square[row+i][col+i] != s:
+                if square[row + i][col + i] != s:
                     is_full = False
             if is_full:
-                    hits +=1
+                hits += 1
 
             is_full = True
             for i in range(0, 5):
-                if square[row+i][col+4-i] != s:
+                if square[row + i][col + 4 - i] != s:
                     is_full = False
-        
+
             if is_full:
-                hits +=1
+                hits += 1
 
     return hits > 0
 
@@ -74,27 +75,29 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
-    
+
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_2/444.tic_tac_toe/2.txt', 'r') as f:
+    with open(
+        "/Users/romanroman/projects/algo_trainning/code_run_2/444.tic_tac_toe/2.txt",
+        "r",
+    ) as f:
         rows = f.readlines()
 
     print(rows)
 
     dim = list(map(int, rows[0].split()))
-    
+
     square = []
 
     for i in range(1, len(rows)):
         square.append(rows[i])
 
     for i in range(len(square)):
-        print('>>',rows[i])
-    
-   
-if __name__ == '__main__':
+        print(">>", rows[i])
 
+
+if __name__ == "__main__":
     test_square = []
     # test_square.append('XXXXX.')
     # test_square.append('......')
@@ -104,7 +107,6 @@ if __name__ == '__main__':
     # test_square.append('X.O...')
     # test_square.append('..O...')
 
-
     # test_square.append('XXXXX.')
     # test_square.append('X.....')
     # test_square.append('.X....')
@@ -112,18 +114,17 @@ if __name__ == '__main__':
     # test_square.append('...X..')
     # test_square.append('....X.')
 
-
-    test_square.append('XXXXX.')
-    test_square.append('X....O')
-    test_square.append('.X..O.')
+    test_square.append("XXXXX.")
+    test_square.append("X....O")
+    test_square.append(".X..O.")
     # test_square.append('...O..')
     # test_square.append('..O...')
     # test_square.append('.O..X.')
 
-    print('rows :', len(test_square))
-    print('cols :', len(test_square[0]))
+    print("rows :", len(test_square))
+    print("cols :", len(test_square[0]))
 
-    print(naive_check(0,0, test_square))
+    print(naive_check(0, 0, test_square))
     # print(naive_check(1,1, test_square))
     # print(naive_check(1,1, test_square))
 

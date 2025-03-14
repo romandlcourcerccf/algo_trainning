@@ -25,11 +25,11 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
-    
+
     rows = []
-    rows.append('aaaza')
-    rows.append('aazzaa')
-    rows.append('azzza')
+    rows.append("aaaza")
+    rows.append("aazzaa")
+    rows.append("azzza")
 
     # rows = []
     # rows.append('xy')
@@ -43,31 +43,30 @@ def main():
             return 1, a
         else:
             return 0, b
-        
+
     def collapse(str, idx):
-        return str[0:idx]+str[idx+1:]
+        return str[0:idx] + str[idx + 1 :]
 
     def double(str, idx):
-        return str[0:idx]+str[idx]+str[idx:]
-        
+        return str[0:idx] + str[idx] + str[idx:]
+
     for i in range(0, min(len(rows[0]), len(rows[1]), len(rows[2]))):
         if rows[0][i] == rows[1][i] == rows[2][i]:
             continue
 
-        if i == len(rows[0])-1 or i == len(rows[1])-1 or i == len(rows[2])-1:
+        if i == len(rows[0]) - 1 or i == len(rows[1]) - 1 or i == len(rows[2]) - 1:
             break
-        
+
         min_index, max_smbl = get_min(rows[0], rows[1], rows[2])
 
-        
-        if i>0 and i<len(rows[min_index])-1  and \
-              rows[min_index][i-1] == rows[min_index][i] and \
-                  rows[min_index][i+1] == max_smbl:
-              
-              collapse(rows[min_index], i)
+        if (
+            i > 0
+            and i < len(rows[min_index]) - 1
+            and rows[min_index][i - 1] == rows[min_index][i]
+            and rows[min_index][i + 1] == max_smbl
+        ):
+            collapse(rows[min_index], i)
 
 
-        
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

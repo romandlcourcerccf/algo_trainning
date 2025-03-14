@@ -35,29 +35,35 @@ def main():
     # print('servers_info :',servers_info)
 
     servers_info = []
-    servers_info.append('3')
-    servers_info.append('10 100')
-    servers_info.append('30 10')
-    servers_info.append('60 2')
+    servers_info.append("3")
+    servers_info.append("10 100")
+    servers_info.append("30 10")
+    servers_info.append("60 2")
 
     probs = []
     for s_i in range(1, len(servers_info)):
         server_info = servers_info[s_i].split()
         server_info = [float(i) for i in server_info]
-        probs.append((server_info[0]/100.0, (server_info[0]/100.0) * (server_info[1]/100.0)))
+        probs.append(
+            (
+                server_info[0] / 100.0,
+                (server_info[0] / 100.0) * (server_info[1] / 100.0),
+            )
+        )
 
     res = []
     for i in range(len(probs)):
         si = probs[i][0] * probs[i][1]
         ss = 0
         for j in range(len(probs)):
-            print('>> j', j)
+            print(">> j", j)
             ss += probs[j][0] * probs[j][1]
-                
-        res.append(si/ss)
+
+        res.append(si / ss)
 
     for r in res:
         print(r)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

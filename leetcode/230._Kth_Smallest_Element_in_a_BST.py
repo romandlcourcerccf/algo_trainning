@@ -6,12 +6,11 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-
         path = []
 
         def dfs(root, path):
             if not root:
-                return 
+                return
 
             dfs(root.left, path)
             path.append(root.val)
@@ -20,4 +19,4 @@ class Solution:
         dfs(root, path)
         print(path)
 
-        return path[k-1]
+        return path[k - 1]

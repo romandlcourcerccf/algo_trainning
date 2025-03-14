@@ -1,8 +1,7 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        
-        op = {'(', '[', '{'}
-        comp = {'()', '[]', '{}'}
+        op = {"(", "[", "{"}
+        comp = {"()", "[]", "{}"}
 
         h = []
         for c in s:
@@ -12,11 +11,8 @@ class Solution:
                 if len(h) == 0:
                     return False
                 _c = h.pop()
-               
-                if _c+c not in comp:
+
+                if _c + c not in comp:
                     return False
 
         return len(h) == 0
-    
-
-   

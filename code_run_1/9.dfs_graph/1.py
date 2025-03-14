@@ -30,27 +30,23 @@ def main():
 
     rows = []
 
-    rows.append('4 5')
-    rows.append('2 2')
-    rows.append('3 4')
-    rows.append('2 3')
-    rows.append('1 3')
-    rows.append('2 4')
-    g = {} 
-    
-    
+    rows.append("4 5")
+    rows.append("2 2")
+    rows.append("3 4")
+    rows.append("2 3")
+    rows.append("1 3")
+    rows.append("2 4")
+    g = {}
+
     for r in rows:
-       
         if len(r) == 1:
             continue
         r = r.split()
         r = [int(i) for i in r]
 
-       
-        
         if r[0] not in g:
             g[r[0]] = []
-             
+
         g[r[0]].append(r[1])
 
         if r[1] not in g:
@@ -61,22 +57,21 @@ def main():
     res = set()
 
     def dfs(root):
-        print('root :',root)
-      
+        print("root :", root)
+
         res.add(root)
         if root in g:
             for c in g[root]:
                 if c not in res:
                     dfs(c)
-        
+
     dfs(1)
-    
+
     res = sorted(list(res))
     res = [str(i) for i in res]
     print(len(res))
-    print(' '.join(res))
-        
+    print(" ".join(res))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

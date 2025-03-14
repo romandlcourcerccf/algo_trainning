@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -28,27 +29,25 @@ def main():
     # rows = sys.stdin.readlines()
     # row = rows[0]
 
-
-    row = 'ABCABC A'
+    row = "ABCABC A"
     # row = 'AB A'
     # row = ' ABCABC A AB AB C A'
     # row = ' A BC AB     C A A   B A BC A'
     # row = '     A BC AB     C A A   B A BC A AAAAAAAAAAA    '
-    words = row.split(' ')
+    words = row.split(" ")
     pairs = defaultdict(int)
 
     for w in words:
         if len(w) >= 2:
             pos = 0
-            while pos < len(w)-1:
-                pairs[w[pos:pos+2]] +=1
-                pos +=1
-    
- 
+            while pos < len(w) - 1:
+                pairs[w[pos : pos + 2]] += 1
+                pos += 1
+
     sorted_pairs = dict(sorted(pairs.items(), key=lambda x: (-x[1], -ord(x[0][0]))))
 
     print(next(iter(sorted_pairs)))
-  
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

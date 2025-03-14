@@ -29,10 +29,11 @@ def main():
     # rows = sys.stdin.readlines()
 
     import os
+
     dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '4.txt')
-    
-    with open(filename, 'r') as f:
+    filename = os.path.join(dname, "4.txt")
+
+    with open(filename, "r") as f:
         rows = f.readlines()
         rows = [r.rstrip() for r in rows]
 
@@ -40,48 +41,48 @@ def main():
 
     M, N = 0, 0
 
-    if A>0 and B>0 and C > 0 and D > 0:
+    if A > 0 and B > 0 and C > 0 and D > 0:
         if A < B and C < D or A > B and C > D:
-            M = min(A,B)+1  
-            N = min(C,D)+1
+            M = min(A, B) + 1
+            N = min(C, D) + 1
         elif A < B and C > D or A > B and C < D:
-            if max(A,B)+1 + min(C, D)+1 < min(A,B)+1 + max(C, D)+1:
-                M, N = max(A,B)+1, min(C, D)+1 
+            if max(A, B) + 1 + min(C, D) + 1 < min(A, B) + 1 + max(C, D) + 1:
+                M, N = max(A, B) + 1, min(C, D) + 1
             else:
-                M, N = min(A,B)+1, max(C, D)+1 
+                M, N = min(A, B) + 1, max(C, D) + 1
 
-    elif A == 0 or B == 0 or  C == 0 or D == 0:
-        if A == 0 and C == 0 or  B == 0 and D == 0:
-            M, N = 1,1
+    elif A == 0 or B == 0 or C == 0 or D == 0:
+        if A == 0 and C == 0 or B == 0 and D == 0:
+            M, N = 1, 1
         elif A == 0 and C != 0:
             M = 1
             if C > D:
-                N = C+1
+                N = C + 1
             else:
-                 N = D+1
-        elif  B == 0 and D != 0:
-             M = 1
-             if C > D:
-                 N = D+1
-             else:
-                 N = C+1
+                N = D + 1
+        elif B == 0 and D != 0:
+            M = 1
+            if C > D:
+                N = D + 1
+            else:
+                N = C + 1
 
         elif A != 0 and C == 0:
             N = 1
             if B > A:
-                M = A+1
+                M = A + 1
             else:
-                M = B+1
+                M = B + 1
 
         elif B != 0 and D == 0:
             N = 1
             if B > A:
-                M = B+1
+                M = B + 1
             else:
-                M = A+1
+                M = A + 1
+
+    print(f"{M} {N}")
 
 
-    print(f'{M} {N}')
-   
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

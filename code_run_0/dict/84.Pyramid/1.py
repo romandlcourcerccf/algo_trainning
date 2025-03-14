@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -32,28 +33,27 @@ def main():
     #     rows = f.readlines()
 
     h = defaultdict(list)
-    
+
     for r in range(1, len(rows)):
         r = list(map(int, rows[r].split()))
         h[r[0]].append(r)
-    
+
     for k, v in h.items():
         v.sort(key=lambda x: x[1])
 
     widths = list(h.keys())
     widths.sort()
-    
+
     total_heighth = 0
-    
+
     while widths:
         max_width = widths.pop()
         # print('max_width :', max_width)
         # print(h[max_width])
         total_heighth += h[max_width].pop()[1]
-   
+
     print(total_heighth)
-    
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

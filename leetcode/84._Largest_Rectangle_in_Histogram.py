@@ -3,7 +3,7 @@ class Solution:
         max_area = 0
         st = []
 
-        for i,h in enumerate(heights):
+        for i, h in enumerate(heights):
             start = i
             while st and st[-1][1] > h:
                 index, height = st.pop()
@@ -11,7 +11,7 @@ class Solution:
                 start = index
             st.append((start, h))
 
-        for i,h in st:
-            max_area = max(max_area, h * (len(heights)-i))
+        for i, h in st:
+            max_area = max(max_area, h * (len(heights) - i))
 
         return max_area

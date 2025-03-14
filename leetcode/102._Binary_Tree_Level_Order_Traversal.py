@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -8,21 +9,20 @@ from collections import defaultdict
 #         self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        
         orders = defaultdict(list)
 
         def dfs(root, level):
             if not root:
                 return
-            
+
             orders[level].append(root.val)
 
             if root.left:
-                dfs(root.left, level+1)
+                dfs(root.left, level + 1)
 
             if root.right:
-                dfs(root.right, level+1)
+                dfs(root.right, level + 1)
 
         dfs(root, 0)
-        
+
         return list(orders.values())

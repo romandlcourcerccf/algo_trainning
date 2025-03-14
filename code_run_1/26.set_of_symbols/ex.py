@@ -1,2 +1,2 @@
-s = 'qwqweqw'
-print(s.split(''))
+s = "qwqweqw"
+print(s.split(""))

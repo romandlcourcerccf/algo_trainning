@@ -32,11 +32,11 @@ def main():
     #     rows = f.readlines()
 
     a = list(map(int, rows[0].split()))
-    b =  list(map(int, rows[1].split()))
+    b = list(map(int, rows[1].split()))
 
     a.sort()
     b.sort()
-   
+
     res = []
 
     p1, p2 = 0, 0
@@ -44,15 +44,15 @@ def main():
     while p1 != len(a) and p2 != len(b):
         if a[p1] == b[p2]:
             res.append(a[p1])
-            p1+=1
-            p2+=1
+            p1 += 1
+            p2 += 1
         elif a[p1] < b[p2]:
-            p1+=1
+            p1 += 1
         else:
-            p2+=1
-    
-    print(' '.join(list(map(str, res))))
-        
+            p2 += 1
 
-if __name__ == '__main__':
+    print(" ".join(list(map(str, res))))
+
+
+if __name__ == "__main__":
     main()

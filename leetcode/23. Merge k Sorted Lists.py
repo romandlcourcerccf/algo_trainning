@@ -5,7 +5,6 @@
 #         self.next = next
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        
         res = []
 
         lns = []
@@ -17,11 +16,11 @@ class Solution:
             for i in range(len(lists)):
                 if lns[i] > 0:
                     tmp = lists[i].pop()
-                    lns[i] -=1
+                    lns[i] -= 1
                 else:
                     del lns[i]
                     del lists[i]
-            
+
             res += sorted(tmp)
 
         return res

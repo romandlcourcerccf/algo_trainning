@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -27,26 +28,27 @@ def main():
     """
 
     # Если можно, подскажи в какую сторону мыслить в задаче 20.
-    # Гистограмма и прямоугольник. 
+    # Гистограмма и прямоугольник.
     # По тегам указано stack и linearSearch,
-    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек 
-    # если пустой или высота больше вершины стека, 
+    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек
+    # если пустой или высота больше вершины стека,
     # иначе если меньше,
     # то вычислю площадь и удаляю индексы из стека попутно проверяя пуст ли стек
     # и высота вершины больше текущей.
     # Вроде линейно должно быть.
-    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые, 
+    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые,
     # по которым алгоритм не работает((( Буду признателен за совет!
-                                      
-    # rows = sys.stdin.readlines()
- 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/graph_theory/357.substring_graph/3.txt', 'r') as f:
-        rows = f.readlines()
-    
-    rows = [r.strip() for r in rows]
- 
- 
-    
 
-if __name__ == '__main__':
+    # rows = sys.stdin.readlines()
+
+    with open(
+        "/Users/romanroman/projects/algo_trainning/code_run_0/graph_theory/357.substring_graph/3.txt",
+        "r",
+    ) as f:
+        rows = f.readlines()
+
+    rows = [r.strip() for r in rows]
+
+
+if __name__ == "__main__":
     main()

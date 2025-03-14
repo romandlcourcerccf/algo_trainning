@@ -1,11 +1,13 @@
-from heapq import(heappop, heappush)
+from heapq import heappop, heappush
 
 
 h = []
 
-class Node():
+
+class Node:
     def __init__(self, val: int = 0):
         self.val = val
+
 
 node1 = Node(0)
 node2 = Node(1)
@@ -17,4 +19,3 @@ heappush(h, (node1.val, node1))
 heappush(h, (node2.val, node2))
 
 print(heappop(h)[0])
-

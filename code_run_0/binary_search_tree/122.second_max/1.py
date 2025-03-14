@@ -2,15 +2,15 @@ import sys
 from queue import Queue
 from typing import List
 
-class TreeNode:
 
+class TreeNode:
     def __init__(self, val: int, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
+
 def fill_up(root, val):
-     
     if val < root.val:
         if root.left:
             fill_up(root.left, val)
@@ -24,15 +24,15 @@ def fill_up(root, val):
             root.right = TreeNode(val)
             return
 
-    
-def dfs(root : TreeNode, path : List[int]):
 
+def dfs(root: TreeNode, path: List[int]):
     if not root:
         return
 
     dfs(root.left, path)
     path.append(root.val)
     dfs(root.right, path)
+
 
 def main():
     """
@@ -66,17 +66,17 @@ def main():
 
     numbers = list(map(int, rows[0].split()))
     root = None
-    for i in range(len(numbers)-1):
+    for i in range(len(numbers) - 1):
         if i == 0:
             root = TreeNode(val=numbers[i])
         else:
             fill_up(root=root, val=numbers[i])
-    
 
     path = []
     dfs(root, path)
 
     print(path[-2])
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

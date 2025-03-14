@@ -1,6 +1,7 @@
 import sys
 from collections import Counter
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -30,7 +31,6 @@ def main():
     # with open('/Users/romanroman/projects/algo_trainning/code_run_2/449.Combo/1.txt', 'r') as f:
     #     rows = f.readlines()
 
-    
     goods = list(map(int, rows[1].split()))
     combo_price = int(rows[2])
     combo = list(map(int, rows[3].split()))
@@ -45,9 +45,8 @@ def main():
     # print(purchase)
 
     total_prise = 0
-   
+
     while sum(purchase.values()) > 0:
-      
         # print('before: ')
         # print(purchase)
 
@@ -56,34 +55,31 @@ def main():
         for c in combo:
             if c in purchase and purchase[c] > 0:
                 _in_combo.append(c)
-            
+
             if c not in purchase and purchase[c] > 0:
                 _not_in_combo.append()
-        
+
         # print('_in_combo     :', _in_combo)
         # print('_not_in_combo :', _not_in_combo)
-        
+
         if _in_combo:
             _pure_price = 0
             for c in _in_combo:
-                _pure_price += goods[c-1]
-        
+                _pure_price += goods[c - 1]
+
             # print('_pure_price :', _pure_price)
 
             total_prise += min(_pure_price, combo_price)
 
             for c in _in_combo:
-                purchase[c] -=1
+                purchase[c] -= 1
         else:
-
             _prise = 0
             for ps, num in purchase.items():
-                _prise += goods[ps-1] * num
+                _prise += goods[ps - 1] * num
                 purchase[ps] -= num
-            
+
             total_prise += _prise
-
-
 
         # print('after: ')
         # print(purchase)
@@ -91,5 +87,6 @@ def main():
 
     print(total_prise)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

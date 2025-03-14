@@ -25,7 +25,7 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
-    
+
     import sys
 
 
@@ -55,23 +55,23 @@ def main():
     """
 
     rows = []
-    rows.append('3 5')
+    rows.append("3 5")
     # rows.append('1 1 0 0 0')
     # rows.append('1 1 1 1 1')
     # rows.append('0 0 0 1 1')
 
-    rows.append('1 1 1 1 0')
-    rows.append('1 1 0 1 1')
-    rows.append('1 1 1 1 1')
+    rows.append("1 1 1 1 0")
+    rows.append("1 1 0 1 1")
+    rows.append("1 1 1 1 1")
 
-    dim =list(map(int, rows[0].split()))
+    dim = list(map(int, rows[0].split()))
 
-    rows_num, cols_num = dim[0], dim[1] 
-    print('cols :',cols_num)
-    print('rows :',rows_num)
+    rows_num, cols_num = dim[0], dim[1]
+    print("cols :", cols_num)
+    print("rows :", rows_num)
 
     arr = []
-    for i in range(1, rows_num+1):
+    for i in range(1, rows_num + 1):
         arr.append(list(map(int, rows[i].split())))
 
     print(arr)
@@ -80,37 +80,36 @@ def main():
         for r in arr:
             print(r)
 
-    max_site = float('-inf')
+    max_site = float("-inf")
     for row in range(rows_num):
         for col in range(cols_num):
-            
             if arr[row][col] == 1:
-                print(f'row: {row} col {col}')
-                
+                print(f"row: {row} col {col}")
+
                 clear = True
                 site = 1
-                
-                print('before')
+
+                print("before")
                 _print_arr(arr)
 
-                for i in range(0, site+1):
-                    arr[row+i][col+site] = 2
-                    print('i :',i)
-                
-                for i in range(0, site+1):
-                    arr[row+site][col+i] = 2
-                    print('i :',i)
+                for i in range(0, site + 1):
+                    arr[row + i][col + site] = 2
+                    print("i :", i)
+
+                for i in range(0, site + 1):
+                    arr[row + site][col + i] = 2
+                    print("i :", i)
 
                 # while clear and site < min(rows_num-row, cols_num-col):
                 #     print('site :',site)
                 #     for i in range(0, site):
                 #         if arr[row+i][col+site] == 1:
                 #             arr[row+i][col+site] = 2
-                            
+
                 #         elif arr[row+i][col+site] == 0:
                 #             clear = False
                 #             break
-                    
+
                 #     # for i in range(0, site):
                 #     #     if arr[row+site][col] != 1:
                 #     #         arr[row+site][col+i] = 2
@@ -118,18 +117,19 @@ def main():
                 #     #         break
                 #     if clear:
                 #         site +=1
-            
-                print('afrer')
+
+                print("afrer")
                 _print_arr(arr)
 
                 max_site = max(max_site, site)
             break
 
-    print('max_site =', max_site)
+    print("max_site =", max_site)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

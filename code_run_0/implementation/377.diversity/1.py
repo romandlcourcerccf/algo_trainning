@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -27,33 +28,32 @@ def main():
     """
 
     # Если можно, подскажи в какую сторону мыслить в задаче 20.
-    # Гистограмма и прямоугольник. 
+    # Гистограмма и прямоугольник.
     # По тегам указано stack и linearSearch,
-    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек 
-    # если пустой или высота больше вершины стека, 
+    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек
+    # если пустой или высота больше вершины стека,
     # иначе если меньше,
     # то вычислю площадь и удаляю индексы из стека попутно проверяя пуст ли стек
     # и высота вершины больше текущей.
     # Вроде линейно должно быть.
-    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые, 
+    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые,
     # по которым алгоритм не работает((( Буду признателен за совет!
-                                      
+
     rows = sys.stdin.readlines()
 
     # with open('/Users/romanroman/projects/algo_trainning/code_run_0/backend/377.diversity/1.txt', 'r') as f:
     #     rows = f.readlines()
 
-    
     positions = list(map(int, rows[-1].split()))
     positions_map = {}
     categories_map = defaultdict(list)
 
     for i in range(len(positions)):
-       positions_map[positions[i]] = i
+        positions_map[positions[i]] = i
 
     # print(positions_map)
 
-    for i in range(1, len(rows)-1):
+    for i in range(1, len(rows) - 1):
         r = list(map(int, rows[i].split()))
         categories_map[r[1]].append(positions_map[r[0]])
 
@@ -67,19 +67,18 @@ def main():
         lens.append(len(pos))
 
     if max(lens) == 1:
-        print(len(rows)-2)
+        print(len(rows) - 2)
         return
 
-
     for cat, pos in categories_map.items():
+        min_diff = float("inf")
+        for i in range(0, len(pos) - 1):
+            min_diff = min(min_diff, pos[1] - pos[0])
 
-        min_diff = float('inf')
-        for i in range(0, len(pos)-1):
-            min_diff = min(min_diff, pos[1]-pos[0])
-        
         mininums.append(min_diff)
 
     print(min(mininums))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

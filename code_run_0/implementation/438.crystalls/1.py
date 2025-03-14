@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -27,51 +28,55 @@ def main():
     """
 
     # Если можно, подскажи в какую сторону мыслить в задаче 20.
-    # Гистограмма и прямоугольник. 
+    # Гистограмма и прямоугольник.
     # По тегам указано stack и linearSearch,
-    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек 
-    # если пустой или высота больше вершины стека, 
+    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек
+    # если пустой или высота больше вершины стека,
     # иначе если меньше,
     # то вычислю площадь и удаляю индексы из стека попутно проверяя пуст ли стек
     # и высота вершины больше текущей.
     # Вроде линейно должно быть.
-    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые, 
+    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые,
     # по которым алгоритм не работает((( Буду признателен за совет!
-                                      
+
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/implementation/438.crystalls/1.txt', 'r') as f:
+    with open(
+        "/Users/romanroman/projects/algo_trainning/code_run_0/implementation/438.crystalls/1.txt",
+        "r",
+    ) as f:
         rows = f.readlines()
         rows = [r.rstrip() for r in rows]
 
-    
     crystalls = rows
 
-    print('crystalls', crystalls)
+    print("crystalls", crystalls)
 
-    p1, p2, p3 = 0,0,0
+    p1, p2, p3 = 0, 0, 0
 
-   
-
-    while p1 != len(crystalls[0])-1 and p2 != len(crystalls[1])-1 and p3 != len(crystalls[1])-1:
+    while (
+        p1 != len(crystalls[0]) - 1
+        and p2 != len(crystalls[1]) - 1
+        and p3 != len(crystalls[1]) - 1
+    ):
         if crystalls[0][p1] == crystalls[1][p2] == crystalls[2][p3]:
-            p1+=1
-            p2+=1
-            p3+=1
+            p1 += 1
+            p2 += 1
+            p3 += 1
 
         else:
-            print(f'p1 {p1} {crystalls[0][p1]}')
-            print(f'p2 {p2} {crystalls[1][p2]}')
-            print(f'p3 {p3} {crystalls[2][p3]}')
+            print(f"p1 {p1} {crystalls[0][p1]}")
+            print(f"p2 {p2} {crystalls[1][p2]}")
+            print(f"p3 {p3} {crystalls[2][p3]}")
 
             h = defaultdict(int)
 
-            h[crystalls[0][p1]]+=1
-            h[crystalls[1][p2]]+=1
-            h[crystalls[2][p3]]+=1
+            h[crystalls[0][p1]] += 1
+            h[crystalls[1][p2]] += 1
+            h[crystalls[2][p3]] += 1
 
-            max_smb = ''
-            max_pos = float('inf')
+            max_smb = ""
+            max_pos = float("inf")
 
             for i in range(h.keys()):
                 if h[h.keys()[i]] < max_pos:
@@ -79,5 +84,7 @@ def main():
                     max_smb = h.keys()[i]
 
             break
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     main()

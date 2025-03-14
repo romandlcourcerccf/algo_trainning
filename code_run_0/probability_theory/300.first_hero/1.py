@@ -1,5 +1,6 @@
 import sys
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -26,20 +27,23 @@ def main():
     """
 
     # Если можно, подскажи в какую сторону мыслить в задаче 20.
-    # Гистограмма и прямоугольник. 
+    # Гистограмма и прямоугольник.
     # По тегам указано stack и linearSearch,
-    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек 
-    # если пустой или высота больше вершины стека, 
+    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек
+    # если пустой или высота больше вершины стека,
     # иначе если меньше,
     # то вычислю площадь и удаляю индексы из стека попутно проверяя пуст ли стек
     # и высота вершины больше текущей.
     # Вроде линейно должно быть.
-    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые, 
+    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые,
     # по которым алгоритм не работает((( Буду признателен за совет!
-                                      
+
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/probability_theory/300.first_hero/2.txt', 'r') as f:
+    with open(
+        "/Users/romanroman/projects/algo_trainning/code_run_0/probability_theory/300.first_hero/2.txt",
+        "r",
+    ) as f:
         rows = f.readlines()
 
     intervals = rows[1]
@@ -47,17 +51,18 @@ def main():
 
     print(intervals)
 
-    for i in range(1,len(intervals)):
-        intervals[i] = intervals[i] + intervals[i-1]
+    for i in range(1, len(intervals)):
+        intervals[i] = intervals[i] + intervals[i - 1]
 
     print(intervals)
 
     for i in range(len(intervals)):
-        intervals[i] = intervals[i]/2.0
+        intervals[i] = intervals[i] / 2.0
 
     print(intervals)
 
-    print(f'{len(intervals)}/{int(sum(intervals))}')
+    print(f"{len(intervals)}/{int(sum(intervals))}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

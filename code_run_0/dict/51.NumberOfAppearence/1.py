@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -43,10 +44,11 @@ def main():
     for w in words:
         app_num.append(h[w])
         h[w] += 1
-    
+
     app_num = list(map(str, app_num))
 
-    print(' '.join(app_num))
-    
-if __name__ == '__main__':
+    print(" ".join(app_num))
+
+
+if __name__ == "__main__":
     main()

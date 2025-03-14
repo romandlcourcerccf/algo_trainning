@@ -37,11 +37,12 @@ def main():
     # print(numbers)
     pairs_count = 0
     for i in range(len(numbers)):
-        for j in range(i+1, len(numbers)):
-            if set(numbers[i]) &  set(numbers[j]):
-                pairs_count +=1
-                
+        for j in range(i + 1, len(numbers)):
+            if set(numbers[i]) & set(numbers[j]):
+                pairs_count += 1
+
     print(pairs_count)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

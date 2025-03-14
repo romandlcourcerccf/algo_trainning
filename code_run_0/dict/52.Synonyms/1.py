@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -37,11 +38,10 @@ def main():
     #     rows = f.readlines()
 
     h = defaultdict(str)
-    
-    
+
     word_to_search = rows[-1]
 
-    for i in range(1, len(rows)-1):
+    for i in range(1, len(rows) - 1):
         pair = rows[i].split()
         h[pair[1]] = pair[0]
         h[pair[0]] = pair[1]
@@ -51,5 +51,6 @@ def main():
     # print(word_to_search in h)
     print(h[word_to_search])
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

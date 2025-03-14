@@ -1,8 +1,8 @@
 # https://youtu.be/0YjdZlgf9Ig?t=3992
 
+
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-
         graph = [[] for _ in range(numCourses)]
 
         for p in prerequisites:
@@ -20,13 +20,12 @@ class Solution:
                 if v in gray:
                     nonlocal is_cycle
                     is_cycle = True
-                    return 
+                    return
                 if v not in black:
                     dfs(v)
             gray.remove(node)
             black.add(node)
-        
-                
+
         for v in range(len(graph)):
             if v not in black:
                 dfs(v)

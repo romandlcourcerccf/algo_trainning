@@ -1,6 +1,6 @@
-
 import sys
 from collections import defaultdict
+
 
 def main():
     """
@@ -28,29 +28,32 @@ def main():
     """
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_2/453.create_cycle/2.txt', 'r') as f:
+    with open(
+        "/Users/romanroman/projects/algo_trainning/code_run_2/453.create_cycle/2.txt",
+        "r",
+    ) as f:
         rows = f.readlines()
         for r in rows:
             r.rstrip()
 
-    
-    v_a  = list(map(int, rows[0].split()))
+    v_a = list(map(int, rows[0].split()))
     vertices = v_a[0]
     adges = v_a[1]
 
-    print('vertices :',vertices,'adges :', adges)
+    print("vertices :", vertices, "adges :", adges)
 
     p = vertices // 2
-    print('p :',p)
-
+    print("p :", p)
 
     graph = defaultdict(list)
     for i in range(1, len(rows)):
-        pair = list(map(int,rows[i].split()))
+        pair = list(map(int, rows[i].split()))
         s, f = pair[0], pair[1]
         graph[s].append(f)
         graph[f].append(s)
 
     print(graph)
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     main()

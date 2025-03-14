@@ -1,17 +1,18 @@
 import sys
 import os
 
-def main():
 
+def main():
     import os
+
     dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '1.txt')
-    with open(filename, 'r') as f:
+    filename = os.path.join(dname, "1.txt")
+    with open(filename, "r") as f:
         nums = f.readline()
 
     print(nums)
-    
-    # rows = sys.stdin.readlines() 
+
+    # rows = sys.stdin.readlines()
     # nums = rows[1]
     # nums = list(map(int, nums.split()))
     # pref_summ = [0]*(len(nums)+1)
@@ -23,8 +24,6 @@ def main():
 
     # print(' '.join(pref_summ[1:]))
 
-    
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-

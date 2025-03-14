@@ -4,24 +4,23 @@ from typing import List, Tuple
 
 
 class TreeNode:
-
     def __init__(self, val: int, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
+
 def fill_up(root, val: Tuple[int, int], depth: int, depths: List[int]):
-     
     if val[0] < root.val:
         if root.left:
-            fill_up(root.left, val, depth+1, depths)
+            fill_up(root.left, val, depth + 1, depths)
         else:
             root.left = TreeNode(val[0])
             depths[val[1]] = depth
             return
     elif val[0] > root.val:
         if root.right:
-            fill_up(root.right, val, depth+1, depths)
+            fill_up(root.right, val, depth + 1, depths)
         else:
             root.right = TreeNode(val[0])
             depths[val[1]] = depth
@@ -58,7 +57,6 @@ def main():
     # with open('/Users/romanroman/projects/algo_trainning/code_run_0/binary_search_tree/120.height/1.txt', 'r') as f:
     #     rows = f.readlines()
 
- 
     numbers = list(map(int, rows[0].split()))
     depths = [0] * (len(numbers))
 
@@ -69,12 +67,11 @@ def main():
             depths[0] = 1
         else:
             fill_up(root=root, val=(numbers[i], i), depth=2, depths=depths)
-    
+
     depths = depths[:-1]
     depths = list(map(str, depths))
-    print(' '.join(depths))
-    
-   
+    print(" ".join(depths))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
