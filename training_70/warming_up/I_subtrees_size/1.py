@@ -15,6 +15,7 @@ class Tree:
         self._dfs(root)
 
     def _dfs(self, root):
+
         nodes = 0
 
         for c in self._tree[root]:
@@ -44,15 +45,15 @@ class Tree:
 
 
 def main():
-    import os
 
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, "3.txt")
+    # import os
+    # dname = os.path.dirname(__file__)
+    # filename = os.path.join(dname, '3.txt')
 
-    with open(filename, "r") as f:
-        rows = f.readlines()
+    # with open(filename, 'r') as f:
+    #     rows = f.readlines()
 
-    # rows = sys.stdin.readlines()
+    rows = sys.stdin.readlines()
 
     _vertecis = defaultdict(int)
     _vertecis = set()

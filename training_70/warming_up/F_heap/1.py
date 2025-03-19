@@ -20,7 +20,7 @@ class Heap:
         res = self._heap[0]
         self._heap[0] = self._heap[-1]
         pos = 0
-        while pos*2+1 < len(self._heap)-1:
+        while pos * 2 + 1 < len(self._heap) - 1:
             min_son_index = pos * 2 + 1
             if self._heap[pos * 2 + 2] > self._heap[min_son_index]:
                 min_son_index = pos * 2 + 2
@@ -40,13 +40,15 @@ class Heap:
 
 def main():
     import os
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '1.txt')
 
-    with open(filename, 'r') as f:
+    dname = os.path.dirname(__file__)
+    filename = os.path.join(dname, "3.txt")
+
+    with open(filename, "r") as f:
         rows = f.readlines()
 
-   
+    # rows = sys.stdin.readlines()
+
     heap = Heap()
 
     for r in rows:
