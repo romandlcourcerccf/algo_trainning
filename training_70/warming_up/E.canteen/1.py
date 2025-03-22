@@ -20,19 +20,29 @@ def main():
     copouns = days
 
     dp = [[0] * copouns for i in range(days + 1)]
-
+    # dp = [[0] * days for i in range(days + 1)]
+    
     for copoun in range(1, copouns):
         dp[0][copoun] = float("inf")
 
-    for day in range(1, days + 1):
-        for copoun in range(copouns - 1):
+    for i in range(len(dp)):
+        print('>>', dp[i])
 
-            if prises[day - 1] > 100:
+    for day in range(1, days):
+        for copoun in range(copouns-1):
+
+            if prises[day-1] >= 100:
+
                 dp[day][copoun] = min(
-                    dp[day - 1][copoun + 1], dp[day - 1][copoun - 1] + prises[day - 1]
+                    dp[day - 1][copoun + 1],
+                    dp[day - 1][copoun - 1] + prises[day-1]
                 )
             else:
-                dp[day][copoun] = min(dp[day - 1][copoun + 1], prises[day - 1])
+                dp[day][copoun] = min(
+                    dp[day - 1][copoun + 1],
+                    dp[day - 1][copoun]  + prises[day-1]
+                )
+
 
     print(dp)
 

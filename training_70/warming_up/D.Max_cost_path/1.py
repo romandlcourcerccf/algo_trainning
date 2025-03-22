@@ -6,8 +6,8 @@ def main():
 
     dname = os.path.dirname(__file__)
 
-    filename = os.path.join(dname, "input.txt")
-    filename = os.path.join(dname, "5.txt")
+    # filename = os.path.join(dname, "input.txt")
+    filename = os.path.join(dname, "10.txt")
 
     with open(filename, "r") as f:
         lines = f.readlines()
@@ -17,7 +17,9 @@ def main():
 
     dim = lines[0].split()
     rows, cols = int(dim[0]), int(dim[1])
-
+    if rows == 0 and cols == 0:
+        return
+    
     dp.append([0] * (cols + 1))
     for row in lines[1:]:
         dp.append([0] * (len(row.split()) + 1))
@@ -41,8 +43,8 @@ def main():
             track.append("R")
 
     track = track[:-1][::-1]
-    print(dp[rows][cols])
 
+    print(dp[rows][cols])
     print(*track)
 
 
