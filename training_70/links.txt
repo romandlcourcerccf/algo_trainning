@@ -1,0 +1,27 @@
+
+https://education.yandex.ru/handbook/algorithms
+
+Рюкзак 
+
+https://education.yandex.ru/handbook/algorithms/article/zadacha-o-ryukzake
+https://www.youtube.com/watch?v=7iH45aYtJjo
+
+
+Разреженные таблицы, дерево отрезков
+https://www.youtube.com/watch?v=MbYozmQS6As
+https://rutube.ru/video/cf7e076278f13b6e2606009933eb4929/
+https://rutube.ru/video/995a29f81e94f0ea597cdc9dc302fc39/
+
+
+Битовые операции, исправляющие коды Хэмминга, сжатие данных (алгоритм Лемпела-Зива)
+
+
+
+algorithms
+
+https://www.youtube.com/playlist?list=PL4_hYwCyhAvYmAr9XTqxfJmTEBFRVNJoA
+
+
+
+
+
