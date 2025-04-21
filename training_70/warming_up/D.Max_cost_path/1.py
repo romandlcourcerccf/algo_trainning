@@ -42,6 +42,7 @@ def main():
             col -= 1
             track.append("R")
 
+
     track = track[:-1][::-1]
 
     print(dp[rows][cols])

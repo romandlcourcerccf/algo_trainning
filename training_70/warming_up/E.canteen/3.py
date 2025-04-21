@@ -34,8 +34,7 @@ def main():
 
  
     print_dp(dp, days, copouns)
-    K1, K2 = 0,0
-
+   
     for day in range(1, days):
         day_prise = prises[day-1]
         print(day_prise)
@@ -45,6 +44,7 @@ def main():
                     dp[day][copoun] = dp[day-1][copoun+1]
                 else:
                     if copoun == copouns-1:
+
                         dp[day][copoun] = dp[day-1][copoun-1] + day_prise
                     else:
                         dp[day][copoun] = min(dp[day-1][copoun-1] + day_prise, dp[day-1][copoun+1])
