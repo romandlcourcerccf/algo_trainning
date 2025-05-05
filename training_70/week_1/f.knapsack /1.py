@@ -7,7 +7,7 @@ def main():
     import os
 
     dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, "1.txt")
+    filename = os.path.join(dname, "input.txt")
     
 
     with open(filename, "r") as f:
@@ -55,9 +55,6 @@ def main():
     for i in range(len(track)-1, -1, -1):
         print(track[i])
 
-
-
-   
 
 
 if __name__ == "__main__":

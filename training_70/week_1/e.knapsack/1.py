@@ -24,6 +24,8 @@ def main():
 
     dp = [-1] * (M+1)    
     dp[0] = 0
+    tr = [-1] * (M+1)
+    
    
     for item_index in range(len(W)):
         for i in range(len(dp)-1 - W[item_index], -1, -1):
