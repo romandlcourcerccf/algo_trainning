@@ -1,8 +1,9 @@
 def mut(s):
-    s = s + 'a'
+    s = s + "a"
     return
 
-s = 'a'
+
+s = "a"
 print(s)
 mut(s)
 print(s)

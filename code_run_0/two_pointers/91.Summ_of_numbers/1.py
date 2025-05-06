@@ -29,37 +29,36 @@ def main():
     # rows = sys.stdin.readlines()
 
     import os
+
     dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '4.txt')
-    
-    with open(filename, 'r') as f:
+    filename = os.path.join(dname, "4.txt")
+
+    with open(filename, "r") as f:
         rows = f.readlines()
 
     hit_counter = 0
     numbers = list(map(int, rows[0].split()))
-    N,K = numbers[0], numbers[1]
+    N, K = numbers[0], numbers[1]
 
     numbers = list(map(int, rows[1].split()))
-    
+
     l, r = 0, 0
-    while l <= len(numbers)-1 and r <= len(numbers)-1:
-    
-        if l<len(numbers)-1 and r < len(numbers)-1:
-            if sum(numbers[l:r+1]) < K:
-                r+=1
-            elif sum(numbers[l:r+1]) > K:
-                l+=1
+    while l <= len(numbers) - 1 and r <= len(numbers) - 1:
+        if l < len(numbers) - 1 and r < len(numbers) - 1:
+            if sum(numbers[l : r + 1]) < K:
+                r += 1
+            elif sum(numbers[l : r + 1]) > K:
+                l += 1
             else:
-                hit_counter +=1
-                r+=1
-        elif r == len(numbers)-1:
-            if sum(numbers[l:r+1]) == K:
-                hit_counter +=1
-            l +=1
-           
+                hit_counter += 1
+                r += 1
+        elif r == len(numbers) - 1:
+            if sum(numbers[l : r + 1]) == K:
+                hit_counter += 1
+            l += 1
 
     print(hit_counter)
-        
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

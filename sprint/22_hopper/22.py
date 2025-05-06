@@ -8,19 +8,15 @@ def hopper(N, k):
         if i <= k:
             steps[i] = sum(steps[0:i])
         else:
-            steps[i] = sum(steps[i-k:i])
+            steps[i] = sum(steps[i - k : i])
 
     return steps[-1]
 
-if __name__  == '__main__':
 
-   
-    N, k = open('input.txt', 'r').read().split(' ')
+if __name__ == "__main__":
+    N, k = open("input.txt", "r").read().split(" ")
     N, k = int(N), int(k)
 
-    variants = hopper(N,k)
+    variants = hopper(N, k)
 
-    open('output.txt', 'w').write(str(variants))
-
-   
-
+    open("output.txt", "w").write(str(variants))

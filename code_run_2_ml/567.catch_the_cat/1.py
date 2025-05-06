@@ -1,6 +1,7 @@
 import sys
 from queue import Queue
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -29,49 +30,48 @@ def main():
     visited = set()
 
     def get_neighbors(border_point, arr, counter):
-
         visited.add(border_point)
         arr[border_point[0]][border_point[1]] = counter
 
         neigbours = []
         cols, rows = len(arr), len(arr[0])
-        x,y =  border_point[0], border_point[1]
+        x, y = border_point[0], border_point[1]
 
-        if x-1 >= 0 and arr[x-1][y] == 1 and (x-1, y) not in visited:
-            neigbours.append((x-1, y))
+        if x - 1 >= 0 and arr[x - 1][y] == 1 and (x - 1, y) not in visited:
+            neigbours.append((x - 1, y))
 
-        if x+1 < cols and arr[x+1][y] == 1 and (x+1, y) not in visited:
-            neigbours.append((x+1, y))
-        
-        if y+1 < rows and arr[x][y+1] == 1 and (x, y+1) not in visited:
-            neigbours.append((x, y+1))
+        if x + 1 < cols and arr[x + 1][y] == 1 and (x + 1, y) not in visited:
+            neigbours.append((x + 1, y))
 
-        if y-1 >= 0 and arr[x][y-1] == 1 and (x, y-1) not in visited:
-            neigbours.append((x, y-1))
+        if y + 1 < rows and arr[x][y + 1] == 1 and (x, y + 1) not in visited:
+            neigbours.append((x, y + 1))
+
+        if y - 1 >= 0 and arr[x][y - 1] == 1 and (x, y - 1) not in visited:
+            neigbours.append((x, y - 1))
 
         return neigbours
-        
-        
+
     def bfs(start, arr, counter):
         border = Queue()
         border.put(start)
-       
+
         while not border.empty():
             border_point = border.get()
             neighbors = get_neighbors(border_point, arr, counter)
-            
+
             for neigbour in neighbors:
                 border.put(neigbour)
 
-            
     arr = []
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_2_ml/567.catch_the_cat/4.txt', 'r') as f:
+    with open(
+        "/Users/romanroman/projects/algo_trainning/code_run_2_ml/567.catch_the_cat/4.txt",
+        "r",
+    ) as f:
         rows = f.readlines()
         rows = [r.rstrip() for r in rows]
 
     # rows = sys.stdin.readlines()
-
 
     for r in rows:
         arr.append(list(map(int, r.split())))
@@ -83,13 +83,13 @@ def main():
     for row in range(rows):
         for col in range(cols):
             if arr[row][col] == 1 and (row, col) not in visited:
-                bfs((row, col), arr,  counter)
-                counter +=1
+                bfs((row, col), arr, counter)
+                counter += 1
 
-    print(counter-1)
+    print(counter - 1)
     for r in arr:
         print(" ".join(list(map(str, r))))
-    
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

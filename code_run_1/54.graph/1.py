@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -34,29 +35,28 @@ def main():
     # rows.append('abab')
     # rows.append('baba')
 
-    rows.append('1')
-    rows.append('qwertyqwertyqwertyqwertyqwerty')
-   
+    rows.append("1")
+    rows.append("qwertyqwertyqwertyqwertyqwerty")
+
     vertices = defaultdict(set)
-    nodes =    defaultdict(int)
+    nodes = defaultdict(int)
 
     for i, row in enumerate(rows):
         if i == 0:
             continue
 
-        print(f'row : {row}')
-        for i in range(0, len(row)-3):
-            in_vert, out_vert = row[i:i+3], row[i+1:i+4]
+        print(f"row : {row}")
+        for i in range(0, len(row) - 3):
+            in_vert, out_vert = row[i : i + 3], row[i + 1 : i + 4]
             vertices[in_vert].add(out_vert)
-            nodes[in_vert+out_vert] +=1
+            nodes[in_vert + out_vert] += 1
 
-
-    print(len(vertices))       
+    print(len(vertices))
     print(len(nodes))
 
-    for k,v in nodes.items():
-        print(f'{k[0:3]} {k[3:]} {v}')
+    for k, v in nodes.items():
+        print(f"{k[0:3]} {k[3:]} {v}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

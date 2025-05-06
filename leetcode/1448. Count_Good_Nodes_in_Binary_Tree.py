@@ -6,11 +6,9 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-
         good_nodes = []
 
         def dfs(root, path):
-
             if not root:
                 return
 
@@ -18,8 +16,7 @@ class Solution:
                 good_nodes.append(root.val)
             else:
                 if root.val >= max(path):
-                        good_nodes.append(root.val)
-
+                    good_nodes.append(root.val)
 
             path.append(root.val)
 
@@ -30,6 +27,5 @@ class Solution:
                 dfs(root.right, path.copy())
 
         dfs(root, [])
-
 
         return len(good_nodes)

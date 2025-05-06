@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -36,23 +37,23 @@ def main():
     for row in rows:
         words = row.split()
         for w in words:
-            h[w] +=1
+            h[w] += 1
 
-    i_h =  defaultdict(list)
-    for k,v in  h.items():
+    i_h = defaultdict(list)
+    for k, v in h.items():
         i_h[v].append(k)
 
-
-    max_count = float('-inf')
+    max_count = float("-inf")
     max_words = None
 
-    for k,v in  i_h.items():
+    for k, v in i_h.items():
         if k >= max_count:
             max_count = k
             max_words = v
-        
+
     max_words.sort()
     print(max_words[0])
-    
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     main()

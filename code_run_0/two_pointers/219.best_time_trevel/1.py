@@ -31,7 +31,7 @@ def main():
     # with open('/Users/romanroman/projects/algo_trainning/code_run_0/two_pointers/219.best_time_trevel/1.txt', 'r') as f:
     #     rows = f.readlines()
 
-    max_change = float('-inf')
+    max_change = float("-inf")
     max_period = 0
     max_left = 0
     max_right = 0
@@ -40,12 +40,12 @@ def main():
 
     l, r = 0, 1
 
-    while r <= len(temperatures)-1:
+    while r <= len(temperatures) - 1:
         change = temperatures[r] - temperatures[l]
         period = r - l
 
         if change <= 0:
-            l+=1
+            l += 1
         else:
             if change > max_change:
                 max_change = change
@@ -57,10 +57,10 @@ def main():
                     max_period = period
                     max_left = l
                     max_right = r
-            r+=1
+            r += 1
 
-    print(f'{max_change} {max_left} {max_right}')
+    print(f"{max_change} {max_left} {max_right}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

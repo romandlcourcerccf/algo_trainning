@@ -29,46 +29,48 @@ def main():
     # rows = sys.stdin.readlines()
 
     import os
+
     dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '2.txt')
-   
-    with open(filename, 'r') as f:
+    filename = os.path.join(dname, "2.txt")
+
+    with open(filename, "r") as f:
         rows = f.readlines()
 
     hit_counter = 0
     numbers = list(map(int, rows[0].split()))
-    N,K = numbers[0], numbers[1]
+    N, K = numbers[0], numbers[1]
 
     numbers = list(map(int, rows[1].split()))
-    prefix_summs = [0] * (len(numbers)+1)
+    prefix_summs = [0] * (len(numbers) + 1)
 
     for i in range(0, len(numbers)):
-        prefix_summs[i+1] = numbers[i] + prefix_summs[i]
+        prefix_summs[i + 1] = numbers[i] + prefix_summs[i]
 
     print(numbers)
     print(prefix_summs)
 
     l, r = 0, 1
-    while l <= len(prefix_summs)-1 and r <= len(prefix_summs)-1:
-        _sum = prefix_summs[r]-prefix_summs[l]
-        if l<len(numbers)-1 and r<len(numbers)-1:
+    while l <= len(prefix_summs) - 1 and r <= len(prefix_summs) - 1:
+        _sum = prefix_summs[r] - prefix_summs[l]
+        if l < len(numbers) - 1 and r < len(numbers) - 1:
             print(_sum)
             if _sum < K:
-                r+=1
+                r += 1
             elif _sum > K:
-                l+=1
+                l += 1
             else:
-                print('1 l: ', l, 'r: ', r)
-                hit_counter +=1
-                l+=1
-                r+=1
-        elif r == len(numbers)-1:
+                print("1 l: ", l, "r: ", r)
+                hit_counter += 1
+                l += 1
+                r += 1
+        elif r == len(numbers) - 1:
             if _sum == K:
-                print('2 l: ', l, 'r: ', r)
-                hit_counter +=1 
-            l+=1
-            
-    print('hit_counter :',hit_counter)
-        
-if __name__ == '__main__':
+                print("2 l: ", l, "r: ", r)
+                hit_counter += 1
+            l += 1
+
+    print("hit_counter :", hit_counter)
+
+
+if __name__ == "__main__":
     main()

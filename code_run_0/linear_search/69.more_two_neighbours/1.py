@@ -1,6 +1,7 @@
 import sys
 from queue import Queue
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -32,15 +33,15 @@ def main():
     #     rows = f.readlines()
 
     numbers = list(map(int, rows[0].split()))
-   
+
     count = 0
 
-    for i in range(1,len(numbers)-1):
-        if numbers[i-1] < numbers[i] > numbers[i+1]:
-            count +=1
+    for i in range(1, len(numbers) - 1):
+        if numbers[i - 1] < numbers[i] > numbers[i + 1]:
+            count += 1
 
     print(count)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

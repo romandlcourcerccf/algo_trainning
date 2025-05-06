@@ -28,11 +28,14 @@ def main():
 
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/two_pointers/61.sets_intersection/1.txt', 'r') as f:
+    with open(
+        "/Users/romanroman/projects/algo_trainning/code_run_0/two_pointers/61.sets_intersection/1.txt",
+        "r",
+    ) as f:
         rows = f.readlines()
 
     a = list(map(int, rows[0].split()))
-    b =  list(map(int, rows[1].split()))
+    b = list(map(int, rows[1].split()))
 
     # print(a)
     # print(b)
@@ -41,11 +44,10 @@ def main():
     cross.sort()
 
     # print(cross)
-    
+
     cross = list(map(str, cross))
-    print(' '.join(cross))
+    print(" ".join(cross))
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

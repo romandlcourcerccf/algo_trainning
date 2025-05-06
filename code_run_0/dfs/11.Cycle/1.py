@@ -1,6 +1,7 @@
 import sys
 from queue import Queue
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -28,38 +29,42 @@ def main():
 
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/dfs/11.Cycle/4.txt', 'r') as f:
+    with open(
+        "/Users/romanroman/projects/algo_trainning/code_run_0/dfs/11.Cycle/4.txt", "r"
+    ) as f:
         rows = f.readlines()
 
     adj_matrix = []
 
     for i in range(1, len(rows)):
         adj_matrix.append(list(map(int, rows[i].split())))
-    
+
     vertices = set(list(range(len(adj_matrix))))
     # print(vertices)
     visited = set()
     cycle_path = []
 
     def dfs(root, adj_matrix, path, cycle_path):
-    
         if root in path:
-            cycle_path.append(path) 
+            cycle_path.append(path)
             return
 
         path.append(root)
         visited.add(root)
 
-        children = {i for i in range(len(adj_matrix[root])) if i not in visited and  adj_matrix[root][i] != 0}
+        children = {
+            i
+            for i in range(len(adj_matrix[root]))
+            if i not in visited and adj_matrix[root][i] != 0
+        }
 
         if not children:
             return
-        
+
         for chind in children:
             dfs(chind, adj_matrix, path, cycle_path)
 
     while vertices:
-        
         cur = next(iter(vertices))
         # print('start :', cur)
 
@@ -68,20 +73,17 @@ def main():
         # print(path)
 
         vertices = vertices - set(path)
-    
-   
+
     # print('>>' ,cycle_path)
 
-    if not(cycle_path):
-        print('NO')
+    if not (cycle_path):
+        print("NO")
     else:
-        print('YES')
+        print("YES")
         print(len(cycle_path[0]))
-        path = [str(i+1) for i in cycle_path[0]]
-        print(' '.join(path))
+        path = [str(i + 1) for i in cycle_path[0]]
+        print(" ".join(path))
 
 
-    
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

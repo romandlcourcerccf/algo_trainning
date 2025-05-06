@@ -1,3 +1,2 @@
-s = 'sdfdsvdfdsfd'
+s = "sdfdsvdfdsfd"
 print(list(s))
-

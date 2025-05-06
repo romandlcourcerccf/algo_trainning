@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -27,71 +28,66 @@ def main():
     """
 
     # Если можно, подскажи в какую сторону мыслить в задаче 20.
-    # Гистограмма и прямоугольник. 
+    # Гистограмма и прямоугольник.
     # По тегам указано stack и linearSearch,
-    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек 
-    # если пустой или высота больше вершины стека, 
+    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек
+    # если пустой или высота больше вершины стека,
     # иначе если меньше,
     # то вычислю площадь и удаляю индексы из стека попутно проверяя пуст ли стек
     # и высота вершины больше текущей.
     # Вроде линейно должно быть.
-    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые, 
+    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые,
     # по которым алгоритм не работает((( Буду признателен за совет!
-                                      
+
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/dyno_1d/27.CubesSum/1.txt', 'r') as f:
+    with open(
+        "/Users/romanroman/projects/algo_trainning/code_run_0/dyno_1d/27.CubesSum/1.txt",
+        "r",
+    ) as f:
         rows = f.readlines()
 
     num = int(rows[0])
 
     print(num)
-    min_squre, min_num = 1,1   
+    min_squre, min_num = 1, 1
 
-    dp = [0] * (num+1)
+    dp = [0] * (num + 1)
     dp[min_squre] = 1
 
-    for n in range(1,num+1):
+    for n in range(1, num + 1):
+        print("n :", n)
 
-        print('n :', n)
-
-        q_root = n ** (1/3)
+        q_root = n ** (1 / 3)
         if q_root % 1 == 0:
-            min_squre, min_num = n,1  
-            dp[n] = 1    
+            min_squre, min_num = n, 1
+            dp[n] = 1
         else:
             split = n // min_squre
             tail = n % min_squre
 
-            print('n :', n , ' split :', split, ' tail :', tail)
+            print("n :", n, " split :", split, " tail :", tail)
             if tail == 0:
                 print(dp)
-        
+
                 nun_squares = dp[min_squre] * split
-                print('n :', n ,' nun_squares :', nun_squares)
+                print("n :", n, " nun_squares :", nun_squares)
                 dp[n] = nun_squares
 
                 if nun_squares < min_squre:
                     min_squre, min_num = num, nun_squares
 
-           
             else:
                 nun_squares = dp[min_squre] * split + dp[tail]
                 dp[n] = nun_squares
                 if nun_squares < min_squre:
                     min_squre, min_num = num, nun_squares
 
-    
-            print('>>>')
-            print('n: ',n)
+            print(">>>")
+            print("n: ", n)
             print(dp)
-            print('n :', n ,' min_squre :', min_squre, 'min_num :', min_num)
-       
+            print("n :", n, " min_squre :", min_squre, "min_num :", min_num)
 
 
-
-
-    
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

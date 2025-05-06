@@ -28,22 +28,22 @@ def main():
 
     def min_dist(arr):
         arr = sorted(arr)
-        m = arr[0]^arr[1]
+        m = arr[0] ^ arr[1]
         for i in range(1, len(arr)):
-            m = min(m, arr[i-1]^arr[i])
+            m = min(m, arr[i - 1] ^ arr[i])
         return m
 
     rows = sys.stdin.readlines()
-    
+
     min_distanses = []
     for t in range(2, len(rows), 2):
         arr = rows[t].split()
         arr = [int(i) for i in arr]
         min_distanses.append(min_dist(arr))
-        
+
     for m_dist in min_distanses:
         print(m_dist)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

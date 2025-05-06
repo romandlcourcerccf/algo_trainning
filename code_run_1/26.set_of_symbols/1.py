@@ -29,24 +29,24 @@ def main():
     # s1 = rows[0]
     # s2 = rows[1]
 
-    # s1 = 'abba'  
+    # s1 = 'abba'
     # s2 = 'ab'
 
     s1 = "accbdd"
-    s2 = 'ca'
+    s2 = "ca"
 
-    need = [0]*26
-    have = [0]*26
+    need = [0] * 26
+    have = [0] * 26
 
     for c in s2:
         print(ord(c))
-        have[ord(c)-97] +=1
+        have[ord(c) - 97] += 1
 
-    res, len_res = [-1, -1] , float('inf')
+    res, len_res = [-1, -1], float("inf")
     l = 0
     for r in range(len(s1)):
         c = s1[r]
-        need[ord(c)-97] +=1
+        need[ord(c) - 97] += 1
 
         all_exeed = True
         for i in range(len(need)):
@@ -54,25 +54,23 @@ def main():
                 all_exeed = False
                 break
         if all_exeed:
-            if (r-l+1) < len_res:
-                res = [l,r]
-                len_res = (r-l+1)
-            
-            while all_exeed:
-                l+=1
+            if (r - l + 1) < len_res:
+                res = [l, r]
+                len_res = r - l + 1
 
-                if need[ord(s1[l])-97] > 0:
-                    have[ord(l)-97] -=1
-                
+            while all_exeed:
+                l += 1
+
+                if need[ord(s1[l]) - 97] > 0:
+                    have[ord(l) - 97] -= 1
+
                     for i in range(len(need)):
                         if need[i] > 0 and have[i] < need[i]:
                             all_exeed = False
                             break
 
-                
     print(res)
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

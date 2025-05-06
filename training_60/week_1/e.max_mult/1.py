@@ -29,25 +29,24 @@ def main():
     # rows = sys.stdin.readlines()
 
     import os
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '7.txt')
-    
-    with open(filename, 'r') as f:
-        rows = f.readlines()
-       
-    mumbers = list(map(int,rows[0].split()))
 
-    max1, max2 = float('-inf'), float('-inf')
-    min1, min2 = float('inf'), float('inf')
+    dname = os.path.dirname(__file__)
+    filename = os.path.join(dname, "7.txt")
+
+    with open(filename, "r") as f:
+        rows = f.readlines()
+
+    mumbers = list(map(int, rows[0].split()))
+
+    max1, max2 = float("-inf"), float("-inf")
+    min1, min2 = float("inf"), float("inf")
 
     for n in mumbers:
-
         if n > max1:
             max1 = max2
             max2 = n
         elif n > max2:
             max2 = n
-            
 
         if n < min1:
             min1 = min2
@@ -57,14 +56,15 @@ def main():
 
     if max1 * max2 > min1 * min2:
         if max1 > max2:
-            print(f'{max1}  {max2}')
+            print(f"{max1}  {max2}")
         else:
-            print(f'{max2}  {max1}')
+            print(f"{max2}  {max1}")
     else:
         if min1 > min2:
-            print(f'{min1}  {min2}')
+            print(f"{min1}  {min2}")
         else:
-            print(f'{min2}  {min1}')
-    
-if __name__ == '__main__':
+            print(f"{min2}  {min1}")
+
+
+if __name__ == "__main__":
     main()

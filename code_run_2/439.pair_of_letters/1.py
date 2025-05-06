@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -28,7 +29,6 @@ def main():
     row = sys.stdin.readlines()[0]
     # row = rows[0]
 
-
     words = row.split()
     pairs = defaultdict(int)
 
@@ -36,24 +36,23 @@ def main():
         if len(w) < 2:
             continue
 
-        for pos in range(len(w)-1):
-            pairs[w[pos:pos+2]] +=1
-           
+        for pos in range(len(w) - 1):
+            pairs[w[pos : pos + 2]] += 1
 
-    max_val = float('-inf')
+    max_val = float("-inf")
     for v in pairs.values():
         max_val = max(max_val, v)
-    
+
     res = []
 
-    for k,v in pairs.items():
+    for k, v in pairs.items():
         if v == max_val:
             res.append(k)
-    
+
     res.sort()
 
     print(res[-1])
-  
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

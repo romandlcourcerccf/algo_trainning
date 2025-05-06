@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -25,7 +26,7 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
-    
+
     rows = sys.stdin.readlines()
 
     # with open('/Users/romanroman/projects/algo_trainning/code_run_2/441.score_board/1.txt', 'r') as f:
@@ -40,21 +41,20 @@ def main():
     # print('num_players ', num_players)
     players_scores = defaultdict(int)
 
-    for i in range(1,num_players+1):
+    for i in range(1, num_players + 1):
         players_scores[rows[i]] = 0
 
     # print(players_scores)
-    
-    games_num = int(rows[num_players+1])
+
+    games_num = int(rows[num_players + 1])
     # print(games_num)
 
     st = []
-    for it, round in enumerate(rows[num_players+2:]):
-       
+    for it, round in enumerate(rows[num_players + 2 :]):
         round = round.split()
-        scores = list(map(int,round[0].split(':')))
-        name =  round[1]
-      
+        scores = list(map(int, round[0].split(":")))
+        name = round[1]
+
         if it == 0:
             score = max(scores)
         else:
@@ -63,8 +63,7 @@ def main():
                 score = scores[0] - _scores[0]
             elif scores[1] > _scores[1]:
                 score = scores[1] - _scores[1]
-        
-           
+
         # print(f'{round} {name} {score}')
         players_scores[name] += score
         st.append(scores)
@@ -72,12 +71,14 @@ def main():
     max_score = max(players_scores.values())
 
     res = []
-    for k,v in players_scores.items():
+    for k, v in players_scores.items():
         if v == max_score:
             res.append(k)
 
     res.sort()
 
-    print(f'{res[-1]} {max_score}')
-if __name__ == '__main__':
+    print(f"{res[-1]} {max_score}")
+
+
+if __name__ == "__main__":
     main()

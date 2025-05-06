@@ -28,33 +28,34 @@ def main():
 
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/strings/251.symbols_set/7.txt', 'r') as f:
+    with open(
+        "/Users/romanroman/projects/algo_trainning/code_run_0/strings/251.symbols_set/7.txt",
+        "r",
+    ) as f:
         rows = f.readlines()
-       
+
     rows = [r.strip() for r in rows]
 
     s = rows[0]
     c = set(rows[1])
 
     if len(c) == 0 or len(s) == 0:
-        print('0')
-        return
-    
-    if len(c) > len(s):
-        print('0')
+        print("0")
         return
 
-    min_len = float('inf')
+    if len(c) > len(s):
+        print("0")
+        return
+
+    min_len = float("inf")
 
     _c = set()
     _min_len = 0
 
     pos = 0
-    while pos <= len(s)-1:
-
+    while pos <= len(s) - 1:
         if s[pos] in c:
-
-            _min_len +=1
+            _min_len += 1
             _c.add(s[pos])
 
             if _c == c:
@@ -63,11 +64,11 @@ def main():
         else:
             _min_len = 0
             _c = set()
-       
-        pos +=1
-    
-    print(min_len if min_len != float('inf') else '0') 
+
+        pos += 1
+
+    print(min_len if min_len != float("inf") else "0")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

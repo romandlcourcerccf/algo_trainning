@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -27,17 +28,17 @@ def main():
     """
 
     # Если можно, подскажи в какую сторону мыслить в задаче 20.
-    # Гистограмма и прямоугольник. 
+    # Гистограмма и прямоугольник.
     # По тегам указано stack и linearSearch,
-    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек 
-    # если пустой или высота больше вершины стека, 
+    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек
+    # если пустой или высота больше вершины стека,
     # иначе если меньше,
     # то вычислю площадь и удаляю индексы из стека попутно проверяя пуст ли стек
     # и высота вершины больше текущей.
     # Вроде линейно должно быть.
-    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые, 
+    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые,
     # по которым алгоритм не работает((( Буду признателен за совет!
-                                      
+
     # rows = sys.stdin.readlines()
 
     # _rows = []
@@ -45,36 +46,35 @@ def main():
     #     _rows.append(r.strip())
     # rows = _rows
 
-    
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/graph_theory/357.substring_graph/3.txt', 'r') as f:
+    with open(
+        "/Users/romanroman/projects/algo_trainning/code_run_0/graph_theory/357.substring_graph/3.txt",
+        "r",
+    ) as f:
         rows = f.readlines()
         _rows = []
         for r in rows:
             _rows.append(r.strip())
         rows = _rows
 
-
     v = defaultdict(int)
     vv = set()
     for row in rows:
         # print('row :', row)
-        for i in range(0, len(row)-3):
-            start = row[i:i+3]
-            end = row[i+1:i+4]
+        for i in range(0, len(row) - 3):
+            start = row[i : i + 3]
+            end = row[i + 1 : i + 4]
 
             vv.add(start)
             vv.add(end)
 
-            v[start+end] +=1
-            
+            v[start + end] += 1
 
-    
     print(len(vv))
     print(len(v.keys()))
 
-    for k,v in v.items():
-        print(f'{k[:3]} {k[3:]} {v}')
-    
+    for k, v in v.items():
+        print(f"{k[:3]} {k[3:]} {v}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

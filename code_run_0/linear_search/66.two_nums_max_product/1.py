@@ -1,6 +1,7 @@
 import sys
 from queue import Queue
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -32,18 +33,18 @@ def main():
     #     rows = f.readlines()
 
     numbers = list(map(int, rows[0].split()))
-    numbers.sort()    
+    numbers.sort()
 
     if numbers[0] >= 0 and numbers[-1] >= 0:
-        print(numbers[-2],' ', numbers[-1])
+        print(numbers[-2], " ", numbers[-1])
     elif numbers[0] <= 0 and numbers[-1] <= 0:
-         print(numbers[0],' ', numbers[1])
+        print(numbers[0], " ", numbers[1])
     elif numbers[0] <= 0 and numbers[-1] >= 0:
-        if numbers[0]* numbers[1] >= numbers[-2]* numbers[-1]:
-            print(numbers[0],' ', numbers[1])
+        if numbers[0] * numbers[1] >= numbers[-2] * numbers[-1]:
+            print(numbers[0], " ", numbers[1])
         else:
-            print(numbers[-2],' ', numbers[-1])
+            print(numbers[-2], " ", numbers[-1])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

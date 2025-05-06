@@ -8,16 +8,14 @@ class Solution:
 
             if n == 1:
                 return True
-        
+
         return False
 
-    def _sum_of_squares(self, n : int) -> int:
-
+    def _sum_of_squares(self, n: int) -> int:
         out = 0
         while n:
             digit = n % 10
-            digit = digit **2
+            digit = digit**2
             out += digit
-            n //= 10 
+            n //= 10
         return out
-

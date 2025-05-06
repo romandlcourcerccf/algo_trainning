@@ -34,23 +34,24 @@ def main():
             if nums[l] != nums[r]:
                 return False
 
-            l+=1
-            r-=1
+            l += 1
+            r -= 1
 
         return True
-        
+
     pos = 0
-    while pos <= len(nums)-1:
+    while pos <= len(nums) - 1:
         if nums[pos] == nums[-1]:
-            if is_symmetric(pos, len(nums)-1):
+            if is_symmetric(pos, len(nums) - 1):
                 break
-        pos +=1
+        pos += 1
 
     nums = nums[0:pos][::-1]
     nums = [str(n) for n in nums]
 
     print(len(nums))
-    print(' '.join(nums))
+    print(" ".join(nums))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

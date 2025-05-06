@@ -30,10 +30,9 @@ def main():
     # buttons = set(buttons)
     # number = info[1]
 
-
-    buttons = '1 2 3'.split()
+    buttons = "1 2 3".split()
     buttons = set(buttons)
-    number = '1123'
+    number = "1123"
 
     left = set()
     for n in number:
@@ -41,8 +40,7 @@ def main():
             left.add(n)
 
     print(len(left))
-    
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

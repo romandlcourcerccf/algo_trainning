@@ -25,10 +25,7 @@ def main():
     Возможное решение задачи "Вычислите сумму чисел в строке":
     print(sum(map(int, input().split())))
     """
-    
 
 
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

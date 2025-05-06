@@ -10,34 +10,33 @@ class Solution:
         """
 
         res = ListNode()
-        
+
         lst = []
 
         cur = head
         while cur:
             lst.append(cur)
             cur = cur.next
-        
-        l,r = 0, len(lst)-1
+
+        l, r = 0, len(lst) - 1
         cur = res
         while l < r:
             cur.next = lst[l]
             cur = cur.next
             cur.next = lst[r]
             cur = cur.next
-            l +=1
-            r -=1
-        
-        print('l :', l, 'r :', r)
+            l += 1
+            r -= 1
+
+        print("l :", l, "r :", r)
 
         if l == r:
             cur.next = lst[l]
             cur = cur.next
-            
+
         cur.next = None
 
         return res.next
-
 
 
 # Definition for singly-linked list.
@@ -56,20 +55,17 @@ class Solution:
         while cur:
             lst.append(cur)
             cur = cur.next
-        
+
         dummy = ListNode()
         cur = dummy
-        l, r = 0, len(lst)-1
+        l, r = 0, len(lst) - 1
         while l <= r:
             cur.next = lst[l]
             lst[l].next = lst[r]
             cur = cur.next.next
             cur.next = None
-            
-            l +=1
-            r -=1
+
+            l += 1
+            r -= 1
 
         return dummy.next
-
-
-    

@@ -29,11 +29,11 @@ def main():
     vertices = [int(v) for v in vertices]
     a, b, c = vertices[0], vertices[1], vertices[2]
 
-    if a<b+c and b<a+c and c<a+b:
-        print('YES')
+    if a < b + c and b < a + c and c < a + b:
+        print("YES")
     else:
-        print('NO')
-        
-        
-if __name__ == '__main__':
+        print("NO")
+
+
+if __name__ == "__main__":
     main()

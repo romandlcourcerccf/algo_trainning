@@ -29,10 +29,11 @@ def main():
     # rows = sys.stdin.readlines()
 
     import os
+
     dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, '1.txt')
-    
-    with open(filename, 'r') as f:
+    filename = os.path.join(dname, "1.txt")
+
+    with open(filename, "r") as f:
         rows = f.readlines()
         rows = [r.rstrip() for r in rows]
 
@@ -40,48 +41,47 @@ def main():
     n = int(rows[0])
     m = int(rows[1])
 
-    xs = list(map(int,rows[2].split()))
-    bs = list(map(int,rows[3].split()))
+    xs = list(map(int, rows[2].split()))
+    bs = list(map(int, rows[3].split()))
     ax = [10] * n
 
-    print('n :', n)
-    print('m :', m)
-    print('xs :', xs)
-    print('bs :', bs)
+    print("n :", n)
+    print("m :", m)
+    print("xs :", xs)
+    print("bs :", bs)
 
-    alphabet = 'abcdefghijklmnopqrstuvw'
-    test_pass = 'vaja'
+    alphabet = "abcdefghijklmnopqrstuvw"
+    test_pass = "vaja"
     enc_pass = []
     for c in test_pass:
         for i, a in enumerate(alphabet):
             if a == c:
-                enc_pass.append(i+1)
+                enc_pass.append(i + 1)
                 break
-    
-    print('enc_pass :', enc_pass)
+
+    print("enc_pass :", enc_pass)
 
     ax = enc_pass
 
     _bs = []
     for j in range(len(bs)):
         bi = 0
-        for i in range(1, n+1):
-            bi += xs[j] ** (i-1) * ax[i-1]
+        for i in range(1, n + 1):
+            bi += xs[j] ** (i - 1) * ax[i - 1]
 
-        bi = bi%23
+        bi = bi % 23
         _bs.append(bi)
 
-    
-    print('_bs :', _bs)
-    print('bs  :',  bs)
+    print("_bs :", _bs)
+    print("bs  :", bs)
 
     comp = []
     for i in range(m):
         comp.append(_bs[i] == bs[i])
 
-
     all_equal = all(comp)
     print(all_equal)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

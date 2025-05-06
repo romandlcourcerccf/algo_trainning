@@ -1,11 +1,10 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        
         ops = {
-            '+': lambda x,y: x+y, 
-            '-': lambda x,y: x-y,
-            '*': lambda x,y: x*y, 
-            '/': lambda x,y: x/y, 
+            "+": lambda x, y: x + y,
+            "-": lambda x, y: x - y,
+            "*": lambda x, y: x * y,
+            "/": lambda x, y: x / y,
         }
 
         s = []

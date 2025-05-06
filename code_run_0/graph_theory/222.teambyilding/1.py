@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 def main():
     """
     Для чтения входных данных необходимо получить их
@@ -27,30 +28,32 @@ def main():
     """
 
     # Если можно, подскажи в какую сторону мыслить в задаче 20.
-    # Гистограмма и прямоугольник. 
+    # Гистограмма и прямоугольник.
     # По тегам указано stack и linearSearch,
-    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек 
-    # если пустой или высота больше вершины стека, 
+    # что и пытаюсь реализовать: итерирую по индексам высот столбцов и добавляю в стек
+    # если пустой или высота больше вершины стека,
     # иначе если меньше,
     # то вычислю площадь и удаляю индексы из стека попутно проверяя пуст ли стек
     # и высота вершины больше текущей.
     # Вроде линейно должно быть.
-    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые, 
+    # На втором закрытом тесте ловлю w/a и не могу придумать тестовые,
     # по которым алгоритм не работает((( Буду признателен за совет!
-                                      
+
     # rows = sys.stdin.readlines()
 
-    with open('/Users/romanroman/projects/algo_trainning/code_run_0/graph_theory/222.teambyilding/2.txt', 'r') as f:
+    with open(
+        "/Users/romanroman/projects/algo_trainning/code_run_0/graph_theory/222.teambyilding/2.txt",
+        "r",
+    ) as f:
         rows = f.readlines()
 
-    
     graph_info = rows[0]
     graph_info = list(map(int, graph_info.split()))
 
     vert_count, _ = graph_info[0], graph_info[1]
 
     graph = defaultdict(set)
-    vertices = set([i+1 for i in range(vert_count)])
+    vertices = set([i + 1 for i in range(vert_count)])
 
     for i in range(1, len(rows)):
         row = rows[i]
@@ -67,21 +70,19 @@ def main():
     _vertices = vertices.copy()
     _visited = set()
 
-    for start_vert  in vertices:
-
+    for start_vert in vertices:
         if start_vert not in graph.keys():
             continue
 
         _visited.add(start_vert)
-        
-        cur_verts = {start_vert}
-       
-        while True:
 
+        cur_verts = {start_vert}
+
+        while True:
             _visited = _visited | cur_verts
 
             cur_verts = cur_verts & graph.keys()
-           
+
             if not cur_verts:
                 break
 
@@ -90,30 +91,29 @@ def main():
                 if cur_vert in graph.keys():
                     neighbours = neighbours | graph[cur_vert]
                     _visited.add(cur_vert)
-           
+
             neighbours = neighbours - _visited
-           
+
             if not neighbours:
                 break
-            
-            cur_verts =  neighbours
-        
+
+            cur_verts = neighbours
+
         not_visited = _vertices - _visited
         if len(not_visited) > 0:
             res.append([_visited, not_visited])
             break
-       
-        _visited = set()
 
+        _visited = set()
 
     if res:
         res = res[0]
         print(len(res))
-        print(' '.join(map(str,list(res[0]))))
-        print(' '.join(map(str,list(res[1]))))
+        print(" ".join(map(str, list(res[0]))))
+        print(" ".join(map(str, list(res[1]))))
     else:
-        print('-1')
+        print("-1")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
