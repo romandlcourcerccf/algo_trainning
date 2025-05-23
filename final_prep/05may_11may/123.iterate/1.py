@@ -3,7 +3,7 @@ import os
 
 class TreeNode:
 
-    def __init__(self, val: None, left: None, right: None):
+    def __init__(self, val=None, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
@@ -16,37 +16,47 @@ def insert(val, root):
             root.left = TreeNode(val=val)
             return
         else:
-            root = root.left
+            insert(val, root.left)
     else:
         if not root.right:
             root.right = TreeNode(val=val)
             return
         else:
-            root = root.right
+            insert(val, root.right)
 
 
 def iterate(root):
 
     if not root:
         return
-    
-    print(root.val)
-    iterate(root.left)
-    iterate(root.right)
 
+    iterate(root.left)
+    print(root.val)
+    iterate(root.right)
 
 def main():
 
 
     dir_name = os.path.dirname(__file__)
-    filename = os.path.join(dir_name, "1.txt")
+    filename = os.path.join(dir_name, "3.txt")
 
     with open(filename ,'r') as reader:
         rows = reader.readlines()
-    
-    numbers = map(int, rows[0].split())
 
-    print(numbers)
+    # rows = sys.stdin.readlines()
+    
+    vals = list(map(int, rows[0].split()))
+    vals = vals[:-1]
+    
+    root = None
+    for val in vals:
+        if not root:
+            root = TreeNode(val=val)
+        else:
+            insert(val, root)
+
+    iterate(root)
+
 
         
         
