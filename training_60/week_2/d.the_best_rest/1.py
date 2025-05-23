@@ -25,18 +25,19 @@ def main():
     while len(days) > 0 and abs(days[0] - days[-1]) > k:
         l, r = 0, len(days) - 1
         group = set()
-        while l < r and abs(days[l] - days[r]) > k:
+        while l<r and abs(days[l] - days[r]) > k:
             group.add(days[l])
             group.add(days[r])
-            _l, _r = l, r
-            while abs(days[l] - days[_l]) and _l < _r <= k:
-                _l += 1
-            while abs(days[r] - days[_r]) and _l < _r <= k:
-                _r += 1
-
-            l, r = _l, _r
+            _l, _r = l,r
+            while abs(days[l]-days[_l]) and _l < _r  <= k:
+                _l +=1
+            while abs(days[r]-days[_r])  and _l < _r <= k:
+                _r +=1
+            
+            l,r = _l, _r
 
         print(group)
+        
 
     if len(days) > 0:
         groups_count += 1
