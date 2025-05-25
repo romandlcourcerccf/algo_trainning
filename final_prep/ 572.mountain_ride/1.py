@@ -1,78 +1,61 @@
-import sys
 import os
+import sys
 from collections import Counter
 
-# TODO Do this effective!
-def calc_load(arrivels_count, count_times, capasity):
-
-    load_result = [0]*len(arrivels_count)
-    for i in range():
-        
-
-def main():
-
-
+def get_rows()->list[str]:
+    
     dir_name = os.path.dirname(__file__)
-    filename = os.path.join(dir_name, "2.txt")
+    file_name = os.path.join(dir_name, '3.txt')
 
-    with open(filename ,'r') as reader:
+    with open(file_name, 'r') as reader:
         rows = reader.readlines()
+        rows = [tuple(map(int,r.split())) for r in rows]
         
-    # rows = sys.stdin.readlines()
-   
+    return rows
+
+def count_fullfillment(times_count: dict[int], times_scale: list[int], stay_time: int):
     
-    t_num, h_cup = tuple(map(int, rows[0].split()))
-    print(f't_num {t_num} h_cup {h_cup}')
+    fullfill_for_dates = [0]*len(times_scale)
+    for i in range(len(times_scale)):
+        _inh_collect = 0 
+        for _i in range(max(0, times_scale[i]-stay_time+1),times_scale[i]+1):
+            if _i in times_count:
+                _inh_collect += times_count[_i]
+        fullfill_for_dates[i] = _inh_collect
 
-    arr_times = [int(r) for r in rows[1:]]
-    arr_times.sort()
-    print('arr_times :', arr_times)
+    return max(fullfill_for_dates)
 
-    count_times = Counter(arr_times)
-    print('acc_arr_times',count_times)
+rows = get_rows()
 
-    arr_times_acc = [0] * len(arr_times)
-    for i in range(len(arr_times)):
-        if i in count_times:
-            arr_times_acc[i] = count_times[i]
-    
-    print('arr_times_acc',arr_times_acc)
-    
-    res_time = -1
-    res_acc = None
+number, capacity = rows[0]
+print(f'number {number} capacity {capacity}')
 
-    l, r = 0, len(arr_times)
-    while l < r:
-        stay_time = (l+r) // 2
-    
-        acc_times = [0]*len(arr_times)
-        for i in range(0,len(acc_times)):
-            acc_times[i] = sum(arr_times_acc[max(0, i-stay_time+1):i+1])
+times = [r[0] for r in rows[1:]]
 
-        max_fill = max(acc_times)
-        print(f'max_fill {max_fill}, acc_times : {acc_times}')
-        if max_fill > h_cup:
-            r = stay_time -1
-        elif max_fill < h_cup:
-            l = stay_time +1
-        else:
-            res_time = stay_time
-            res_acc = acc_times
-            break
+times_count = Counter(times)
 
-    print('res_time :',res_time)
-    print('res_acc  :',res_acc)
-        
+print(f'times_count {times_count}')
 
+times_scale = list(times_count.keys())
+times_scale.sort()
 
-    
+max_time = -1
 
-        
-        
-        
+l,r = 0, len(times_scale)
 
+while l<r:
+    mid = (l+r) // 2
 
+    _max_time = count_fullfillment(times_count,times_scale,mid)
+    print(f'>>max_time : {_max_time}')
 
+    if _max_time > capacity:
+        r = mid -1
+    elif _max_time < capacity:
+        l = mid+1
+        max_time = max(max_time, _max_time)
+    else:
+        max_time = _max_time
+        break
 
-if __name__ == '__main__':
-    main()
+print(f'max_time : {max_time}')
