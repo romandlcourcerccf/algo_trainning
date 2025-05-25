@@ -2,6 +2,13 @@ import sys
 import os
 from collections import Counter
 
+# TODO Do this effective!
+def calc_load(arrivels_count, count_times, capasity):
+
+    load_result = [0]*len(arrivels_count)
+    for i in range():
+        
+
 def main():
 
 
@@ -10,7 +17,7 @@ def main():
 
     with open(filename ,'r') as reader:
         rows = reader.readlines()
-    
+        
     # rows = sys.stdin.readlines()
    
     
