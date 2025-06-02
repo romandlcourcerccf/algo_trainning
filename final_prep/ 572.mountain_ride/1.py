@@ -5,7 +5,7 @@ from collections import Counter
 def get_rows()->list[str]:
     
     dir_name = os.path.dirname(__file__)
-    file_name = os.path.join(dir_name, '3.txt')
+    file_name = os.path.join(dir_name, '4.txt')
 
     with open(file_name, 'r') as reader:
         rows = reader.readlines()

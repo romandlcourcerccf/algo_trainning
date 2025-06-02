@@ -14,3 +14,24 @@ class Solution:
             res.append(heappop(closest)[1])
 
         return res
+
+import heapq
+from math import sqrt
+
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        
+        l = []
+        for point in points:
+            l.append((sqrt((point[0])**2 + (point[1])**2), point))
+        
+        heapq.heapify(l)
+
+        res = []
+        while k > 0:
+            k-=1
+            res.append(heapq.heappop(l))
+
+        res = [p[1] for p in res]
+
+        return res
