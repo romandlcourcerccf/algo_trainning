@@ -25,3 +25,4 @@ class Solution:
             h["".join(sorted(list(s)))].append(s)
 
         return list(h.values())
+

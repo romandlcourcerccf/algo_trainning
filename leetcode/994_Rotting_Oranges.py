@@ -66,3 +66,65 @@ class Solution:
         ticks = bfs((0, 0))
 
         return ticks
+
+class Solution:
+    def add_to_border(self, row: int, col: int, rows: int, cols: int, grid: List[List[int]], border :set):
+        if 0<=col<cols and 0<=row<rows and grid[row][col] == 1:
+            grid[row][col] = 2
+            border.add((row, col))
+            return 1
+        return 0
+
+    def bfs(self, grid: List[List[int]]) -> int:
+        fresh_count = 0
+        rows, cols = len(grid), len(grid[0])
+
+        start_row,  start_col = -1,-1 
+        for row in range(len(grid)):
+            for col in range(len(grid[0])):
+                if grid[row][col] == 1:
+                    fresh_count +=1
+                elif grid[row][col] == 2 and  (start_row == -1 and start_col == -1):
+                    start_row,  start_col = row, col
+        
+        if fresh_count == 0:
+            return 0
+
+        if start_row == -1 and start_col == -1:
+            return -1
+
+        ticks = 0
+        border = set()
+        border.add((start_row,start_col))
+    
+        affected = 0
+        while border:
+            _border = set()
+            for p in border:
+                row, col = p
+                affected += self.add_to_border(row+1, col, rows, cols, grid, _border)
+                affected += self.add_to_border(row-1, col, rows, cols,  grid, _border)
+                affected += self.add_to_border(row, col+1, rows, cols,  grid, _border)
+                affected += self.add_to_border(row, col-1, rows, cols,  grid, _border)
+            ticks +=1
+            border = _border
+
+            self.print(grid)
+
+        print('ticks : ',ticks)
+        print(f'fresh_count {fresh_count} affected {affected}')
+
+        return -1 if affected < fresh_count else ticks-1
+
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        
+        # self.print(grid)
+        res = self.bfs(grid)
+        self.print(grid)
+
+        return res
+
+    def print(self, grid):
+        for r in grid:
+            print(r)
+        print('\n')

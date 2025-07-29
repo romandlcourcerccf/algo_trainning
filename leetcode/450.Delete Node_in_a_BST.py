@@ -1,18 +1,23 @@
 # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+        
+
+# Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution(object):
-    def deleteNode(self, root, key):
-        """
-        :type root: Optional[TreeNode]
-        :type key: int
-        :rtype: Optional[TreeNode]
-        """
+
         if not root:
             return root
+       
 
         cur = root
         parent = cur
@@ -29,11 +34,25 @@ class Solution(object):
                 parent = cur
                 cur = cur.left
             else:
-                if cur.val == parent.val:
-                    print(f'>>>> root>>> { cur.val }')
-                if not cur.left and  not cur.right:
+                if cur == parent:
+                    if not cur.left and not cur.right:
+                        return None
+                    elif not cur.left:
+                        root = cur.right
+                        return root
+                    elif not cur.right:
+                        root = cur.left
+                        return root
+                    else:
+                        tmp = cur.left
+                        root = cur.right
+                        self.insert(root, tmp)
+                        return root
+
+                if not cur.left or not cur.right:
                     if parent.left == cur:
                         parent.left = None
+
                     elif  parent.right == cur:
                         parent.right = None
                     
@@ -46,6 +65,8 @@ class Solution(object):
                         self.insert(cur.left, cur.right)
 
                 return root
+
+        return root
 
     def insert(self, root, node):
         if not node:

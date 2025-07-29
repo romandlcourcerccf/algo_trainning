@@ -1,18 +1,26 @@
-from collections import defaultdict
-
+from collections import Counter
 
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        h = defaultdict(int)
+        
+        c = Counter(nums)
+        f = math.floor(len(nums)/2)
 
-        for n in nums:
-            h[n] += 1
+        max_count = -1
+        max_val = -1
 
-        lin_h = [(k, v) for k, v in h.items()]
+        for k,v in c.items():
+            if v > max_count:
+                max_count = v
+                max_val = k
 
-        lin_h.sort(key=lambda x: x[1])
+        return max_val
 
-        return lin_h[-1][0]
+        
+
+
+
+
 
     # Boyer Moore Majority Vote Algorithm
 

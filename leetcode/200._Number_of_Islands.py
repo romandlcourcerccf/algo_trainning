@@ -55,28 +55,30 @@ class Solution:
             print(r)
 
     def expand(self, row, col, grid, rows, cols):
-        grid[row][col]="3"
-        for r in range(row-1,row+2):
-            for c in range(col-1,col+2):
-                if 0<=r<=rows-1 and 0<=c<=cols-1 and grid[r][c]=="1":
-                    self.expand(r, c, grid, rows, cols)
-            
 
+        if not (0<=row<=rows-1 and 0<=col<=cols-1 and grid[row][col]=="1"):
+            return 
+
+        grid[row][col]="3"
+
+        self.expand(row-1, col, grid, rows, cols)
+        self.expand(row+1, col, grid, rows, cols)
+        self.expand(row, col-1, grid, rows, cols)
+        self.expand(row, col+1, grid, rows, cols)
+
+    
     def numIslands(self, grid: List[List[str]]) -> int:
         
         rows, cols = len(grid), len(grid[0])
 
         count = 0
-
-        self.print(grid)
     
         for row in range(rows):
             for col in range(cols):
                 if grid[row][col] == "1":
-                    print('>>', (row, col))
                     count+=1
                     self.expand(row, col, grid, rows, cols)
 
-        self.print(grid)
-
         return count
+
+
