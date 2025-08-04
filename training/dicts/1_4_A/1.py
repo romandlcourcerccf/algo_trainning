@@ -3,7 +3,7 @@ from collections import defaultdict
 def main():
 
     dir_name = os.path.dirname(__file__)
-    filename = os.path.join(dir_name, "3.txt")
+    filename = os.path.join(dir_name, "input.txt")
 
     with open(filename ,'r') as reader:
         rows = reader.readlines()

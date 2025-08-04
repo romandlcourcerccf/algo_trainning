@@ -13,8 +13,8 @@ def main():
         rows = reader.readlines()
         rows = [r.rstrip() for r in rows]
 
-     
 
+     
     row_1 = set(rows[0].split())
     row_2 = set(list(rows[1]))
 
