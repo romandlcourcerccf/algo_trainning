@@ -60,7 +60,7 @@ class Tree:
                 return
             
             _iter(root._right)
-            
+
             if root._right and root._left:
                 path.append(root._val)
                 
@@ -74,8 +74,8 @@ class Tree:
 def main():
 
     dir_name = os.path.dirname(__file__)
-    filename = os.path.join(dir_name, "1.txt")
-    # filename = os.path.join(dir_name, "input.txt")
+    # filename = os.path.join(dir_name, "1.txt")
+    filename = os.path.join(dir_name, "input.txt")
     
     with open(filename ,'r') as reader:
         rows = reader.readlines()

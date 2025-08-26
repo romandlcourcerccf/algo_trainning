@@ -4,7 +4,7 @@ def main():
 
     dir_name = os.path.dirname(__file__)
     # filename = os.path.join(dir_name, "input.txt")
-    filename = os.path.join(dir_name, "5.txt") 
+    filename = os.path.join(dir_name, "2.txt") 
   
     with open(filename ,'r') as reader:
         rows = reader.readlines()

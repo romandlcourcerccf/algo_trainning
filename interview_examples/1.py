@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+Написать декоратор
 
 def timer(func):
 
@@ -11,6 +12,7 @@ def timer(func):
     return wrapper
 
 
+Написать абстрактнвй класс 
 class MyAbstClass(ABC):
 
     '''

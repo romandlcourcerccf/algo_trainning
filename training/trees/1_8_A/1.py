@@ -16,39 +16,40 @@ class Tree:
             self._root = TreeNode(val=val)
             self._depth = 1
             return
-
-        cur = self._root
-        _local_depth = 0
-       
-        while cur:
-            _local_depth +=1
-            if cur._val == val:
-                break
-            elif cur._val < val:
-                if not cur._left:
-                    cur._left = TreeNode(val=val)
-                    break
-                else:
-                    cur = cur._left
-                    
-            else:
-                if not cur._right:
-                    cur._right = TreeNode(val=val)
-                    break
-                else:
-                    cur = cur._right
-                    
-
-        self._depth = max(_local_depth, self._depth)
         
+        def iterate(root, depth, val):
+
+            if not root:
+                return
+            
+            if root._val == val:
+                return
+            
+            self._depth = max(depth, self._depth)
+
+            if root._val < val:
+                if not root._left:
+                    root._left = TreeNode(val=val)
+                    return
+                else:
+                    iterate(root._left, depth+1, val)
+
+            elif root._val > val:
+                if not root._right:
+                    root._right = TreeNode(val=val)
+                    return
+                else:
+                    iterate(root._right, depth+1, val)
         
+        iterate(self._root, 1, val)
+
   
     
 def main():
 
     dir_name = os.path.dirname(__file__)
-    filename = os.path.join(dir_name, "1.txt")
-    # filename = os.path.join(dir_name, "input.txt")
+    filename = os.path.join(dir_name, "9.txt")
+    filename = os.path.join(dir_name, "input.txt")
     
     with open(filename ,'r') as reader:
         rows = reader.readlines()
@@ -57,23 +58,12 @@ def main():
     tree_info = list(map(int, rows[0].split()))
     tree_info = list(map(int, tree_info))
 
-    # print(tree_info)
-
     tree = Tree()
 
     for n in tree_info[:-1]:
-        # print('add val :, ', n)
         tree.add_val(n)
     
     print(tree._depth+1)
-
-
-
-
-
-
-
-        
 
 
 if __name__ == '__main__':

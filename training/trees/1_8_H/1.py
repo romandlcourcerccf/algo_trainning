@@ -9,60 +9,63 @@ class Tree:
     def __init__(self):
         self._root = None
 
-    
     def add_val(self, val):
 
         if not self._root:
             self._root = TreeNode(val=val)
-            return 1
-
-        cur = self._root
-        _local_depth = 1
-        while cur:
-            _local_depth +=1
-            if cur._val == val:
-                break
-            elif cur._val < val:
-                if not cur._left:
-                    cur._left = TreeNode(val=val)
-                    break
-                else:
-                    cur = cur._left
-                    
-            else:
-                if not cur._right:
-                    cur._right = TreeNode(val=val)
-                    break
-                else:
-                    cur = cur._right
-                    
-        return _local_depth
+            return
         
+        def iterate(root, depth, val):
 
-    def iter(self):
-    
-        path = []
-        def _iter(root):
             if not root:
-                return 1
+                return
             
-            _iter(root._right)
+            if root._val == val:
+                return
+            
+            if root._val < val:
+                if not root._left:
+                    root._left = TreeNode(val=val)
+                    return
+                else:
+                    iterate(root._left, depth+1, val)
 
-            if (root._right and not root._left) or (not root._right and root._left):
-                path.append(root._val)
+            elif root._val > val:
+                if not root._right:
+                    root._right = TreeNode(val=val)
+                    return
+                else:
+                    iterate(root._right, depth+1, val)
+        
+        iterate(self._root, 1, val)
+
+    
+    def is_balanced(self):
+    
+        is_avl = True
+        def _iter(root):
+
+            if not root:
+                return 0
+            
+            right_height = _iter(root._right)
+            left_height = _iter(root._left)
+
+            if abs(right_height-left_height) > 1:
+                is_avl = False
                 
-            _iter(root._left)
+            return max(right_height, left_height) + 1
 
         _iter(self._root)
-        return path
+
+        return is_avl
 
 
-        
 def main():
 
     dir_name = os.path.dirname(__file__)
-    # filename = os.path.join(dir_name, "1.txt")
-    filename = os.path.join(dir_name, "input.txt")
+    filename = os.path.join(dir_name, "1.txt")
+    # filename = os.path.join(dir_name, "input.txt")
     
     with open(filename ,'r') as reader:
         rows = reader.readlines()
@@ -78,8 +81,7 @@ def main():
     for n in tree_info[:-1]:
         res.append(tree.add_val(n))
     
-    for n in tree.iter():
-        print(n)
+    print('YES' if tree.is_balanced() else 'NO')
 
   
 if __name__ == '__main__':
