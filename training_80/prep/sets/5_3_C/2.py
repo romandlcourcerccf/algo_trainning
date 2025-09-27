@@ -6,9 +6,9 @@ def main():
 
     dir_name = os.path.dirname(__file__)
     filename = os.path.join(dir_name, "input.txt")
-    filename = os.path.join(dir_name, "1.txt")
-    # filename = os.path.join(dir_name, "3.txt")
-    # filename = os.path.join(dir_name, "7.txt")
+    # filename = os.path.join(dir_name, "1.txt")
+    # filename = os.path.join(dir_name, "2.txt")
+    filename = os.path.join(dir_name, "7.txt")
 
     with open(filename ,'r') as reader:
         rows = reader.readlines()
@@ -16,15 +16,27 @@ def main():
 
     nums = list(map(int, rows[1].split()))
 
-    h = defaultdict(set)
+    # print(nums)
 
-    for n1 in nums:
-        for n2 in nums:
-            print('n1 :', n1, 'n2 :', n2)
-            h[abs(n1-n2)].add(n1)
-            h[abs(n1-n2)].add(n2)
+    nums.sort()
 
-    print(h)
+    # print(nums)
+
+
+    r = len(nums)-1
+    
+    removed = []
+
+    while abs(nums[0]-nums[r]) > 1 and r >= 0:
+        removed.append(nums[r])
+        r -=1
+
+    print(len(removed))
+
+
+
+    
+        
     
 
 if __name__ == '__main__':

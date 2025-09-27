@@ -4,7 +4,7 @@ def main():
 
     dir_name = os.path.dirname(__file__)
     filename = os.path.join(dir_name, "input.txt")
-    filename = os.path.join(dir_name, "1.txt")
+    # filename = os.path.join(dir_name, "1.txt")
     # filename = os.path.join(dir_name, "8.txt")
     # filename = os.path.join(dir_name, "3.txt")
     # filename = os.path.join(dir_name, "7.txt")
