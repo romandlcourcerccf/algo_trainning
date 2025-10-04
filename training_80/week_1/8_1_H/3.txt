@@ -1,0 +1,6 @@
+5 6
+.OXOXO
+OXX.O.
+OOOOXX
+..O..O
+.O.X.X

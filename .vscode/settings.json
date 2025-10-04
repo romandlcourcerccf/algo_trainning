@@ -1,7 +1,11 @@
 {
-    "C_Cpp.errorSquiggles": "disabled",
-    "files.associations": {
-        "fstream": "cpp",
-        "istream": "cpp"
-    }
+   "terminal.integrated.env.osx": {"PYTHONPATH": "${workspaceFolder}"},
+   "python.envFile": "${workspaceFolder}/.env",
+
+
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  }
+  
 }

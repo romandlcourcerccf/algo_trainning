@@ -1,6 +1,7 @@
 import os
 from collections import defaultdict
 
+
 def get_closest_point(idx, nails):
 
     min_dist = float('inf')
@@ -52,8 +53,8 @@ def purge_connection(connect_info, closest:int, closest_neigbour:int, used:set):
 def main():
 
     dir_name = os.path.dirname(__file__)
-    # filename = os.path.join(dir_name, "input.txt")
-    filename = os.path.join(dir_name, "1.txt")
+    filename = os.path.join(dir_name, "input.txt")
+    # filename = os.path.join(dir_name, "1.txt")
     # filename = os.path.join(dir_name, "2.txt")
     # filename = os.path.join(dir_name, "3.txt")
     # filename = os.path.join(dir_name, "4.txt")
