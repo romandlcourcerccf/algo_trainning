@@ -4,18 +4,27 @@ from random import randrange
 
 
 class TestDataIterator:
-    def __init__(self, parts_num: int, part_len: int):
-        self.max_val = max_val
-        self.max_len = max_len
-        self.seq_len = seq_len
-
-        self._sequence = self._gen_data()
-        self._index = 0
+    def __init__(
+        self,
+        min_parts_num: int,
+        min_part_len: int,
+        max_parts_num: int,
+        max_part_len: int,
+        ex_num: int,
+    ):
+        self.min_parts_num = min_parts_num
+        self.min_part_len = min_part_len
+        self.max_parts_num = max_parts_num
+        self.max_part_len = max_part_len
+        self.ex_num = ex_num
 
     def _gen_data(self):
         sequence = []
 
-        for _ in range(self.seq_len):
+        for _ in range(self.ex_num):
+            part_len = randrange(self.min_part_len, self.max_part_len)
+            parts_num = randrange(self.min_parts_num, self.min_parts_num)
+
             sequence.append(
                 [randrange(self.max_val) for i in range(randrange(2, self.max_len))]
             )
@@ -38,9 +47,9 @@ def main():
     dname = os.path.dirname(__file__)
 
     filename = os.path.join(dname, "input.txt")
-    # filename = os.path.join(dname, "1.txt")
-    # filename = os.path.join(dname, "2.txt")
-    # filename = os.path.join(dname, "3.txt")
+    filename = os.path.join(dname, "1.txt")
+    filename = os.path.join(dname, "2.txt")
+    filename = os.path.join(dname, "3.txt")
     # filename = os.path.join(dname, "13.txt")
 
     with open(filename, "r") as f:
@@ -66,12 +75,12 @@ def main():
     for i in range(0, len(full_string) - part_len + 1):
         h[full_string[i : i + part_len]].append(i)
 
-    # print(h)
+    print(h)
 
     res = []
     for part in parts:
         if part in h:
-            res.append((h[part][0], parts_nums[part]))
+            res.append((h[part].pop(), parts_nums[part]))
 
     print(res)
     res.sort()

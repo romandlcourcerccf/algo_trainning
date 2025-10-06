@@ -1,3 +1,5 @@
-2 6
-XX....
-.XXXXX
+12 3
+cabacaqwcaba
+caba
+caba
+caqw
