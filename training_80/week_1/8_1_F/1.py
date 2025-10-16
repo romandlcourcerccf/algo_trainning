@@ -29,8 +29,7 @@ def main():
     max_diff_arr = None
 
     for l in lst:
-        # print(l)
-
+    
         arr = []
         pos = 0
         for r in rows[1:]:

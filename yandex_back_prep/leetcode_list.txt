@@ -30,14 +30,14 @@ https://leetcode.com/problems/number-of-islands/
 https://leetcode.com/problems/remove-invalid-parentheses/
 
 sort:
-https://leetcode.com/problems/merge-intervals/
+https://leetcode.com/problems/merge-intervals/ +
 
 heap/hash:
 https://leetcode.com/problems/top-k-frequent-words/ +
 https://leetcode.com/problems/top-k-frequent-elements/+
 
 two pointers:
-https://leetcode.com/problems/container-with-most-water/
+https://leetcode.com/problems/container-with-most-water/ +
 https://leetcode.com/problems/partition-labels/
 
 sliding window:
