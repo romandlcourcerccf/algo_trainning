@@ -46,17 +46,15 @@ def dfs_iterative_search_path(
 
     while stack:
         s = stack.pop()
-
-        print(s)
-
         if s == end:
             path = []
-            # path.append(end)
+
             while s in parent.keys():
-                path.append(s)
+                path.insert(0, s)
                 s = parent[s]
 
-            print(parent)
+            path.insert(0, start)
+
             return path
 
         if s not in graph:
