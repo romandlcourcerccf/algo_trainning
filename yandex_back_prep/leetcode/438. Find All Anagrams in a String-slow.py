@@ -8,7 +8,9 @@ class Solution:
         cp = Counter(p)
 
         for i in range(0, len(s) - len(p) + 1):
+            if i == 0:
             if cp == Counter(s[i : i + len(p)]):
                 res.append(i)
 
         return res
+

@@ -25,7 +25,6 @@ def timer():
     return wrapper
 
 
-@timer()
 def main():
     dname = os.path.dirname(__file__)
 
@@ -33,8 +32,9 @@ def main():
     filename = os.path.join(dname, "1.txt")
     # filename = os.path.join(dname, "2.txt")
     # filename = os.path.join(dname, "3.txt")
-    filename = os.path.join(dname, "4.txt")
+    # filename = os.path.join(dname, "4.txt")
     # filename = os.path.join(dname, "8.txt")
+    filename = os.path.join(dname, "11.txt")
 
     with open(filename, "r") as f:
         rows = f.readlines()
@@ -44,8 +44,6 @@ def main():
         def __init__(self, rows):
             self.rows = rows
             self.tree = self._init_tree()
-            # print(self.tree)
-            self.is_parent
             self._paths = defaultdict(set)
             self._make_paths()
 
@@ -57,16 +55,15 @@ def main():
                 tree[v].add(i + 1)
             return tree
 
+        @timer()
         def _make_paths(self):
             nodes = map(int, rows[1].split())
             for i, _ in enumerate(nodes):
                 self.track = set()
-                self._dfs(0, set(), i + 1)
+                self.dfs(0, set(), i + 1)
                 self._paths[i + 1] = self.track
-            # print(self._paths)
 
-        def _dfs(self, root, track, target):
-            # print(f"root {root} target {target}")
+        def dfs(self, root, track, target):
             track.add(root)
 
             if root == target:
@@ -74,46 +71,20 @@ def main():
                 return
 
             for child in self.tree[root]:
-                self._dfs(child, track.copy(), target)
-
-        def dfs(self, root, track, parent, target):
-            track.append(root)
-
-            if root == target and parent in track:
-                # print(f"parent {parent}, target {target} track {track}")
-                self._is_parent = True
-                return
-
-            for child in self.tree[root]:
-                _track = track.copy()
-                self.dfs(child, _track, parent, target)
+                self.dfs(child, track, target)
 
         def is_parent(self, a, b):
-            self._is_parent = False
-            self.dfs(0, list(), a, b)
-            return self._is_parent
-
-        def is_parent_2(self, a, b):
             return a in self._paths[b]
+
+        @timer()
+        def print_parents(self):
+            for row in rows[3:]:
+                a, b = tuple(map(int, row.split()))
+                print(int(self.is_parent(a, b)))
 
     pc = ParentChecker(rows=rows)
 
-    # hash = defaultdict(int)
-
-    # for row in rows[3:]:
-    #     a, b = tuple(map(int, row.split()))
-    #     if (a, b) in hash:
-    #         print(hash[(a, b)])
-    #     elif (b, a) in hash and hash[(b, a)] == 1:
-    #         print(0)
-    #     else:
-    #         is_parent = int(pc.is_parent(a, b))
-    #         hash[(a, b)] = is_parent
-    #         print(is_parent)
-
-    for row in rows[3:]:
-        a, b = tuple(map(int, row.split()))
-        print(int(pc.is_parent_2(a, b)))
+    pc.print_parents()
 
 
 if __name__ == "__main__":

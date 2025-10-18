@@ -22,7 +22,7 @@ https://leetcode.com/problems/valid-anagram/ +
 https://leetcode.com/problems/find-all-anagrams-in-a-string/ +-
 
 queue/stack:
-https://leetcode.com/problems/valid-parentheses/ +
+https://leetcode.com/problems/valid-parentheses/+
 
 
 dfs/bfs:
@@ -43,7 +43,7 @@ https://leetcode.com/problems/partition-labels/
 sliding window:
 https://leetcode.com/problems/sliding-window-median/
 https://leetcode.com/problems/sliding-window-maximum/
-https://leetcode.com/problems/longest-repeating-character-replacement/
+https://leetcode.com/problems/longest-repeating-character-replacement/ -+ (solve again)
 
 
 tree:
