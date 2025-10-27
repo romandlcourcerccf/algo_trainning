@@ -11,7 +11,6 @@ class Solution:
             else:
                 lr[i] = nums[i] * lr[i-1]
 
-        
         for i in range(len(nums)-1, -1, -1):
             if i == len(nums)-1:
                 ll[i] = nums[i]
@@ -25,6 +24,5 @@ class Solution:
                 res[i] = lr[i-1]
             else:
                 res[i] = lr[i-1] * ll[i+1]
-        
         
         return res

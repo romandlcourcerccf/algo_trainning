@@ -6,9 +6,9 @@ def main():
     dname = os.path.dirname(__file__)
 
     filename = os.path.join(dname, "input.txt")
-    filename = os.path.join(dname, "1.txt")
-    filename = os.path.join(dname, "2.txt")
-    filename = os.path.join(dname, "3.txt")
+    # filename = os.path.join(dname, "1.txt")
+    # filename = os.path.join(dname, "2.txt")
+    # filename = os.path.join(dname, "3.txt")
     # filename = os.path.join(dname, "4.txt")
     # filename = os.path.join(dname, "5.txt")
 
