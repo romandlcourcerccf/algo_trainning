@@ -2,9 +2,9 @@ import os
 from collections import defaultdict
 
 
-import functools
-import time
-from typing import Callable, Any
+# import functools
+# import time
+# from typing import Callable, Any
 
 
 # def timer():
@@ -91,7 +91,7 @@ def main():
 
             return path
 
-        @timer()
+        # @timer()
         def print_parents(self):
             for row in rows[3:]:
                 a, b = tuple(map(int, row.split()))

@@ -2,7 +2,7 @@ linked lists:
 https://leetcode.com/problems/merge-k-sorted-lists/
 https://leetcode.com/problems/linked-list-cycle/ +
 https://leetcode.com/problems/add-two-numbers/ +-
-https://leetcode.com/problems/reverse-linked-list/ +-
+https://leetcode.com/problems/reverse-linked-list/ +--
 
 
 bin-search
@@ -38,7 +38,7 @@ https://leetcode.com/problems/top-k-frequent-elements/+
 
 two pointers:
 https://leetcode.com/problems/container-with-most-water/ +
-https://leetcode.com/problems/partition-labels/
+https://leetcode.com/problems/partition-labels/ ??
 https://leetcode.com/problems/move-zeroes/+
 
 

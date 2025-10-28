@@ -1,76 +1,68 @@
 # Definition for singly-linked list.
-# class ListNode(object):
+# class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-class Solution(object):
-    def addTwoNumbers(self, l1, l2):
-        """
-        :type l1: Optional[ListNode]
-        :type l2: Optional[ListNode]
-        :rtype: Optional[ListNode]
-        """
-        res = ListNode()
-        head = res
+class Solution:
+    def addTwoNumbers(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
+        head = ListNode()
+        cur = head
 
-        rem = 0
-        pos1, pos2 = l1, l2
+        list_1_cur, list_2_cur = l1, l2
 
-        while pos1 and pos2:
+        remainder = 0
+        while l1 and l2:
+            digit_val = l1.val + l2.val + remainder
+            remainder = 0
 
-            print('>>')
-        
-            d = pos1.val + pos2.val + rem
+            print("l1.val :", l1.val)
+            print("l2.val :", l2.val)
+            print("remainder :", remainder)
 
-            if d < 10:
-               res.next =  ListNode(val=d)
-               res = res.next
+            if digit_val < 10:
+                cur.next = ListNode(val=digit_val)
+                cur = cur.next
             else:
-                floor = d // 10
-                _rem = d % 10
-                res.next =  ListNode(val=_rem)
-                res = res.next
-                rem = floor
+                print("digit_val :", digit_val)
 
-            pos1 = pos1.next
-            pos2 = pos2.next
+                digit_val_rem_part = digit_val // 10
+                digit_val_int_part = digit_val % 10
 
-        while pos1:
-            d = pos1.val + rem
+                remainder = digit_val_rem_part
 
-            if d < 10:
-               res.next =  ListNode(val=d)
-               res = res.next
+                print("digit_val_int_part :", digit_val_int_part)
+                print("digit_val_rem_part :", digit_val_rem_part)
+
+                cur.next = ListNode(val=digit_val_int_part)
+                cur = cur.next
+
+            l1 = l1.next
+            l2 = l2.next
+
+        l_rest = l1 if l1 else l2
+
+        while l_rest:
+            digit_val = l_rest.val + remainder
+            remainder = 0
+
+            if digit_val < 10:
+                cur.next = ListNode(val=digit_val)
+                cur = cur.next
             else:
-                floor = d // 10
-                _rem = d % 10
-                res.next =  ListNode(val=_rem)
-                res = res.next
-                rem = floor
+                digit_val_rem_part = digit_val // 10
+                digit_val_int_part = digit_val % 10
 
-            pos1 = pos1.next
+                remainder = digit_val_rem_part
 
-        while pos2:
-            d = pos2.val + rem
+                cur.next = ListNode(val=digit_val_int_part)
+                cur = cur.next
 
-            if d < 10:
-               res.next =  ListNode(val=d)
-               res = res.next
-               rem = 0
-            else:
-                floor = d // 10
-                _rem = d % 10
-                res.next =  ListNode(val=_rem)
-                res = res.next
-                rem = floor
+            l_rest = l_rest.next
 
-            pos2 = pos2.next
-
-
-        print('rem :', rem)
-
-        if rem > 0:
-            res.next =  ListNode(val=rem)
-            res = res.next
+        if remainder > 0:
+            cur.next = ListNode(val=remainder)
+            cur = cur.next
 
         return head.next

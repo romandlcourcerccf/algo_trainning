@@ -14,8 +14,9 @@ def main():
         rows = [r.rstrip() for r in rows]
 
     n, p = tuple(map(int, rows[0].split()))
-
     cs = list(map(int, rows[1].split()))
+
+    
 
 
 if __name__ == "__main__":

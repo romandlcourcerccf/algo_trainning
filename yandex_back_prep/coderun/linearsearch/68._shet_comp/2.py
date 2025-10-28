@@ -6,9 +6,9 @@ def main():
     dname = os.path.dirname(__file__)
 
     filename = os.path.join(dname, "input.txt")
-    filename = os.path.join(dname, "1.txt")
-    filename = os.path.join(dname, "2.txt")
-    filename = os.path.join(dname, "3.txt")
+    # filename = os.path.join(dname, "1.txt")
+    # filename = os.path.join(dname, "2.txt")
+    # filename = os.path.join(dname, "3.txt")
     # filename = os.path.join(dname, "7.txt")
     # filename = os.path.join(dname, "8.txt")
 
@@ -23,7 +23,7 @@ def main():
 
     best_res = 0
 
-    for i in range(max_idx + 1, n):
+    for i in range(max_idx + 1, n): 
         if results[i] % 10 == 5 and i + 1 < n and results[i] > results[i + 1]:
             best_res = max(best_res, results[i])
 
