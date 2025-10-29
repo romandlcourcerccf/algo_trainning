@@ -17,10 +17,7 @@ class Solution:
             digit_val = l1.val + l2.val + remainder
             remainder = 0
 
-            print("l1.val :", l1.val)
-            print("l2.val :", l2.val)
-            print("remainder :", remainder)
-
+           
             if digit_val < 10:
                 cur.next = ListNode(val=digit_val)
                 cur = cur.next
@@ -31,9 +28,6 @@ class Solution:
                 digit_val_int_part = digit_val % 10
 
                 remainder = digit_val_rem_part
-
-                print("digit_val_int_part :", digit_val_int_part)
-                print("digit_val_rem_part :", digit_val_rem_part)
 
                 cur.next = ListNode(val=digit_val_int_part)
                 cur = cur.next

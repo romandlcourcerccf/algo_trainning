@@ -6,7 +6,7 @@ class Solution:
         h = set()
 
         for r in range(len(s)):
-            while s[r] in h:
+            while s[r] in h:  ## !!Remember!!
                 h.remove(s[l])
                 l += 1
 

@@ -60,3 +60,80 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock/ +
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+
+
+Yandex 2
+
+m https://leetcode.com/problems/line-reflection/description/  nf
+m https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/description/
+e https://leetcode.com/problems/summary-ranges/description/
+m https://leetcode.com/problems/string-compression/description/
+m https://leetcode.com/problems/zigzag-iterator nf
+e https://leetcode.com/problems/valid-palindrome
+https://leetcode.com/problems/one-edit-distance
+https://leetcode.com/problems/subarray-sum-equals-k/description/
+https://leetcode.com/problems/move-zeroes/
+https://leetcode.com/problems/group-anagrams
+https://leetcode.com/problems/insert-delete-getrandom-o1/
+https://leetcode.com/problems/lru-cache
+https://leetcode.com/problems/generate-parentheses/
+https://leetcode.com/problems/reverse-linked-list/description/
+https://leetcode.com/problems/permutation-in-string/
+https://leetcode.com/problems/merge-k-sorted-lists/
+https://leetcode.com/problems/number-of-recent-calls/
+https://leetcode.com/problems/valid-parentheses/
+https://leetcode.com/problems/max-consecutive-ones-ii/
+https://leetcode.com/problems/maximize-distance-to-closest-person
+https://leetcode.com/problems/design-hit-counter nf
+https://leetcode.com/problems/merge-intervals
+https://leetcode.com/problems/trapping-rain-water/description/
+https://leetcode.com/problems/two-sum/description/
+https://leetcode.com/problems/meeting-rooms-ii/ nf
+https://leetcode.com/problems/find-all-anagrams-in-a-string
+https://leetcode.com/problems/implement-rand10-using-rand7/description/
+https://leetcode.com/problems/symmetric-tree/description/
+https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+https://leetcode.com/problems/validate-binary-search-tree/description/
+https://leetcode.com/problems/number-of-islands/
+https://leetcode.com/problems/flatten-nested-list-iterator/description/
+https://leetcode.com/problems/consecutive-characters/
+https://leetcode.com/problems/interval-list-intersections/description/
+https://leetcode.com/problems/implement-queue-using-stacks/description/
+https://leetcode.com/problems/add-two-numbers/description/
+https://leetcode.com/problems/merge-sorted-array/
+https://leetcode.com/problems/merge-two-sorted-lists/description/
+https://leetcode.com/problems/max-consecutive-ones-iii/description/
+https://leetcode.com/problems/longest-palindromic-substring/description/
+https://leetcode.com/problems/jewels-and-stones/description/
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+https://leetcode.com/problems/intersection-of-two-arrays-ii/description/
+https://leetcode.com/problems/missing-number/description/
+https://leetcode.com/problems/evaluate-reverse-polish-notation/description/
+https://leetcode.com/problems/median-of-two-sorted-arrays/
+https://leetcode.com/problems/simplify-path/
+https://leetcode.com/problems/is-subsequence/description/
+https://leetcode.com/problems/squares-of-a-sorted-array/
+https://leetcode.com/problems/remove-nth-node-from-end-of-list
+https://leetcode.com/problems/perfect-squares/
+https://leetcode.com/problems/max-stack/ nf
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii/
+https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/description/ nf
+https://leetcode.com/problems/maximal-rectangle/description/
+https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
+https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/
+https://leetcode.com/problems/range-sum-of-bst/
+https://leetcode.com/problems/partition-labels/description/
+https://leetcode.com/problems/product-of-array-except-self/
+https://leetcode.com/problems/binary-tree-maximum-path-sum/
+https://leetcode.com/problems/continuous-subarray-sum/
+https://leetcode.com/problems/reverse-words-in-a-string-iii/
+https://leetcode.com/problems/add-strings/description/
+https://leetcode.com/problems/palindrome-linked-list/
+https://leetcode.com/problems/first-unique-character-in-a-string/description/
+
+
+
+
+

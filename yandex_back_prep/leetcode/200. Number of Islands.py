@@ -3,27 +3,23 @@ class Solution:
         rows = len(grid)
         cols = len(grid[0])
 
-        islands_count = 0
+        num_islands = 0
 
-        def get_neighbours(row, col, cols, rows):
-
-            n_points = [
-                (row, col),
-                (row + 1, col),
-                (row - 1, col),
-                (row, col + 1),
-                (row, col - 1),
+        def expand(row, col, rows, cols, grid):
+            grid[row][col] = "2"
+            neighbors = [(row + 1, col), (row - 1, col), (row, col + 1), (row, col - 1)]
+            neighbors = [
+                n
+                for n in neighbors
+                if 0 <= n[0] < rows and 0 <= n[1] < cols and grid[n[0]][n[1]] == "1"
             ]
-
-            n_points = [p for p in n_points if <p[0]]
-
-        def fill_up(row, col):
-            grid[row][col] == "2"
-            neighbours = get_neighbours(row, col)
-            for neighbour in neighbours:
-                fill_up(neighbour[0], neighbour[1])
+            for n in neighbors:
+                expand(n[0], n[1], rows, cols, grid)
 
         for row in range(rows):
             for col in range(cols):
                 if grid[row][col] == "1":
-                    islands_count += 1
+                    num_islands += 1
+                    expand(row, col, rows, cols, grid)
+
+        return num_islands
