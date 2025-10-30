@@ -45,17 +45,10 @@ class Solution:
                     else:
                         continue
 
-                # for _i in range(i - 1, -1, -1):
-                #     if dp[_i] == 1:
-                #         if i - _i >= 1:
-                #             part_num = min(part_num, dp[_i] + dp[i - _i])
-                #         else:
-                #             continue
-
                 dp[i] = part_num
 
-        print("len dp: ", len(dp))
-        print("len sq:", len(squares))
+        # print("len dp: ", len(dp))
+        # print("len sq:", len(squares))
         return dp[-1]
 
 

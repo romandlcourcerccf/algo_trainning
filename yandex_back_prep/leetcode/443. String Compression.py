@@ -24,6 +24,51 @@ class Solution:
               
 
         return pr
+    
+
+    lass Solution:
+    def compress(self, chars: List[str]) -> int:
+        
+        ps = pw = 0
+        ch_cnt = 0
+        cur_char = chars[0]
+        ps +=1
+        ch_cnt +=1
+        while ps < len(chars):
+
+            if chars[ps-1] == chars[ps]:
+                  ch_cnt +=1
+            
+            else:
+                print(f'cur_char : {cur_char} ch_cnt {ch_cnt}')
+            
+                chars[pw] = cur_char 
+                pw +=1
+                
+                if ch_cnt > 1:
+                    for n in str(ch_cnt):
+                        chars[pw] = n
+                        pw +=1
+
+                cur_char = chars[ps]
+                ch_cnt = 1
+            
+            ps +=1
+        
+        print(f'cur_char : {cur_char} ch_cnt {ch_cnt}')
+        
+        chars[pw] = cur_char 
+        pw +=1
+                
+        if ch_cnt > 1:
+            for n in str(ch_cnt):
+                chars[pw] = n
+                pw +=1
+
+        
+        return pw
+    
+    
 
         
         

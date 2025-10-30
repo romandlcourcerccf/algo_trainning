@@ -10,3 +10,16 @@ class Solution:
         cleaned_up = ''.join(cleaned_up)
 
         return cleaned_up == cleaned_up[::-1]
+    
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        
+        s = list(s)
+        _s = []
+        
+        for c in s:
+            if c.lower() != ' ' and  c.isalnum():
+                _s.append(c.lower())
+
+        return _s == _s[::-1]
