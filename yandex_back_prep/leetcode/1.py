@@ -1,4 +1,3 @@
-n = 123
+l = [1, 2, 3]
 
-n = 100 >> 1
-print(n)
+print(type(l) is set)

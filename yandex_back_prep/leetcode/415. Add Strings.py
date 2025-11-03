@@ -1,66 +1,58 @@
 class Solution:
     def addStrings(self, num1: str, num2: str) -> str:
-        
-        n1 = num1[::-1]
-        n2 = num2[::-1]
+        num1, num2 = num1[::-1], num2[::-1]
 
-        pos1, pos2, rem  = 0,0,0
+        print("num1: ", num1, "num2: ", num2)
+
         res = []
-        while pos1 < len(num1) and pos2 < len(num2):
-            v = int(n1[pos1]) + int(n2[pos2])
-            if v < 10:
-                res.append(v + rem)
+        rem = i1 = i2 = 0
+        while i1 < len(num1) and i2 < len(num2):
+            s = int(num1[i1]) + int(num2[i2]) + rem
+            rem = 0
+
+            if s > 9:
+                d, r = divmod(s, 10)
+                res.append(str(r))
+                rem = d
+            else:
+                res.append(str(s))
+
+            i1 += 1
+            i2 += 1
+
+            print("res :", res)
+
+        if i1 < len(num1):
+            while i1 < len(num1):
+                s = int(num1[i1]) + rem
                 rem = 0
-            else:
-                v1 = v // 10
-                v2 = v % 10
-                res.append(v2 + rem)
-                rem = v1
 
-            pos1 +=1
-            pos2 +=1
+                if s > 9:
+                    d, r = divmod(s, 10)
+                    res.append(str(d))
+                    rem = r
+                else:
+                    res.append(str(s))
 
+                i1 += 1
 
-        # print('res :',res)
+        if i2 < len(num2):
+            while i2 < len(num2):
+                s = int(num2[i2]) + rem
+                rem = 0
 
-        while pos1 < len(n1):
-            v = int(n1[pos1])
-            v += rem
-            rem = 0
+                if s > 9:
+                    d, r = divmod(s, 10)
+                    res.append(str(d))
+                    rem = r
+                else:
+                    res.append(str(s))
 
-            if v < 10:
-                res.append(v)
-            else:
-                v1 = v // 10
-                v2 = v % 10
-                res.append(v2)
-                rem = v1
-
-            pos1 +=1
-           
-    
-        while pos2 < len(n2):
-            v = int(n2[pos2])
-            v += rem
-            rem = 0
-           
-            if v < 10:
-                res.append(v)
-            else:
-                v1 = v // 10
-                v2 = v % 10
-                res.append(v2)
-                rem = v1
-
-            pos2 +=1
-
-        print('rem :',rem)
+                i2 += 1
 
         if rem > 0:
-            res.append(rem)
+            res.append(str(rem))
 
-        res = res[::-1]
-        res = list(map(str, res))
-        res = ''.join(res)
+        print(res)
 
-        return res
+        return "".join(res[::-1])
