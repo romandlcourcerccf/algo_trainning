@@ -27,9 +27,14 @@ class Solution:
         print('max_lef :', max_lef)
         print('max_right :', max_right)
 
-        if not (max_lef == 0 or max_right == 0):
+        if not (max_lef == 0 or max_right == len(seats)-1) and  (max_right + max_lef) % 2 == 0:
+            print('l-r :', max_right-max_lef)
             mid = (max_right + max_lef) // 2
             return max(mid - max_lef+1, max_right - mid+1)
+        elif not (max_lef == 0 or max_right == len(seats)-1) and  (max_right + max_lef) % 2 != 0:
+            print('l-r :', max_right-max_lef)
+            mid = (max_right + max_lef) // 2
+            return max(mid - max_lef, max_right - mid)
         if max_lef == 0 and max_right > 0:
             return max_right+1
         elif max_right == 0:
