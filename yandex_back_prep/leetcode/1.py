@@ -1,3 +1,9 @@
-l = [1, 2, 3]
+# fmt:off
+h = {"cdscd": 11111,
+      "cdscd": 11111,
+      "cdscd": 11111,
+        "cdscd": 11111}
 
-print(type(l) is set)
+# fmt:on
+
+h = {"cdscd": 11111, "cdscd": 11111, "cdscd": 11111, "cdscd": 11111}
