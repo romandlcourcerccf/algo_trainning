@@ -19,7 +19,7 @@ from solution import MaxStack
             ],
             [5, 1, 5, [], [], [], [], [], []],
             [None, None, None, 5, 5, 1, 5, 1, 5],
-        ),
+        )
     ],
 )
 def test_one_edit_distance(commands, arguments, expected):

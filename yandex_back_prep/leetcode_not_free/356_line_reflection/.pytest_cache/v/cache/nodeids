@@ -1,0 +1,17 @@
+[
+  "test_solution.py::test_solution",
+  "test_solution.py::test_solution[1-2--1]",
+  "test_solution.py::test_solution[5--1-6]",
+  "test_solution.py::test_solution[l0--1]",
+  "test_solution.py::test_solution[l1-6]",
+  "test_solution.py::test_solution[points0--1]",
+  "test_solution.py::test_solution[points0-False]",
+  "test_solution.py::test_solution[points0-True]",
+  "test_solution.py::test_solution[points1-6]",
+  "test_solution.py::test_solution[points1-False]",
+  "test_solution.py::test_solution[points2-False]",
+  "test_solution.py::test_solution[points3-True]",
+  "test_solution.py::test_solution[points4-True]",
+  "test_solution.py::test_solution[points5-True]",
+  "test_solution.py::test_solution[points6-True]"
+]
