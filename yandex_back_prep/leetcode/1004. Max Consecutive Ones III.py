@@ -23,7 +23,7 @@ class Solution:
             # if pref_sum[r] - pref_sum[l - 1] == r - l + 1 - k:
             max_len = max(max_len, r - l + 1)
 
-        print("max_len :", max_len)
+        # print("max_len :", max_len)
         return max_len
 
 

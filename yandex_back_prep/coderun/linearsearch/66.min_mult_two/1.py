@@ -1,28 +1,23 @@
-import os
-from collections import defaultdict
+import sys
 
 
 def main():
-    dname = os.path.dirname(__file__)
+    """
+    Пример ввода и вывода числа n, где -10^9 < n < 10^9:
+    n = int(input())
+    print(n)
+    """
 
-    filename = os.path.join(dname, "input.txt")
-    # filename = os.path.join(dname, "1.txt")
-    # filename = os.path.join(dname, "2.txt")
-    # filename = os.path.join(dname, "3.txt")
-    # filename = os.path.join(dname, "4.txt")
-    # filename = os.path.join(dname, "5.txt")
+    arr = list(map(int, input().split()))
+    arr.sort()
 
+    if arr[-1] * arr[-2] > arr[0] * arr[1]:
+        res = [arr[-2], arr[-1]]
+    else:
+        res = [arr[0], arr[1]]
 
-    with open(filename, "r") as f:
-        rows = f.readlines()
-        rows = [r.rstrip() for r in rows]
-
-    nums = list(map(int, rows[0].split()))
-    nums.sort()
-
-    res = [nums[0], nums[1]] if nums[0]*nums[1] > nums[-2]*nums[-1] else [nums[-2], nums[-1]]
     print(*res)
-    
+
 
 if __name__ == "__main__":
     main()
