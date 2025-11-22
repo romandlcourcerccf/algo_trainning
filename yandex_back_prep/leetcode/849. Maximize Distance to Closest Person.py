@@ -9,7 +9,6 @@ class Solution:
                 while r < len(seats) - 1 and seats[r] == seats[r + 1]:
                     r += 1
 
-                print(f"l: {l} r: {r} len: {r - l + 1}")
                 if l == 0:
                     max_distance = max(max_distance, r - l + 1)
                 elif r == len(seats) - 1:
