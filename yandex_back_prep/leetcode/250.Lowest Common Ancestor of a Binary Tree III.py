@@ -11,43 +11,33 @@ class Node:
 
 class Solution:
     def lowestCommonAncestor(self, p: "Node", q: "Node") -> "Node":
-        self.p_path = None
-        self.q_path = None
-
-        def up(current, target, track):
-            if not current:
-                return
-
-            track.append(current)
-            if current.val == target.val:
-                return
-
-            up(current.parent, target, track)
-
+        cur = p
         p_track = []
-        up(p, q, p_track)
-        print("p_track : ", [n.val for n in p_track])
 
+        while cur:
+            p_track.append(cur)
+            if cur.val == q.val:
+                return q
+
+            cur = cur.parent
+
+        cur = q
         q_track = []
-        up(q, p, q_track)
-        print("q_track : ", [n.val for n in q_track])
+        while cur:
+            q_track.append(cur)
+            if cur.val == p.val:
+                return p
 
-        if p_track[-1].val == q.val:
-            return q
-        elif q_track[-1].val == p.val:
-            return p
-        else:
-            pos1 = pos2 = 0
-            p_track = p_track[::-1]
-            q_track = q_track[::-1]
+            cur = cur.parent
 
-            cur_node = None
-            while pos1 <= len(p_track) and pos2 < len(q_track):
-                if p_track[pos1].val == q_track[pos2].val:
-                    cur_node = p_track[pos1]
-                    pos1 += 1
-                    pos2 += 1
-                else:
-                    break
+        print([n.val for n in p_track])
+        print([n.val for n in q_track])
 
-        return cur_node
+        p_track = p_track[::-1]
+        q_track = q_track[::-1]
+
+        pos = 0
+        while p_track[pos].val == q_track[pos].val:
+            pos += 1
+
+        return p_track[pos - 1]

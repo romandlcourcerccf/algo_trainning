@@ -46,5 +46,30 @@ class Solution:
         res.append(intervals[-1])
 
         return res
+    
+
+class Solution:
+
+    def is_overlapping(self, i1, i2):
+        return not (i1[1] < i2[0] or i2[1] < i1[0])
+    
+    def merge_intervals(self, i1, i2):
+        return [min(i1[0], i1[1], i2[0], i2[1]), max(i1[0], i1[1], i2[0], i2[1])]
+
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort(key=lambda x: x[0])
+
+        res = []
+        for i in range(len(intervals)-1):
+            if not self.is_overlapping(intervals[i], intervals[i+1]):
+                res.append(intervals[i])
+            else:
+                intervals[i+1] = self.merge_intervals(intervals[i], intervals[i+1])
+        
+        res.append(intervals[-1])
+
+        return res
+
+
 
         

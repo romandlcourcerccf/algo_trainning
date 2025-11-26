@@ -12,3 +12,4 @@ class Solution:
             res += [intersect[i]] * num_up
 
         return res
+
