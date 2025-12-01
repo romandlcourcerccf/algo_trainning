@@ -5,7 +5,7 @@ class Solution:
 
         for r in range(len(s)):
             h[s[r]] += 1
-            if r - l + 1 - max(h.values()) > k:
+            if r - l + 1 - max(h.values()) > k:  # key idea
                 h[s[l]] -= 1
                 l += 1
 
