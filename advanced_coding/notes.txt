@@ -1,3 +1,4 @@
-1. Use fixtures
+1. Use fixtures + 
 2. Test async 
-3. 
+3. Mock
+4. Coverage -

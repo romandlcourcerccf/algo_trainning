@@ -45,6 +45,9 @@ class EditorBuffer:
     def get_buffer(self) -> str:
         return "".join(self._buffer)
 
+    def print_buffer(self) -> None:
+        print(self.get_buffer())
+
     def get_last_char(self) -> str:
         if not self._buffer:
             raise BufferExeption("Buffer is empty!")

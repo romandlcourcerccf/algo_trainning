@@ -12,13 +12,16 @@ def test_add_str_to_the_end():
     assert buffer.get_buffer() == s1
 
 
-def test_remove_last_n_symbols():
+@pytest.mark.parametrize("parameters, expected", [(["qwerty123", 3], "qwerty")])
+def test_remove_last_n_symbols(parameters, expected):
     buffer = EditorBuffer()
-    s1 = "qwerty123"
-    s2 = "qwerty"
+
+    s1 = parameters[0]
+    n_to_remove = parameters[1]
+    s2 = expected
 
     buffer.add_str_to_the_end(s1)
-    buffer.remove_last_n_symbols(3)
+    buffer.remove_last_n_symbols(n_to_remove)
 
     assert buffer.get_buffer() == s2
 
@@ -68,3 +71,14 @@ def test_get_last_char_empty_buffer():
     with pytest.raises(BufferExeption):
         buffer = EditorBuffer()
         buffer.get_last_char()
+
+
+def test_print(capfd):
+    buffer = EditorBuffer()
+    s1 = "qwerty123"
+    buffer.add_str_to_the_end(s1)
+    buffer.print_buffer()
+
+    out, _ = capfd.readouterr()
+
+    assert out.strip() == s1

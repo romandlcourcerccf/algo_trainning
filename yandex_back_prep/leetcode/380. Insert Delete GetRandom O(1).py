@@ -1,6 +1,7 @@
 import random
 
 
+# bad solution
 class RandomizedSet:
     def __init__(self):
         self.s = set()
@@ -30,6 +31,7 @@ class RandomizedSet:
 
 
 import random
+
 
 class RandomizedSet:
     def __init__(self):
