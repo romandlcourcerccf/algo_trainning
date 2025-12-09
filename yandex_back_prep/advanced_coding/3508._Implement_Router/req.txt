@@ -1,4 +1,5 @@
-Design a data structure that can efficiently manage data packets in a network router. Each data packet consists of the following attributes:
+Design a data structure that can efficiently manage data packets in a network router.
+ Each data packet consists of the following attributes:
 
 source: A unique identifier for the machine that generated the packet.
 destination: A unique identifier for the target machine.
@@ -11,9 +12,12 @@ memoryLimit is the maximum number of packets the router can store at any given t
 If adding a new packet would exceed this limit, the oldest packet must be removed to free up space.
 bool addPacket(int source, int destination, int timestamp): Adds a packet with the given attributes to the router.
 
-A packet is considered a duplicate if another packet with the same source, destination, and timestamp already exists in the router.
+A packet is considered a duplicate if another packet with the same source, destination, and timestamp 
+already exists in the router.
+
 Return true if the packet is successfully added (i.e., it is not a duplicate); otherwise return false.
-int[] forwardPacket(): Forwards the next packet in FIFO (First In First Out) order.
+int[] forwardPacket(): 
+Forwards the next packet in FIFO (First In First Out) order.
 
 Remove the packet from storage.
 Return the packet as an array [source, destination, timestamp].
