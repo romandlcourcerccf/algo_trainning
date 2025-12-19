@@ -9,7 +9,7 @@ class Solution:
         
         s = set()
 
-        for n in nums:
+        for n in nums: 
             if n in s:
                 s.remove(n)
             else:

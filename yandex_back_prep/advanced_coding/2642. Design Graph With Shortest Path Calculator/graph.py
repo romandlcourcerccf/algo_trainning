@@ -13,5 +13,9 @@ class Graph:
 
     def shortestPath(self, node1: int, node2: int) -> int:
         
+        stack = [node1]
+
+        while stack:
+            
         
 

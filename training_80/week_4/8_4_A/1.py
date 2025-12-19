@@ -6,10 +6,7 @@ def main():
 
     filename = os.path.join(dname, "input.txt")
     filename = os.path.join(dname, "1.txt")
-    # filename = os.path.join(dname, "2.txt")
-    # filename = os.path.join(dname, "3.txt")
- 
-
+    
     with open(filename, "r") as f:
         rows = f.readlines()
         rows = [r.rstrip() for r in rows]
