@@ -24,8 +24,6 @@ def test_throne_inheritance():
     t.birth("bob", "alex")
     t.birth("bob", "asha")
 
-    print(t.getInheritanceOrder())
-
     assert t.getInheritanceOrder() == [
         "king",
         "andy",
