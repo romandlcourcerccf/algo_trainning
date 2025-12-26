@@ -1,4 +1,5 @@
 import os
+import sys
 
 
 def is_five(row, col, table):
@@ -37,22 +38,13 @@ def is_five(row, col, table):
 
 
 def main():
-    dname = os.path.dirname(__file__)
+    rows_count, _ = tuple(map(int, input("").split(" ")))
 
-    # filename = os.path.join(dname, "input.txt")
-    filename = os.path.join(dname, "1.txt")
-    filename = os.path.join(dname, "2.txt")
-    filename = os.path.join(dname, "5.txt")
-    filename = os.path.join(dname, "6.txt")
-    filename = os.path.join(dname, "7.txt")
-    filename = os.path.join(dname, "8.txt")
-    filename = os.path.join(dname, "9.txt")
+    rows = []
+    for _ in range(rows_count):
+        rows.append(input(""))
 
-    rows = open(filename, "r").readlines()[1:]
     rows = [r.rstrip() for r in rows]
-
-    for r in rows:
-        print(r)
 
     for row in range(len(rows)):
         for col in range(len(rows[0])):
