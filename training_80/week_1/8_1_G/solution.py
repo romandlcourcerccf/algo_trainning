@@ -10,20 +10,17 @@ def is_five(row, col, table):
         if col <= cols - 5 and row <= rows - 5:
             if (table[row][col] == "X" or table[row][col] == "O") and table[row][col] == table[row][col + 1] == table[row][col + 2] == table[row][col + 3] == table[row][col + 4]:
                 return True
-
             if (table[row][col] == "X" or table[row][col] == "O") and table[row][col] == table[row + 1][col] == table[row + 2][col] == table[row + 3][col] == table[row + 4][col]:
                 return True
-
             if (table[row][col] == "X" or table[row][col] == "O") and table[row][col] == table[row + 1][col + 1] == table[row + 2][col + 2] == table[row + 3][col + 3] == table[row + 4][col + 4]:
                 return True
-        
             if (table[row][col + 4] == "X" or table[row][col + 4] == "O") and table[row][col + 4] == table[row +1][col + 3] == table[row + 2][col + 2] == table[row + 3][col + 1] == table[row + 4][col]:
                 return True
         elif  col > cols - 5 and row <= rows - 5:
-            if (table[row][col] == "X" or table[row][col] == "O") and table[row][col] == table[row][col + 1] == table[row][col + 2] == table[row][col + 3] == table[row][col + 4]:
+            if (table[row][col] == "X" or table[row][col] == "O") and table[row][col] == table[row + 1][col] == table[row + 2][col] == table[row + 3][col] == table[row + 4][col]:
                 return True
         elif col <= cols - 5 and row > rows - 5:
-             if (table[row][col] == "X" or table[row][col] == "O") and table[row][col] == table[row + 1][col] == table[row + 2][col] == table[row + 3][col] == table[row + 4][col]:
+            if (table[row][col] == "X" or table[row][col] == "O") and table[row][col] == table[row][col + 1] == table[row][col + 2] == table[row][col + 3] == table[row][col + 4]:
                 return True
     elif rows < 5 and cols >=5:
         if col <= cols - 5:
