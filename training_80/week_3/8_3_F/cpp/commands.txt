@@ -1,0 +1,2 @@
+cat ./4.txt | ./target
+g++ -std=c++20   ./solution.cpp -o target
