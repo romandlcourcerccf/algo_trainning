@@ -1,14 +1,10 @@
 from collections import defaultdict
 import sys
-from memory_profiler import profile
 
 sys.setrecursionlimit(100000)
 
 
-# @profile
 def main():
-    tracks = defaultdict(set)
-
     _ = int(input(""))
     nodes = list(map(int, input("").split()))
     pairs_number = int(input(""))
@@ -21,31 +17,26 @@ def main():
 
         tree[v].append(i + 1)
 
-    pairs = []
-    for _ in range(pairs_number):
-        pairs.append(tuple(map(int, input("").split())))
-
-    
-    # print(tree)
-    # print(pairs)
+    pairs_ansestors = defaultdict(list)
+    pairs_sign_list = [0] * pairs_number
+    for pair_number in range(pairs_number):
+        pair = tuple(map(int, input("").split()))
+        pairs_ansestors[pair[1]].append((pair[0], pair_number))
 
     def dfs(root, track):
-        # tracks[root] = tracks[root] | set(track)
-        tracks[root] = set(track)
+        for pair in pairs_ansestors[root]:
+            if pair[0] in track:
+                pairs_sign_list[pair[1]] = 1
 
         track.append(root)
 
         for child in tree[root]:
-            dfs(child, track.copy())
+            dfs(child, track)
 
     dfs(root[0], [])
 
-    # print(tracks)
-
-    tree.clear()
-
-    for pair in pairs:
-        print(1 if pair[0] in tracks[pair[1]] else 0)
+    for sign in pairs_sign_list:
+        print(sign)
 
 
 if __name__ == "__main__":

@@ -75,7 +75,8 @@ int main(){
 
     std::map<int, std::vector<int>> tree;
     std::map<int,  std::set<int>> tracks;
-    
+    std::map<int, int> pairs;
+
 
     int root;
     for (int i=0; i < nodes_list.size(); i++) {
@@ -89,9 +90,18 @@ int main(){
         tree[node].push_back(i+1);
     }
 
+    for (int i = 0; i < pairs_number; i++) {
+        std::getline(std::cin, line);
+        std::vector<std::string> pair = split(line);
+
+        int p0 = stoi(pair[0]);
+        int p1 = stoi(pair[1]);
+
+        
+
+    }
 
     std::set<int> track;
-
     dfs(root, track, tracks, tree);
 
     tree.clear();

@@ -35,10 +35,34 @@ def test_solution_1(monkeypatch, capfd):
     main()
 
     out, err = capfd.readouterr()
-    assert out.rstrip() == "0\n1\n1\n0\n0"
+    assert int(out) == 0
 
 
-# def test_solution_4(monkeypatch, capfd):
+def test_solution_2(monkeypatch, capfd):
+    test_num = _get_test_num(sys._getframe().f_code.co_name)
+    rows = _read_from_file(test_num)
+
+    monkeypatch.setattr("builtins.input", lambda _: next(rows))
+
+    main()
+
+    out, err = capfd.readouterr()
+    assert int(out) == 34
+
+
+def test_solution_3(monkeypatch, capfd):
+    test_num = _get_test_num(sys._getframe().f_code.co_name)
+    rows = _read_from_file(test_num)
+
+    monkeypatch.setattr("builtins.input", lambda _: next(rows))
+
+    main()
+
+    out, err = capfd.readouterr()
+    assert int(out) == 0
+
+
+# def test_solution_41(monkeypatch, capfd):
 #     test_num = _get_test_num(sys._getframe().f_code.co_name)
 #     rows = _read_from_file(test_num)
 
@@ -47,34 +71,4 @@ def test_solution_1(monkeypatch, capfd):
 #     main()
 
 #     out, err = capfd.readouterr()
-#     assert out.rstrip() == "0\n0\n1\n0\n0\n0\n0\n1\n1\n0"
-
-
-# def test_solution_12(monkeypatch, capfd):
-#     test_num = _get_test_num(sys._getframe().f_code.co_name)
-#     rows = _read_from_file(test_num)
-#     ans = _read_ansver_from_file(test_num)
-
-#     monkeypatch.setattr("builtins.input", lambda _: next(rows))
-
-#     main()
-
-#     out, err = capfd.readouterr()
-
-#     # print(ans)
-#     assert out == ans
-
-
-# def test_solution_21(monkeypatch, capfd):
-#     test_num = _get_test_num(sys._getframe().f_code.co_name)
-#     rows = _read_from_file(test_num)
-#     ans = _read_ansver_from_file(test_num)
-
-#     monkeypatch.setattr("builtins.input", lambda _: next(rows))
-
-#     main()
-
-#     out, err = capfd.readouterr()
-
-#     print(ans)
-#     assert out == ans
+#     assert int(out) == -16406447932168
