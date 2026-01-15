@@ -21,7 +21,7 @@ def calc_dist(table):
 
 def fill_random(coords, table):
     for coord in coords:
-        print(coord)
+        # print(coord)
         table[coord[0]][coord[1]] = random.choice([-1, 1])
 
     return table
@@ -29,7 +29,7 @@ def fill_random(coords, table):
 
 def main():
     dir_name = os.path.dirname(__file__)
-    file_mame = os.path.join(dir_name, "1.txt")
+    file_mame = os.path.join(dir_name, "input.txt")
 
     rows = open(file_mame).readlines()
     table = []
@@ -46,13 +46,13 @@ def main():
                 q_coords.append((row - 1, col))
         table.append(_r)
 
-    print(table)
-    print(q_coords)
+    # print(table)
+    # print(q_coords)
 
     max_dist = float("-inf")
 
     for coord in q_coords:
-        print(coord)
+        # print(coord)
         table[coord[0]][coord[1]] = 1
 
     for _ in range(100):

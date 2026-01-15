@@ -1,9 +1,10 @@
-class ScoresTracker:
+class ExamTracker:
     def __init__(self):
         self._times = []
         self._scores = []
+        self._prefix_sum = [0]
 
-    def _get_closest_time(self, time: int, opt: str) -> int:
+    def _get_closest_index(self, time: int, opt: str) -> int:
         l, r = 0, len(self._times) - 1
 
         while l <= r:
@@ -23,12 +24,10 @@ class ScoresTracker:
     def record(self, time: int, score: int) -> None:
         self._times.append(time)
         self._scores.append(score)
+        self._prefix_sum.append(self._prefix_sum[-1] + score)
 
     def totalScore(self, startTime: int, endTime: int):
-        left_border = self._get_closest_time(startTime, "l")
-        right_border = self._get_closest_time(endTime, "r")
+        left_border = self._get_closest_index(startTime, "l")
+        right_border = self._get_closest_index(endTime, "r")
 
-        print(f"startTime : {startTime} left_border : {left_border}")
-        print(f"endTime : {endTime} right_border : {right_border}")
-
-        return sum(self._scores[left_border : right_border + 1])
+        return self._prefix_sum[right_border + 1] - self._prefix_sum[left_border]

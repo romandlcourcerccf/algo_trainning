@@ -1,8 +1,8 @@
-from exam_scores_tracker import ScoresTracker
+from exam_scores_tracker import ExamTracker
 
 
 def test_record():
-    st = ScoresTracker()
+    st = ExamTracker()
 
     temes = [1, 3, 5, 10, 20, 50]
     scores = [4, 5, 5, 4, 3, 5]
@@ -15,7 +15,7 @@ def test_record():
 
 
 def test_total_score():
-    st = ScoresTracker()
+    st = ExamTracker()
 
     temes = [1, 3, 5, 10, 20, 50]
     scores = [4, 5, 5, 4, 3, 5]
