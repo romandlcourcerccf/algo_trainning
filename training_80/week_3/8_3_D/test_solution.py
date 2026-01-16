@@ -35,6 +35,7 @@ def test_solution_1(monkeypatch, capfd):
     main()
 
     out, err = capfd.readouterr()
+    print("out :", out)
     assert set(map(int, out.rstrip().split())) == set([2, 3])
 
 
@@ -48,4 +49,4 @@ def test_solution_2(monkeypatch, capfd):
 
     out, err = capfd.readouterr()
     print("out :", out)
-    # assert set(map(int, out.rstrip().split())) == set([4, 1])
+    assert set(map(int, out.rstrip().split())) == set([4, 1])

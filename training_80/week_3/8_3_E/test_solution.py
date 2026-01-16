@@ -25,5 +25,17 @@ def test_solution_1(monkeypatch, capfd):
 
     main()
 
+    out, err = capfd.readouterr()
+    assert out.rstrip() == "6"
+
+
+def test_solution_2(monkeypatch, capfd):
+    test_num = _get_test_num(sys._getframe().f_code.co_name)
+    rows = _read_from_file(test_num)
+
+    monkeypatch.setattr("builtins.input", lambda _: next(rows))
+
+    main()
+
     # out, err = capfd.readouterr()
-    # assert out.rstrip() == "6"
+    # assert out.rstrip() == "28"
