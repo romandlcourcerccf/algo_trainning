@@ -13,15 +13,6 @@ def _read_from_file(file_name_prefix: str):
     return rows
 
 
-def _read_ansver_from_file(file_name_prefix: str):
-    dname = os.path.dirname(__file__)
-    filename = os.path.join(dname, file_name_prefix + ".ans")
-
-    rows = open(filename, "r").readlines()
-
-    return "".join(rows)
-
-
 def _get_test_num(method_name: str) -> int:
     return method_name.split("_")[2]
 
@@ -35,7 +26,7 @@ def test_solution_1(monkeypatch, capfd):
     main()
 
     out, err = capfd.readouterr()
-    assert set(map(int, out.rstrip().split())) == set([2, 3])
+    assert out.rstrip() == "2"
 
 
 def test_solution_2(monkeypatch, capfd):
@@ -47,5 +38,4 @@ def test_solution_2(monkeypatch, capfd):
     main()
 
     out, err = capfd.readouterr()
-    print("out :", out)
-    # assert set(map(int, out.rstrip().split())) == set([4, 1])
+    assert out.rstrip() == "4"

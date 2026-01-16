@@ -1,7 +1,6 @@
 import os
 
 
-
 def main():
     dname = os.path.dirname(__file__)
 

@@ -1,72 +1,31 @@
-from collections import defaultdict
-import sys
-
-sys.setrecursionlimit(100000)
-
-
 def main():
-    ls_num = int(input(""))
-    pairs = []
-    while True:
-        nodes_pair = ""
-        try:
-            nodes_pair = input("")
-        except:
-            pass
+    _, p = tuple(map(int, input("").split()))
+    plates = list(map(int, input("").split()))
 
-        if not nodes_pair:
-            break
+    plates = [(plates[i], i) for i in range(len(plates))]
 
-        pairs.append(tuple(map(int, nodes_pair.split())))
+    plates.sort()
 
-    tree = defaultdict(set)
-    dist = defaultdict(int)
+    min_val = float("inf")
+    min_pos = None
 
-    for pair in pairs:
-        tree[pair[0]].add(pair[1])
-        tree[pair[1]].add(pair[0])
+    for i in range(len(plates)):
+        l, r = 0, len(plates) - 1
 
-    # print(tree)
-
-    class MINPathAlgo:
-        def __init__(self, tree, dist):
-            self.tree = tree
-            self.dist = dist
-            self.min_path_len = float("inf")
-            self.used = set()
-
-        def dfs(self, root):
-            self.used = set()
-            self._dfs(root)
-
-        def _dfs(self, root):
-            self.used.add(root)
-
-            if not (self.tree[root] - self.used):
-                return 1
-
+        while l <= r:
+            m = (l + r) // 2
+            if abs(plates[i][0] / plates[l][0] - p) <= abs(
+                plates[i][0] / plates[m][0] - p
+            ):
+                r = m - 1
             else:
-                child_distanses = []
-                for child in self.tree[root] - self.used:
-                    child_distanses.append(self._dfs(child))
+                l = m
 
-                child_distanses.sort()
+        if min(min_val, abs(plates[i][0] / plates[m][0] - p)) <= min_val:
+            min_val = abs(plates[i][0] / plates[m][0] - p)
+            min_pos = (i, m)
 
-                if len(child_distanses) > 1:
-                    self.min_path_len = min(
-                        self.min_path_len, child_distanses[0] + child_distanses[1]
-                    )
-                else:
-                    if root == 1:
-                        self.min_path_len = min(self.min_path_len, child_distanses[0])
-
-                return 1 + child_distanses[0]
-
-    min_path_algo = MINPathAlgo(tree=tree, dist=dist)
-
-    min_path_algo.dfs(1)
-
-    print(min_path_algo.min_path_len)
+    print(f"{min_pos[0] + 1} {min_pos[1] + 1}")
 
 
 if __name__ == "__main__":

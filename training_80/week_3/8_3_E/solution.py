@@ -1,31 +1,46 @@
+from collections import defaultdict
+import sys
+
+sys.setrecursionlimit(100000)
+
+
 def main():
-    _, p = tuple(map(int, input("").split()))
-    plates = list(map(int, input("").split()))
+    vert_count = int(input(""))
 
-    plates = [(plates[i], i) for i in range(len(plates))]
+    vert_parents = []
+    for _ in range(vert_count - 1):
+        vert_parents.append(int(input("")))
 
-    plates.sort()
+    verts_values = list(map(int, input("").split()))
 
-    min_val = float("inf")
-    min_pos = None
+    print("vert_count :", vert_count)
+    print("vert_parents :", vert_parents)
+    print("verts_values :", verts_values)
 
-    for i in range(len(plates)):
-        l, r = 0, len(plates) - 1
+    tree = defaultdict(set)
 
-        while l <= r:
-            m = (l + r) // 2
-            if abs(plates[i][0] / plates[l][0] - p) <= abs(
-                plates[i][0] / plates[m][0] - p
-            ):
-                r = m - 1
-            else:
-                l = m
+    for idx, vpr in enumerate(vert_parents):
+        tree[vpr].add(idx + 1)
 
-        if min(min_val, abs(plates[i][0] / plates[m][0] - p)) <= min_val:
-            min_val = abs(plates[i][0] / plates[m][0] - p)
-            min_pos = (i, m)
+    print(tree)
 
-    print(min_pos[1] + 1, "", min_pos[0] + 1)
+    paths = defaultdict(list)
+
+    def dfs(root, path):
+        print("root :", verts_values[root])
+
+        path.append(root)
+
+        if root not in tree:
+            paths[root] = path
+
+        for child in tree[root]:
+            print("child :", child)
+            dfs(child, path.copy())
+
+    dfs(0, [])
+
+    print(paths)
 
 
 if __name__ == "__main__":
