@@ -1,7 +1,7 @@
 from collections import defaultdict
 import sys
 
-sys.setrecursionlimit(100000)
+# sys.setrecursionlimit(100000)
 
 edicts_count = 0
 
