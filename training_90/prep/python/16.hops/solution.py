@@ -1,7 +1,14 @@
 from collections import defaultdict, deque
 
 
-def bfs(graph, start_node, end_node):
+def is_in_different_lines(u, v, lines_description, stations_to_lines):
+    l_u = stations_to_lines[u]
+    l_v = stations_to_lines[v]
+
+    return not l_u & l_v
+
+
+def bfs(graph, start_node, end_node, lines_description, stations_to_lines):
 
     q = deque()
     q.append(start_node)
@@ -10,6 +17,7 @@ def bfs(graph, start_node, end_node):
     track = []
     visited.add(start_node)
     track.append(start_node)
+    jumps = 0
 
     while q:
         v = q.pop()
@@ -26,7 +34,13 @@ def bfs(graph, start_node, end_node):
                 visited.add(u)
                 track.append(u)
 
+                if is_in_different_lines(u, v, lines_description, stations_to_lines):
+                    jumps += 1
+
         print("track :", track)
+        print("jumps : ", jumps)
+
+        return jumps
 
 
 def main():
@@ -63,9 +77,9 @@ def main():
 
     print("start_node : ", start_node, "end_node : ", end_node)
 
-    print(bfs(metro_graph, start_node, end_node))
+    print(bfs(metro_graph, start_node, end_node, lines_description, stations_to_lines))
 
-    print(0)
+    # print(0)
 
 
 if __name__ == "__main__":

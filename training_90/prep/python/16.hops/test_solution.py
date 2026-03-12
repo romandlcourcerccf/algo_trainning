@@ -27,3 +27,15 @@ def test_solution_1(monkeypatch, capfd):
 
     # out, err = capfd.readouterr()
     # assert out.rstrip() == "0"
+
+
+def test_solution_2(monkeypatch, capfd):
+    test_num = _get_test_num(sys._getframe().f_code.co_name)
+    rows = _read_from_file(test_num)
+
+    monkeypatch.setattr("builtins.input", lambda _: next(rows))
+
+    main()
+
+    # out, err = capfd.readouterr()
+    # assert out.rstrip() == "0"

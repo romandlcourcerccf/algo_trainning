@@ -1,38 +1,34 @@
 from abc import ABC, abstractmethod
 
-Написать декоратор
+# Написать декоратор
+
 
 def timer(func):
 
     def wrapper(*args, **kwargs):
-        print('Measure time!!')
+        print("Measure time!!")
         func(*args, **kwargs)
         return func
 
     return wrapper
 
 
-Написать абстрактнвй класс 
+# Написать абстрактнвй класс
 class MyAbstClass(ABC):
-
-    '''
-
-    '''
+    """ """
 
     @abstractmethod
-    def add(self, a : int, b: int) -> int:
+    def add(self, a: int, b: int) -> int:
         pass
 
-class MyClass(MyAbstClass):
 
-    '''
-    '''
+class MyClass(MyAbstClass):
+    """ """
 
     @timer
-    def add(self, a : int, b: int) -> int:
+    def add(self, a: int, b: int) -> int:
         return a + b
-    
 
 
 c = MyClass()
-c.add(2,3)
+c.add(2, 3)
