@@ -1,9 +1,6 @@
-from collections import defaultdict
-
-
 def main():
-    p, v = tuple(map(int, input("").split()))
-    q, m = tuple(map(int, input("").split()))
+    p, v = tuple(map(int, input().split()))
+    q, m = tuple(map(int, input().split()))
 
     if p == q:
         print(2 * max(v, m))
