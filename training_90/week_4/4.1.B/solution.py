@@ -11,29 +11,20 @@ def main():
     _ = int(input(""))
     vagons = list(map(int, input("").split()))
 
-    end_stack = []
-    res_way = []
+    end = []
+    res = []
 
-    for idx, v in enumerate(vagons):
+    for idx, val in enumerate(vagons):
         if idx < len(vagons) - 1:
-            if v <= min(vagons[idx + 1 :]):
-                res_way.append(v)
-            elif not end_stack or v <= end_stack[-1]:
-                end_stack.append(v)
+            if val <= min(vagons[idx + 1 :]):
+                res.append(val)
+            elif not end or val <= end[-1]:
+                end.append(val)
             else:
                 print("NO")
                 return
         else:
-            if not end_stack or v <= end_stack[-1]:
-                end_stack.append(v)
-            else:
-                print("NO")
+            res.append(val)
 
-    if end_stack:
-        res_way = res_way + end_stack[::-1]
-
+    res += end[::-1]
     print("YES")
-
-
-if __name__ == "__main__":
-    main()
