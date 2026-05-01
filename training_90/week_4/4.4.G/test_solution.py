@@ -25,5 +25,5 @@ def test_solution_1(monkeypatch, capfd):
 
     main()
 
-    # out, err = capfd.readouterr()
-    # assert out.rstrip() == "-1 4 3 4 -1 6 9 8 9 -1"
+    out, err = capfd.readouterr()
+    assert out.rstrip() == "-1 4 3 4 -1 6 9 8 9 -1"
