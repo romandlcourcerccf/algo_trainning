@@ -1,0 +1,2477 @@
+{
+
+  "openapi": "3.0.1",
+
+  "info": {
+
+    "title": "OpenAPI definition",
+
+    "version": "v0"
+
+  },
+
+  "servers": [
+
+    {
+
+      "url": "https://ms-filestorage-pulse-dev-dev.pdp.pulse.insure",
+
+      "description": "Generated server url"
+
+    }
+
+  ],
+
+  "tags": [
+
+    {
+
+      "name": "FileStorage",
+
+      "description": "the FileStorage API"
+
+    }
+
+  ],
+
+  "paths": {
+
+    "/files/download/key": {
+
+      "put": {
+
+        "tags": [
+
+          "FileStorage"
+
+        ],
+
+        "description": "Выгрузка файла по полному ключу из рабочего пространства",
+
+        "operationId": "downloadFileByKey",
+
+        "requestBody": {
+
+          "content": {
+
+            "application/json": {
+
+              "schema": {
+
+                "$ref": "#/components/schemas/DownloadByKeyRequestDto"
+
+              }
+
+            }
+
+          },
+
+          "required": true
+
+        },
+
+        "responses": {
+
+          "200": {
+
+            "description": "Ответ в случае, если файл найден. Cодержимое файла",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "type": "string",
+
+                  "format": "binary"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "404": {
+
+            "description": "Ответ в случае, если файл не найден",
+
+            "content": {
+
+              "application/octet-stream": {
+
+                "schema": {
+
+                  "type": "string",
+
+                  "format": "binary"
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "/files/download/key/": {
+
+      "put": {
+
+        "tags": [
+
+          "FileStorage"
+
+        ],
+
+        "description": "Выгрузка файла по полному ключу из рабочего пространства",
+
+        "operationId": "downloadFileByKey_1",
+
+        "requestBody": {
+
+          "content": {
+
+            "application/json": {
+
+              "schema": {
+
+                "$ref": "#/components/schemas/DownloadByKeyRequestDto"
+
+              }
+
+            }
+
+          },
+
+          "required": true
+
+        },
+
+        "responses": {
+
+          "200": {
+
+            "description": "Ответ в случае, если файл найден. Cодержимое файла",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "type": "string",
+
+                  "format": "binary"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "404": {
+
+            "description": "Ответ в случае, если файл не найден",
+
+            "content": {
+
+              "application/octet-stream": {
+
+                "schema": {
+
+                  "type": "string",
+
+                  "format": "binary"
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "/api/external/v1/files/download/key": {
+
+      "put": {
+
+        "tags": [
+
+          "FileStorage"
+
+        ],
+
+        "description": "Выгрузка файла по полному ключу из рабочего пространства",
+
+        "operationId": "externalDownloadFileByKey",
+
+        "requestBody": {
+
+          "content": {
+
+            "application/json": {
+
+              "schema": {
+
+                "$ref": "#/components/schemas/DownloadByKeyRequestDto"
+
+              }
+
+            }
+
+          },
+
+          "required": true
+
+        },
+
+        "responses": {
+
+          "200": {
+
+            "description": "Ответ в случае, если файл найден. Cодержимое файла",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "type": "string",
+
+                  "format": "binary"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "404": {
+
+            "description": "Ответ в случае, если файл не найден",
+
+            "content": {
+
+              "application/octet-stream": {
+
+                "schema": {
+
+                  "type": "string",
+
+                  "format": "binary"
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "/files": {
+
+      "post": {
+
+        "tags": [
+
+          "FileStorage"
+
+        ],
+
+        "description": "Загрузка файла в рабочее пространство general",
+
+        "operationId": "uploadFile",
+
+        "parameters": [
+
+          {
+
+            "name": "originator",
+
+            "in": "query",
+
+            "description": "Наименование сервиса инициировавщего загрузку файла, по умолчанию = unknown",
+
+            "required": false,
+
+            "schema": {
+
+              "type": "string"
+
+            }
+
+          },
+
+          {
+
+            "name": "user",
+
+            "in": "query",
+
+            "description": "Идентификатор владельца файла, по умолчанию = unknown",
+
+            "required": false,
+
+            "schema": {
+
+              "type": "string"
+
+            }
+
+          }
+
+        ],
+
+        "requestBody": {
+
+          "content": {
+
+            "multipart/form-data": {
+
+              "schema": {
+
+                "required": [
+
+                  "file"
+
+                ],
+
+                "type": "object",
+
+                "properties": {
+
+                  "file": {
+
+                    "type": "string",
+
+                    "description": "file detail",
+
+                    "format": "binary"
+
+                  }
+
+                }
+
+              }
+
+            }
+
+          }
+
+        },
+
+        "responses": {
+
+          "200": {
+
+            "description": "Идентификаторы загруженного файла",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/FileResponseDto"
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "/api/internal/filestore-file/filestorage": {
+
+      "post": {
+
+        "tags": [
+
+          "file-store-data-controller"
+
+        ],
+
+        "operationId": "downloadFileRgs",
+
+        "requestBody": {
+
+          "content": {
+
+            "application/json": {
+
+              "schema": {
+
+                "$ref": "#/components/schemas/FileRgsDownloadRequest"
+
+              }
+
+            }
+
+          },
+
+          "required": true
+
+        },
+
+        "responses": {
+
+          "200": {
+
+            "description": "Success",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/FileRgsDownloadResponse"
+
+                }
+
+             }
+
+            }
+
+          },
+
+          "400": {
+
+            "description": "Bad Request",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "401": {
+
+            "description": "Unauthorized",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "403": {
+
+            "description": "Forbidden",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "412": {
+
+            "description": "Precondition Failed",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "500": {
+
+            "description": "Internal Server Error",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "/api/internal/filestorage/fix-files-rgs": {
+
+      "post": {
+
+        "tags": [
+
+          "file-store-data-controller"
+
+        ],
+
+        "operationId": "fixFileRgs",
+
+        "requestBody": {
+
+          "content": {
+
+            "application/json": {
+
+              "schema": {
+
+                "$ref": "#/components/schemas/BaseRequest"
+
+              }
+
+            }
+
+          },
+
+          "required": true
+
+        },
+
+        "responses": {
+
+          "200": {
+
+            "description": "Success",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "400": {
+
+            "description": "Bad Request",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "401": {
+
+            "description": "Unauthorized",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "403": {
+
+            "description": "Forbidden",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "412": {
+
+            "description": "Precondition Failed",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "500": {
+
+            "description": "Internal Server Error",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "/api/internal/filestorage/filestore-id": {
+
+      "post": {
+
+        "tags": [
+
+          "file-store-data-controller"
+
+        ],
+
+        "operationId": "getRgsFileStoreLinks",
+
+        "requestBody": {
+
+          "content": {
+
+            "application/json": {
+
+              "schema": {
+
+                "$ref": "#/components/schemas/FileStoreDataRequest"
+
+              }
+
+            }
+
+          },
+
+          "required": true
+
+        },
+
+        "responses": {
+
+          "200": {
+
+            "description": "success",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/FileStoreDataResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "400": {
+
+            "description": "Bad Request",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "401": {
+
+            "description": "Unauthorized",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "403": {
+
+            "description": "Forbidden",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "412": {
+
+            "description": "Precondition Failed",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "500": {
+
+            "description": "Internal Server Error",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "/api/internal/filestorage/filestore-file": {
+
+      "post": {
+
+        "tags": [
+
+          "file-store-data-controller"
+
+        ],
+
+        "summary": "Сценарий FLS-E10.60 Загрузить файл из ms-filestorage в FileStore РГС",
+
+        "operationId": "uploadToFileStore",
+
+        "requestBody": {
+
+          "content": {
+
+            "application/json": {
+
+              "schema": {
+
+                "$ref": "#/components/schemas/FileStoreUploadRequest"
+
+              }
+
+            }
+
+          },
+
+          "required": true
+
+        },
+
+        "responses": {
+
+          "200": {
+
+            "description": "success",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/FileStoreUploadResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "400": {
+
+            "description": "Bad Request",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "401": {
+
+            "description": "Unauthorized",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "403": {
+
+            "description": "Forbidden",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "412": {
+
+            "description": "Precondition Failed",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "500": {
+
+            "description": "Internal Server Error",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "/api/internal/filestorage/filestore-file-deletion": {
+
+      "post": {
+
+        "tags": [
+
+          "file-store-data-controller"
+
+        ],
+
+        "operationId": "deleteFile",
+
+        "requestBody": {
+
+          "content": {
+
+            "application/json": {
+
+              "schema": {
+
+                "$ref": "#/components/schemas/FileStoreDeletionRequest"
+
+              }
+
+            }
+
+          },
+
+          "required": true
+
+        },
+
+        "responses": {
+
+          "200": {
+
+            "description": "Success",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "400": {
+
+            "description": "Bad Request",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "401": {
+
+            "description": "Unauthorized",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "403": {
+
+            "description": "Forbidden",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "412": {
+
+            "description": "Precondition Failed",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "500": {
+
+            "description": "Internal Server Error",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "$ref": "#/components/schemas/BaseResponse"
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "/files/{id}": {
+
+      "get": {
+
+        "tags": [
+
+          "FileStorage"
+
+        ],
+
+        "description": "Выгрузка файла из рабочего пространства general",
+
+        "operationId": "downloadFile",
+
+        "parameters": [
+
+          {
+
+            "name": "id",
+
+            "in": "path",
+
+            "description": "Идентификатор файла",
+
+            "required": true,
+
+            "schema": {
+
+              "type": "string"
+
+            }
+
+          }
+
+        ],
+
+        "responses": {
+
+          "200": {
+
+            "description": "Ответ в случае, если файл найден. Содержимое файла",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "type": "string",
+
+                  "format": "binary"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "404": {
+
+            "description": "Ответ в случае, если файл не найден",
+
+            "content": {
+
+              "application/octet-stream": {
+
+                "schema": {
+
+                  "type": "string",
+
+                  "format": "binary"
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      },
+
+      "delete": {
+
+        "tags": [
+
+          "FileStorage"
+
+        ],
+
+        "description": "Удаление файла по id в рабочем пространстве general",
+
+        "operationId": "deleteFile_1",
+
+        "parameters": [
+
+          {
+
+            "name": "id",
+
+            "in": "path",
+
+            "description": "Идентификатор файла",
+
+            "required": true,
+
+            "schema": {
+
+              "type": "string"
+
+            }
+
+          },
+
+          {
+
+            "name": "user",
+
+            "in": "query",
+
+            "description": "Идентификатор пользователя, имеющего права на удаление файлов",
+
+            "required": true,
+
+            "schema": {
+
+              "type": "string"
+
+            }
+
+          }
+
+        ],
+
+        "responses": {
+
+          "200": {
+
+            "description": "Ответ в случае, если удаление успешно"
+
+          },
+
+          "403": {
+
+            "description": "Ответ в случае, если пользователь не имеет прав на удаление файлов"
+
+          },
+
+          "404": {
+
+            "description": "Ответ в случае, если файл не найден"
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "/files/search/{user}": {
+
+      "get": {
+
+        "tags": [
+
+          "FileStorage"
+
+        ],
+
+        "description": "Получение списка ключей и id файлов из рабочего пространства general по владельцу и другим опциональным параметрам",
+
+        "operationId": "searchFilesByOwner",
+
+        "parameters": [
+
+          {
+
+            "name": "user",
+
+            "in": "path",
+
+            "description": "Идентификатор владельца файла, по умолчанию = unknown",
+
+            "required": true,
+
+            "schema": {
+
+              "type": "string"
+
+            }
+
+          },
+
+          {
+
+            "name": "fileNames",
+
+            "in": "query",
+
+            "description": "Имена файлов",
+
+            "required": false,
+
+            "schema": {
+
+              "type": "array",
+
+              "items": {
+
+                "type": "string"
+
+              }
+
+            }
+
+          },
+
+          {
+
+            "name": "ids",
+
+            "in": "query",
+
+            "description": "Идентификаторы файлов",
+
+            "required": false,
+
+            "schema": {
+
+              "type": "array",
+
+              "items": {
+
+                "type": "string"
+
+              }
+
+            }
+
+          }
+
+        ],
+
+        "responses": {
+
+          "200": {
+
+            "description": "Список идентификаторов файлов",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "type": "array",
+
+                  "items": {
+
+                    "$ref": "#/components/schemas/FileResponseDto"
+
+                  }
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "/api/external/v1/files/{id}": {
+
+      "get": {
+
+        "tags": [
+
+          "FileStorage"
+
+        ],
+
+        "description": "Выгрузка файла из рабочего пространства general",
+
+        "operationId": "externalDownloadFile",
+
+        "parameters": [
+
+          {
+
+            "name": "id",
+
+            "in": "path",
+
+            "description": "Идентификатор файла",
+
+            "required": true,
+
+            "schema": {
+
+              "type": "string"
+
+            }
+
+          }
+
+        ],
+
+        "responses": {
+
+          "200": {
+
+            "description": "Ответ в случае, если файл найден. Содержимое файла",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "type": "string",
+
+                  "format": "binary"
+
+                }
+
+              }
+
+            }
+
+          },
+
+          "404": {
+
+            "description": "Ответ в случае, если файл не найден",
+
+            "content": {
+
+              "application/octet-stream": {
+
+                "schema": {
+
+                  "type": "string",
+
+                  "format": "binary"
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      },
+
+      "delete": {
+
+        "tags": [
+
+          "FileStorage"
+
+        ],
+
+        "description": "Удаление файла по id в рабочем пространстве general",
+
+        "operationId": "externalDeleteFile",
+
+        "parameters": [
+
+          {
+
+            "name": "id",
+
+            "in": "path",
+
+            "description": "Идентификатор файла",
+
+            "required": true,
+
+            "schema": {
+
+              "type": "string"
+
+            }
+
+          },
+
+          {
+
+            "name": "user",
+
+            "in": "query",
+
+            "description": "Идентификатор пользователя, имеющего права на удаление файлов",
+
+            "required": true,
+
+            "schema": {
+
+              "type": "string"
+
+            }
+
+          }
+
+        ],
+
+        "responses": {
+
+          "200": {
+
+            "description": "Ответ в случае, если удаление успешно"
+
+          },
+
+          "403": {
+
+            "description": "Ответ в случае, если пользователь не имеет прав на удаление файлов"
+
+          },
+
+          "404": {
+
+            "description": "Ответ в случае, если файл не найден"
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "/api/external/v1/files/search/{user}": {
+
+      "get": {
+
+        "tags": [
+
+          "FileStorage"
+
+        ],
+
+        "description": "Получение списка ключей и id файлов из рабочего пространства general по владельцу и другим опциональным параметрам",
+
+        "operationId": "externalSearchFilesByOwner",
+
+        "parameters": [
+
+          {
+
+            "name": "user",
+
+            "in": "path",
+
+            "description": "Идентификатор владельца файла, по умолчанию = unknown",
+
+            "required": true,
+
+            "schema": {
+
+              "type": "string"
+
+            }
+
+          },
+
+          {
+
+            "name": "fileNames",
+
+            "in": "query",
+
+            "description": "Имена файлов",
+
+            "required": false,
+
+            "schema": {
+
+              "type": "array",
+
+              "items": {
+
+                "type": "string"
+
+              }
+
+            }
+
+          },
+
+          {
+
+            "name": "ids",
+
+            "in": "query",
+
+            "description": "Идентификаторы файлов",
+
+            "required": false,
+
+            "schema": {
+
+              "type": "array",
+
+              "items": {
+
+                "type": "string"
+
+              }
+
+            }
+
+          }
+
+        ],
+
+        "responses": {
+
+          "200": {
+
+            "description": "Список идентификаторов файлов",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+
+                  "type": "array",
+
+                  "items": {
+
+                    "$ref": "#/components/schemas/FileResponseDto"
+
+                  }
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  },
+
+  "components": {
+
+    "schemas": {
+
+      "DownloadByKeyRequestDto": {
+
+        "required": [
+
+          "key"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "key": {
+
+            "type": "string",
+
+            "description": "Полный ключ файла в рабочем пространстве"
+
+          },
+
+          "workspace": {
+
+            "type": "string",
+
+            "description": "Рабочее пространство. По умолчанию = general"
+
+          }
+
+        },
+
+        "description": "Запрос на выгрузку файла по полному ключу из рабочего пространства"
+
+      },
+
+      "FileResponseDto": {
+
+        "required": [
+
+          "fileId"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "fileId": {
+
+            "type": "string",
+
+            "description": "Идентификатор файла"
+
+          },
+
+          "workspace": {
+
+            "type": "string",
+
+            "description": "Рабочее пространство"
+
+          }
+
+        },
+
+        "description": "Информация о файле"
+
+      },
+
+      "FileRgsDownloadResponse": {
+
+        "required": [
+
+          "fileId",
+
+          "flkReport",
+
+          "requestId"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "fileId": {
+
+            "type": "string",
+
+            "description": "Идентификатор файла в сервисе файлового хранилища",
+
+            "format": "uuid"
+
+          },
+
+          "requestId": {
+
+            "type": "string",
+
+            "description": "Сквозной идентификатор запроса",
+
+            "format": "uuid",
+
+            "example": "0b5f3ab9-7891-4889-acdd-7eb91fe00551"
+
+          },
+
+          "flkReport": {
+
+            "$ref": "#/components/schemas/FlkReport"
+
+          }
+
+        }
+
+      },
+
+      "FlkReport": {
+
+        "type": "object",
+
+        "properties": {
+
+          "requestId": {
+
+            "type": "string",
+
+            "description": "Сквозной идентификатор запроса",
+
+            "format": "uuid"
+
+          },
+
+          "businessObjectId": {
+
+            "type": "string",
+
+            "description": "Идентификатор записи договора/дополнительного соглашения",
+
+            "format": "uuid"
+
+          },
+
+          "mismatches": {
+
+            "type": "array",
+
+            "description": "Тело отчета",
+
+            "items": {
+
+              "$ref": "#/components/schemas/Mismatch"
+
+            }
+
+          }
+
+        },
+
+        "description": "Отчет об ошибках ФЛК"
+
+      },
+
+      "Mismatch": {
+
+        "required": [
+
+          "code"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "code": {
+
+            "type": "string",
+
+            "description": "Код ошибки"
+
+          },
+
+          "message": {
+
+            "type": "string",
+
+            "description": "Сообщение"
+
+          },
+
+          "isCritical": {
+
+            "type": "boolean",
+
+            "description": "Критичность"
+
+          },
+
+          "codeExceptional": {
+
+            "type": "string",
+
+            "description": "Код доступности для исправления через исключения"
+
+          },
+
+          "externalObjectId": {
+
+            "type": "string",
+
+            "description": "Внешний идентификатор"
+
+          },
+
+          "businessObjectId": {
+
+            "type": "string",
+
+            "description": "Идентификатор записи договора/дополнительного соглашения",
+
+            "format": "uuid"
+
+          },
+
+          "mismatchElements": {
+
+            "type": "array",
+
+            "description": "MismatchElements",
+
+            "items": {
+
+              "$ref": "#/components/schemas/MismatchElement"
+
+            }
+
+          }
+
+        },
+
+        "description": "Ошибка ФЛК"
+
+      },
+
+      "MismatchElement": {
+
+        "required": [
+
+          "attributeName",
+
+          "attributePath"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "attributeName": {
+
+            "type": "string",
+
+            "description": "Наименование атрибута, в котором обнаружено несоответствие (в формате сервиса, проверяющего ФЛК)",
+
+            "example": "number"
+
+          },
+
+          "attributePath": {
+
+            "type": "string",
+
+            "description": "JSON path в объекте, который будет передан в АРМ, формируется на стороне ФБ, по согласованию с командой АРМа для каждого ФЛК",
+
+            "example": "$.parties[1].driverLicense[0]"
+
+          },
+
+          "attributeValue": {
+
+            "type": "string",
+
+            "description": "Значение атрибута в реальном объекте, содержащее несоответствие",
+
+            "example": "635425"
+
+          }
+
+        },
+
+        "description": "Атрибут, для которого выявлена ошибка ФЛК"
+
+      },
+
+      "BaseResponse": {
+
+        "required": [
+
+          "flkReport",
+
+          "requestId"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "requestId": {
+
+            "type": "string",
+
+            "description": "Сквозной идентификатор запроса",
+
+            "format": "uuid",
+
+            "example": "0b5f3ab9-7891-4889-acdd-7eb91fe00551"
+
+          },
+
+          "flkReport": {
+
+            "$ref": "#/components/schemas/FlkReport"
+
+          }
+
+        },
+
+        "description": "Базовый ответ"
+
+      },
+
+      "FileRgsDownloadRequest": {
+
+        "required": [
+
+          "fileIdRgs",
+
+          "requestId"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "requestId": {
+
+            "type": "string",
+
+            "description": "Сквозной идентификатор запроса",
+
+            "format": "uuid",
+
+            "example": "0b5f3ab9-7891-4889-acdd-7eb91fe00551"
+
+          },
+
+          "fileIdRgs": {
+
+            "type": "string",
+
+            "description": "Идентификатор файла в FileStore РГС",
+
+            "format": "uuid"
+
+          },
+
+          "originator": {
+
+            "type": "string",
+
+            "description": "Наименование сервиса инициировавшего загрузку файла"
+
+          },
+
+          "user": {
+
+            "type": "string",
+
+            "description": "Идентификатор владельца файла"
+
+          }
+
+        }
+
+      },
+
+      "BaseRequest": {
+
+        "required": [
+
+          "requestId"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "requestId": {
+
+            "type": "string",
+
+            "description": "Сквозной идентификатор запроса",
+
+            "format": "uuid",
+
+            "example": "0b5f3ab9-7891-4889-acdd-7eb91fe00551"
+
+          }
+
+        },
+
+        "description": "Базовый запрос"
+
+      },
+
+      "FileLink": {
+
+        "required": [
+
+          "fileId",
+
+          "fileStoreId"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "fileId": {
+
+            "type": "string",
+
+            "description": "Идентификатор файла в FileStore",
+
+            "format": "uuid"
+
+          },
+
+          "fileStoreId": {
+
+            "type": "string",
+
+            "description": "Идентификатор файла в FileStore РГС",
+
+            "format": "uuid"
+
+          }
+
+        },
+
+        "description": "Список FileLink"
+
+      },
+
+     "FileStoreDataResponse": {
+
+        "required": [
+
+          "fileLinks",
+
+          "flkReport",
+
+          "requestId"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "fileLinks": {
+
+            "type": "array",
+
+            "description": "Список FileLink",
+
+            "items": {
+
+              "$ref": "#/components/schemas/FileLink"
+
+            }
+
+          },
+
+          "requestId": {
+
+            "type": "string",
+
+            "description": "Сквозной идентификатор запроса",
+
+            "format": "uuid",
+
+            "example": "0b5f3ab9-7891-4889-acdd-7eb91fe00551"
+
+          },
+
+          "flkReport": {
+
+            "$ref": "#/components/schemas/FlkReport"
+
+          }
+
+        }
+
+      },
+
+      "FileStoreDataRequest": {
+
+        "required": [
+
+          "fileIds",
+
+          "requestId"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "fileIds": {
+
+            "type": "array",
+
+            "description": "Список идентификаторов файлов в сервисе файлового хранилища",
+
+            "items": {
+
+              "type": "string",
+
+              "description": "Список идентификаторов файлов в сервисе файлового хранилища",
+
+              "format": "uuid"
+
+            }
+
+          },
+
+          "requestId": {
+
+            "type": "string",
+
+            "description": "Сквозной идентификатор запроса",
+
+            "format": "uuid",
+
+            "example": "0b5f3ab9-7891-4889-acdd-7eb91fe00551"
+
+          }
+
+        }
+
+      },
+
+      "FileStoreUploadResponse": {
+
+        "required": [
+
+          "fileStoreId",
+
+          "flkReport",
+
+          "requestId"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "fileStoreId": {
+
+            "type": "string",
+
+            "description": "Идентификатор файла в FileStore РГС",
+
+            "format": "uuid"
+
+          },
+
+          "requestId": {
+
+            "type": "string",
+
+            "description": "Сквозной идентификатор запроса",
+
+            "format": "uuid",
+
+            "example": "0b5f3ab9-7891-4889-acdd-7eb91fe00551"
+
+          },
+
+          "flkReport": {
+
+            "$ref": "#/components/schemas/FlkReport"
+
+          }
+
+        }
+
+      },
+
+      "FileStoreUploadRequest": {
+
+        "required": [
+
+          "fileId",
+
+          "requestId"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+         "requestId": {
+
+            "type": "string",
+
+            "description": "Сквозной идентификатор запроса",
+
+            "format": "uuid",
+
+            "example": "0b5f3ab9-7891-4889-acdd-7eb91fe00551"
+
+          },
+
+          "fileId": {
+
+            "type": "string",
+
+            "description": "Идентификатор файла в сервисе файлового хранилища",
+
+            "format": "uuid"
+
+          }
+
+        }
+
+      },
+
+      "FileStoreDeletionRequest": {
+
+        "required": [
+
+          "requestId"
+
+        ],
+
+        "type": "object",
+
+        "properties": {
+
+          "requestId": {
+
+            "type": "string",
+
+            "description": "Сквозной идентификатор запроса",
+
+            "format": "uuid",
+
+            "example": "0b5f3ab9-7891-4889-acdd-7eb91fe00551"
+
+          },
+
+          "fileStoreId": {
+
+            "type": "string",
+
+            "format": "uuid"
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+ 
