@@ -7,7 +7,7 @@ for i, v in enumerate(arr):
     if i == 0:
         st.append((i, v))
     else:
-        while st and v > st[-1][1]:
+        while st and v < st[-1][1]:
             res[st[-1][0]] = i
             st.pop()
 
