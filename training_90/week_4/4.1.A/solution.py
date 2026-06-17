@@ -10,7 +10,11 @@ def main():
 
     stack = []
 
+<<<<<<< HEAD
     row = input()
+=======
+    row = input("")
+>>>>>>> 9c6a377a9cb9661be124a2a1b9c7eaaeeccd1f98
     while row != "exit":
         sp = row.split()
         if len(sp) == 1:
@@ -43,7 +47,11 @@ def main():
                     stack.append(int(op))
                     print("ok")
 
+<<<<<<< HEAD
         row = input()
+=======
+        row = input("")
+>>>>>>> 9c6a377a9cb9661be124a2a1b9c7eaaeeccd1f98
 
     print("bye")
 

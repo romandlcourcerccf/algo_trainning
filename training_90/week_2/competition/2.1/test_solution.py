@@ -26,11 +26,7 @@ def test_solution_1(monkeypatch, capfd):
     main()
 
     out, err = capfd.readouterr()
-<<<<<<< HEAD
-    assert out.rstrip() == "2"
-=======
-    assert out.rstrip() == "YES"
->>>>>>> 9c6a377a9cb9661be124a2a1b9c7eaaeeccd1f98
+    assert out.rstrip() == "5"
 
 
 def test_solution_2(monkeypatch, capfd):
@@ -42,11 +38,7 @@ def test_solution_2(monkeypatch, capfd):
     main()
 
     out, err = capfd.readouterr()
-<<<<<<< HEAD
-    assert out.rstrip() == "5"
-=======
-    assert out.rstrip() == "YES"
->>>>>>> 9c6a377a9cb9661be124a2a1b9c7eaaeeccd1f98
+    assert out.rstrip() == "4"
 
 
 def test_solution_3(monkeypatch, capfd):
@@ -58,10 +50,19 @@ def test_solution_3(monkeypatch, capfd):
     main()
 
     out, err = capfd.readouterr()
-<<<<<<< HEAD
+    assert out.rstrip() == "5"
+
+
+def test_solution_4(monkeypatch, capfd):
+    test_num = _get_test_num(sys._getframe().f_code.co_name)
+    rows = _read_from_file(test_num)
+
+    monkeypatch.setattr("builtins.input", lambda _: next(rows))
+
+    main()
+
+    out, err = capfd.readouterr()
     assert out.rstrip() == "4"
-=======
-    assert out.rstrip() == "NO"
 
 
 def test_solution_5(monkeypatch, capfd):
@@ -73,5 +74,16 @@ def test_solution_5(monkeypatch, capfd):
     main()
 
     out, err = capfd.readouterr()
-    assert out.rstrip() == "YES"
->>>>>>> 9c6a377a9cb9661be124a2a1b9c7eaaeeccd1f98
+    assert out.rstrip() == "1"
+
+
+def test_solution_6(monkeypatch, capfd):
+    test_num = _get_test_num(sys._getframe().f_code.co_name)
+    rows = _read_from_file(test_num)
+
+    monkeypatch.setattr("builtins.input", lambda _: next(rows))
+
+    main()
+
+    out, err = capfd.readouterr()
+    assert out.rstrip() == "1"
