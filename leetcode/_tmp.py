@@ -1,2 +1,1 @@
-s = "sdfdsvdfdsfd"
-print(list(s))
+print(18 % 10)

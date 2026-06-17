@@ -24,3 +24,30 @@ class Solution:
                 i2 += 1
 
         return max_str
+
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        max_len = float("-inf")
+        max_pol = ""
+        for i, c in enumerate(s):
+            if i < len(s) - 1 and s[i] == s[i + 1]:
+                p1, p2 = i, i + 1
+                while p1 >= 0 and p2 <= len(s) - 1 and s[p1] == s[p2]:
+                    if p2 - p1 + 1 >= max_len:
+                        max_len = p2 - p1 + 1
+                        max_pol = s[p1 : p2 + 1]
+
+                    p1 -= 1
+                    p2 += 1
+
+            p1, p2 = i, i
+            while p1 >= 0 and p2 <= len(s) - 1 and s[p1] == s[p2]:
+                if p2 - p1 + 1 >= max_len:
+                    max_len = p2 - p1 + 1
+                    max_pol = s[p1 : p2 + 1]
+
+                p1 -= 1
+                p2 += 1
+
+        return max_pol
