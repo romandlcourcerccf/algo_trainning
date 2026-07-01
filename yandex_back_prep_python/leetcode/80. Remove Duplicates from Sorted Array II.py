@@ -11,13 +11,11 @@ class Solution:
 
             if d < 1:
                 nums[l] = nums[r]
-
                 l += 1
-                r += 1
             else:
                 nums[l] = nums[r]
                 nums[l + 1] = nums[r]
                 l += 2
-                r += 1
+            r += 1
 
         return l
