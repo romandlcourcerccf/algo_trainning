@@ -1,4 +1,5 @@
 import sys
+from collections import defaultdict
 
 
 def main():
@@ -9,37 +10,26 @@ def main():
     """
     lines = open("2.txt", "r").readlines()
 
-    N, T = lines[0].split()[0], lines[0].split()[1]
+    N = int(lines[0])
 
-    print(f"N {N} T {T}")
+    print(f"N {N}")
 
-    intervals = []
+    ratings = defaultdict()
 
-    for i in range(int(T) + 1):
-        intervals.append([])
+    pos = 1
+    for i in range(N):
+        r_size = int(lines[pos])
+        # print(f"r_size {r_size}")
+        for r in range(r_size):
+            pos += 1
+            rating = lines[pos].strip().split()
+            r_num, r_val = int(rating[0]), int(rating[1])
+            ratings[r_num] = r_val
 
-    for i in range(1, len(lines)):
-        r, l, a = lines[i].split()
-        r, l, a = int(r), int(l), int(a)
+        pos += 1
 
-        print(f"r {r}, l {l}, a {a}")
-        intervals[r].append((("S", int(a))))
-        intervals[l].append((("E", int(a))))
-
-    print(intervals)
-
-    max_sum = float("-inf")
-    tmp_sum = 0
-    for i in range(len(intervals)):
-        for a in intervals[i]:
-            if a[0] == "S":
-                tmp_sum += a[1]
-            elif a[0] == "E":
-                tmp_sum -= a[1]
-
-        max_sum = max(max_sum, tmp_sum)
-
-    print(max_sum)
+    for k in sorted(list(ratings.keys())):
+        print(f"{k} {ratings[k]}")
 
 
 if __name__ == "__main__":
