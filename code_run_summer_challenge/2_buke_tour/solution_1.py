@@ -8,7 +8,7 @@ def main():
     n = int(input())
     print(n)
     """
-    lines = open("2.txt", "r").readlines()
+    lines = open("1.txt", "r").readlines()
 
     N = int(lines[0])
 
@@ -19,7 +19,6 @@ def main():
     pos = 1
     for i in range(N):
         r_size = int(lines[pos])
-        # print(f"r_size {r_size}")
         for r in range(r_size):
             pos += 1
             rating = lines[pos].strip().split()
