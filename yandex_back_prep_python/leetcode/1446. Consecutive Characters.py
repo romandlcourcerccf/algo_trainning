@@ -19,3 +19,25 @@ class Solution:
             pos +=1
 
         return le
+    
+
+    class Solution:
+    def maxPower(self, s: str) -> int:
+        
+        if len(s) == 1:
+            return 1
+            
+        max_len = float('-inf')
+
+        i = 0
+        while i < len(s)-1:
+            _max_len = 1
+            while i < len(s)-1 and  s[i] == s[i+1]:
+                i +=1
+                _max_len +=1
+            
+            max_len = max(max_len, _max_len)
+            i +=1
+
+        return max_len
+            
