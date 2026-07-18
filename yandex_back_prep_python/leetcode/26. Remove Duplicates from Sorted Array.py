@@ -27,3 +27,19 @@ class Solution:
             r += 1
 
         return l
+
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        r, l = 0, 0
+
+        while r < len(nums):
+            while r < len(nums) - 1 and nums[r] == nums[r + 1]:
+                r += 1
+
+            nums[l] = nums[r]
+
+            r += 1
+            l += 1
+
+        return l

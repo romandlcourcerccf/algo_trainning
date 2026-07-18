@@ -39,3 +39,21 @@ class Solution:
         right_height = 1 + self.maxDepth(root.right)
 
         return max(left_height, right_height)
+
+
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        self.max_depth = float("-inf")
+
+        def dfs(root, depth):
+            if not root:
+                return
+
+            self.max_depth = max(self.max_depth, depth)
+
+            dfs(root.left, depth + 1)
+            dfs(root.right, depth + 1)
+
+        dfs(root, 1)
+
+        return self.max_depth if self.max_depth != float("-inf") else 0
