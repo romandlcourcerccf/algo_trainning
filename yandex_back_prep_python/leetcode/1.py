@@ -1,3 +1,2 @@
 s = "dfddfdggfd"
-s.sort()
-print(s)
+print(set(s))

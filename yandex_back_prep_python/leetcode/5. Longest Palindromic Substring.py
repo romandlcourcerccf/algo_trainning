@@ -51,3 +51,30 @@ class Solution:
                 p2 += 1
 
         return max_pol
+
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+
+        max_len = float("-inf")
+        max_sbr = ""
+
+        for i in range(len(s)):
+            if i < len(s) - 1 and s[i] == s[i + 1]:
+                l, r = i, i + 1
+                while l >= 0 and r < len(s) and s[l] == s[r]:
+                    if r - l + 1 >= max_len:
+                        max_len = r - l + 1
+                        max_sbr = s[l : r + 1]
+                    r += 1
+                    l -= 1
+            l = r = i
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if r - l + 1 >= max_len:
+                    max_len = r - l + 1
+                    max_sbr = s[l : r + 1]
+
+                r += 1
+                l -= 1
+
+        return max_sbr
