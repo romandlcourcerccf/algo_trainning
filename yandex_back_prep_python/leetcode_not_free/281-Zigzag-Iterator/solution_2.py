@@ -12,8 +12,7 @@ class ZigzagIterator:
             self.queue.append(v2)
 
     def next(self) -> int:
-        print("len(self.queue) : ", len(self.queue))
-
+    
         v = self.queue.pop(0)
 
         r = v.pop(0)
