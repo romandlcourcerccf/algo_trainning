@@ -40,7 +40,6 @@ class Solution:
 
         return max(left_height, right_height)
 
-
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         self.max_depth = float("-inf")
