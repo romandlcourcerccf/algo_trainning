@@ -1,0 +1,5 @@
+g++ math_functions.cpp test_math.cpp -lgtest -lgtest_main -pthread -o run_tests
+./run_tests
+
+g++  -std=c++23 -Wall main.cpp  -o main
+

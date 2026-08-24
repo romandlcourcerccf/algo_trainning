@@ -90,11 +90,11 @@ int count_positions(std::vector<std::vector<char>> matrix)
     return 0;
 }
 
-int main()
-{
-    std::vector<std::vector<char>> rows = readRows();
-    print(rows);
-    count_positions(rows);
+// int main()
+// {
+//     std::vector<std::vector<char>> rows = readRows();
+//     print(rows);
+//     count_positions(rows);
 
-    return 0;
-}
+//     return 0;
+// }
