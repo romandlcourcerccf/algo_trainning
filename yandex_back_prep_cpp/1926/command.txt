@@ -1,0 +1,1 @@
+g++ solution_test.cpp  --std=c++23 -o solution_test

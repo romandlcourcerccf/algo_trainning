@@ -5,7 +5,7 @@
 
 #include "doctest.h"
 
-TEST_CASE("testing factorial") {
+TEST_CASE("test maze 1") {
   Solution s;
 
   vector<vector<char>> maze = {
