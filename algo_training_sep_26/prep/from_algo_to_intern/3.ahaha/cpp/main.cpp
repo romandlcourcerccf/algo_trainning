@@ -32,20 +32,18 @@ int main() {
 
   std::cout << "row_len :" << row_len << std::endl;
 
-  if
+  while (r < row.size()) {
+    std::cout << "r" << r << std::endl;
 
-    while (r < row.size()) {
-      std::cout << "r" << r << std::endl;
-
-      if ((row[r] == 'a' && row[r + 1] == 'h') ||
-          (row[r] == 'h' && row[r + 1] == 'a')) {
-        max_len = std::max(max_len, r - l + 1);
-      } else {
-        l = r;
-      }
-
-      r++;
+    if ((row[r] == 'a' && row[r + 1] == 'h') ||
+        (row[r] == 'h' && row[r + 1] == 'a')) {
+      max_len = std::max(max_len, r - l + 1);
+    } else {
+      l = r;
     }
+
+    r++;
+  }
 
   std::cout << "max_len :" << max_len << std::endl;
 
