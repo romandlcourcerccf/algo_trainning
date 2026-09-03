@@ -14,7 +14,7 @@ class Solution {
       std::cout << s << std::endl;
     }
 
-    std::string res = {"YES"};
+        std::string res = {"YES"};
     return res;
   }
 };
