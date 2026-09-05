@@ -69,10 +69,10 @@ std::vector<std::string> get_rows(void) {
   return res;
 }
 
-int main() {
-  std::vector<std::string> rows = get_rows();
-  Solution solution;
-  std::string result = solution.getSolution(rows);
-  std::cout << result << std::endl;
-  return 0;
-}
+// int main() {
+//   std::vector<std::string> rows = get_rows();
+//   Solution solution;
+//   std::string result = solution.getSolution(rows);
+//   std::cout << result << std::endl;
+//   return 0;
+// }
