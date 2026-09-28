@@ -47,28 +47,15 @@ class Solution {
     int cur_vagon = 1;
 
     while (!vagons_vector.empty()) {
-      while (vagons_vector.size() > 0 && vagons_vector.back() >= cur_vagon) {
+      while (vagons_vector.back() >= cur_vagon) {
         stack.push(vagons_vector.back());
         vagons_vector.pop_back();
       }
 
-      std::cout << " >> vagons_vector.size() >> " << vagons_vector.size()
-                << std::endl;
-
-      // std::cout << " >> " << this->to_string(vagons_vector) << std::endl;
-
-      std::cout << "stack.size() : " << stack.size() << std::endl;
-      std::cout << "stack.top() : " << stack.top() << std::endl;
-
-      while (stack.size() > 0 && stack.top() == cur_vagon) {
-        std::cout << "stack.top()" << stack.top() << "cur_vagon " << cur_vagon
-                  << std::endl;
+      while (stack.top() == cur_vagon) {
         stack.pop();
         cur_vagon++;
       }
-
-      std::cout << " >> vagons_vector.size() >> " << vagons_vector.size()
-                << std::endl;
 
       if (!stack.empty()) {
         break;
@@ -78,7 +65,6 @@ class Solution {
     if (vagons_vector.empty()) {
       return "YES";
     }
-
     return "NO";
   }
 };
