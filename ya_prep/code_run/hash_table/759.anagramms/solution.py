@@ -1,11 +1,9 @@
 from collections import Counter
 
-
 def load_data(path: str) -> list[str]:
 
     with open(path, "r") as reader:
         rows = reader.readlines()
-        # res = [list(map(int, r.split())) for r in rows]
         return rows
 
 
