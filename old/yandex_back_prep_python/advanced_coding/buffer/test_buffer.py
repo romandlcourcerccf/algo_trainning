@@ -1,4 +1,4 @@
-from advanced_coding.buffer.buffer import EditorBuffer, BufferExeption
+from old.yandex_back_prep_python.advanced_coding.buffer.buffer import EditorBuffer, BufferExeption
 import pytest
 
 
